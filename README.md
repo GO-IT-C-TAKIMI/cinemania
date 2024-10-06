@@ -184,7 +184,7 @@ kullanacağı özellikleri `components` içerisine koyarak farklı sayfalarda o
 
 ---
 
-### **Son Olarak**
+### ** SON OLARAK **
 
 Umarım güzel bir hafta geçirerek iyi bir proje ortaya çıkarırız. Projemiz şu
 anda canlıya alındı:
