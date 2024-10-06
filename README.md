@@ -1,30 +1,32 @@
-GOT C TAKIMI CINEMANIA PROJESİ
+# GOT C Takımı Cinemania Projesi
 
 Öncelikle herkese güzel bir hafta diliyorum. İnşallah çok verimli çalışarak
 güzel bir proje çıkaracağız. Proje hazırlık aşamasında yaptığımız değişiklikleri
-aşağıda belirtiyorum. Dikkat etmeniz gereken konular. Genel olarak geçen projede
-uyguladığımız ama unutabileceğiniz konuları, aklıma gelenleri aşağıya
-hazırladık. Umarım güzel bir rehber olur sizlere.
+aşağıda belirtiyorum. Dikkat etmeniz gereken konular, genel olarak geçen projede
+uyguladığımız ama unutabileceğiniz konuları derledim. Umarım güzel bir rehber
+olur sizlere.
 
-Projenin Local Bilgisayara İndirilmesi ve Yüklenmesi.
+## Projenin Local Bilgisayara İndirilmesi ve Yüklenmesi
 
+```bash
 git clone https://github.com/GO-IT-C-TAKIMI/cinemania.git
-
 cd cinemania
-
-npm i npm install
+npm install
+```
 
 ---
 
-Dikkat edeceğimiz ilk nokta kesinlikle main branchine push yapmıyoruz.
-development branchi oluşturuldu. Kendinize bir branch açarak yaptığınız
-değişiklikleri development branchine push etmenizi rica ediyoruz.
+### Dikkat Edilecek Noktalar
 
-# Proje Adı
+- **Main branch'ine push yapmıyoruz.** Development branch'i oluşturuldu.
+  Kendinize bir branch açarak yaptığınız değişiklikleri development branch'ine
+  push etmenizi rica ediyoruz.
 
-Cinemania
+## Proje Adı
 
-## Proje Yapısı
+**Cinemania**
+
+### Proje Yapısı
 
 Proje, aşağıdaki branch yapısını kullanmaktadır:
 
@@ -33,131 +35,160 @@ Proje, aşağıdaki branch yapısını kullanmaktadır:
 - **feature/[özellik-adı]**: Her ekip üyesinin geliştirdiği özellikler için
   oluşturduğu branch'ler.
 
-## Branch Oluşturma
+### Branch Oluşturma
 
 Ekip üyeleri, kendi branch'lerini oluşturmak için aşağıdaki adımları
 izlemelidir:
 
 1. **Development Branch'ine Geçiş Yapın**
 
-git checkout development
+   ```bash
+   git checkout development
+   git pull origin development
+   ```
 
-git pull origin development
+2. **Yeni Branch Oluşturun**
 
-2. Yeni Branch Oluşturun Kendi branch'inizi oluşturun (özellik adı ile
-   değiştirin):
+   Kendi branch'inizi oluşturun (özellik adı ile değiştirin):
 
-git checkout -b feature/özellik-adı
+   ```bash
+   git checkout -b feature/özellik-adı
+   ```
 
-## Branch Oluşturma
+### Değişikliklerin Development Branch'ine Gönderilmesi
 
-1. Yapmış olduğunuz değişiklikleri development branch'ine göndermeden önce
-   aşağıdaki adımları izleyin:
+1. **Değişiklikleri Staging Alanına Ekleyin**
 
-Değişiklikleri Staging Alanına Ekleyin
+   ```bash
+   git add .
+   ```
 
-git add .
+2. **Commit Mesajınızı Yazın**
 
-2. Commit Mesajınızı Yazın Commit mesajınızı anlamlı bir şekilde yazın:
+   Commit mesajınızı anlamlı bir şekilde yazın:
 
-git commit -m "Özellik: [özellik-adı] - Değişiklik açıklaması"
+   ```bash
+   git commit -m "Özellik: [özellik-adı] - Değişiklik açıklaması"
+   ```
 
-Güncel Development Branch’ini Alın Değişikliklerinizi development branch'i ile
-birleştirmek için önce en son güncellemeleri alın:
+3. **Güncel Development Branch’ini Alın**
 
-git checkout development git pull origin development
+   Değişikliklerinizi development branch'i ile birleştirmek için önce en son
+   güncellemeleri alın:
 
-3. Feature Branch’inizi Yeniden Temellendirin
+   ```bash
+   git checkout development
+   git pull origin development
+   ```
 
-git checkout feature/özellik-adı git rebase development
+4. **Feature Branch’inizi Yeniden Temellendirin**
 
-4. Değişikliklerinizi Puslayın
+   ```bash
+   git checkout feature/özellik-adı
+   git rebase development
+   ```
 
-git checkout development git merge feature/özellik-adı git push origin
-development
+5. **Değişikliklerinizi Puslayın**
 
-**\*\***\***\*\*** PROJE ÖZELLİKLERİ **\*\***\*\*\***\*\***
-
-css klasörü altında reset.css ve style.css oluşturularak genel tanımlamalar
-bunun üzerinde yapıldı.
-
-\*\* styless.css --brend-color: #f87719; --brend-color-rgba: #f87719cc;
---brend-color-active: #188ce8; --main-background: #111; --main-background-rgba:
-#11111180; --btn-background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119
-91.91%); --star-background: linear-gradient(141.22deg, #f84119 9.4%, #f89f19ad
-91.91%); --card-background: linear-gradient(180deg, #0000 63.48%, #000000e6
-92.16%); --hero-background: linear-gradient(87.8deg, #0e0e0e 15.61%, #0e0e0e00
-60.39%), #0e0e0e; --main-text-color: #fff; --second-text-color: #f8f8f8;
---grey-text-color: #111; --main-gray-color: #595959; --main-white-color: #fff;
---main-black-color: #000; --hero-background-color: #2f303a; --modal-keys-color:
-#b7b7b7; --btn-border-radius: 7.4rem; --icons-border-radius: 50%;
---cards-border-radius: 0.5rem; --modal-border-radius: 2rem; --cards-box-shadow:
-1px 1px 24px 2px #01010173; --modal-box-shadow: 1px 1px 14px 4px #ff6b086b;
---cubic: cubic-bezier(0.4, 0, 0.2, 1);
-
-bu alandan bakarak kullanmak istediğiniz renk özelliğini aşağıdaki şekilde
-uygulayabilirsiniz.
-
-**ÖRNEK** background-color: var(--brend-color); color:var(--main-gray-color);
-
-vs.
-
-Projede kök pixel büyüklüğü kolaylık olması için 10px olarak tanımlandı. Projede
-yazacağınız css kodları için figmadan baktığınız pixel büyüklüğünü 10 a bölüp
-rem şeklinde yazmanız yeterlidir.
-
-**ÖRNEK**
-
-font-size:1.5rem; /_ 15px için _/
+   ```bash
+   git checkout development
+   git merge feature/özellik-adı
+   git push origin development
+   ```
 
 ---
 
-**\***ÇOK ÖNEMLİ**\*** projeyi hazırlarken min-width yaklaşımı ile yazacağız
-genel kod düzeninin sağlanması için her herkesin buna dikkat etmesini rica
-edeceğiz Çünkü proje yaklaşımı açısından ileride sorun yaşayabilirsiniz.
-min-width yaklaşımda her zaman win-width değeri en düşük olan alandan
-başlarsınız. ilk başta mobil sonra tablet enson desktop olacak.
+## Proje Özellikleri
 
-min-width yaklaşımda her zaman en yukarda mobil ortada tablet en altta desktop
-kodları olmalı. örneği styles.css dosyasında var ben yine bir örnek bırakıyorum.
+- CSS klasörü altında `reset.css` ve `style.css` oluşturularak genel
+  tanımlamalar yapıldı.
+- `styless.css` dosyasında tanımlanan bazı değişkenler:
 
-.container { margin-left: auto; margin-right: auto; padding-left: 0.2rem;
-padding-right: 0.2rem; }
+```css
+--brend-color: #f87719;
+--main-background: #111;
+--main-text-color: #fff;
+```
 
-@media (min-width: 768px) { .container { width: 76.8rem; padding-left: 3.2rem;
-padding-right: 3.2rem; } }
+**Örnek Kullanım:**
 
-@media (min-width: 1280px) { .container { width: 128rem; } }
+```css
+background-color: var(--brend-color);
+color: var(--main-text-color);
+```
 
-tablet 768px , desktop 1280px olacak.
+- Projeye kök pixel büyüklüğü 10px olarak tanımlandı. CSS kodları için figmadan
+  baktığınız pixel büyüklüğünü 10'a bölüp `rem` şeklinde yazmanız yeterlidir.
 
-Sorun yaşamamınız için öneri olarak 3 adet css oluşturarak mobil.css tablet.css
-ve desktop.css olarak dosyalarınızı saklamanız olacaktır.
+**Örnek:**
 
-CSS dosyalarınızı yazarken Mobili detaylı yazdıktan sonra. tablette ve desktopta
-sırasıyla sadece ezmeniz yani değiştirmeniz gereken alanları yazmanız
-yeterlidir. tekrar tekrar aynı kodları kopyalamanıza gerek yok. en alttaki yani
-en son okunan kod her zaman üsttekini ezecektir.
+```css
+font-size: 1.5rem; /* 15px için */
+```
 
-GENEL BUTON ÖZELLİKLERİ EKLENDİ
+---
 
-Projede genel kullanılacak buton özellikleri styless css içerisine tanımlandı.
-buton tasarımları yapıldı tekrar yapmanıza gerek yok. butonu css olmadan dahi
-ekleseniz efektleri dahil çıkacatır. sadece boyutunu ayarlamanız yeterli.
+### **Çok Önemli:**
 
-**\*** DOSYA YAPISI **\***
+Projeyi hazırlarken `min-width` yaklaşımını kullanmalıyız. Kod düzeninin
+sağlanması için herkesin buna dikkat etmesini rica ediyoruz. Kodlarınızı şu
+sırayla yazmalısınız:
 
-Her bölümün ayrı bir yapısı olacak. partials alanında mevcut Sectionların
-klasörleri ve dosyaları ile birlikte css dosyaları olacak. bunun yanında genel
-olarak herkesin kullanacağı özellikleri components içerisine koyduğunuzda farklı
-sayfalarda o özelliği import edebiliriz. kök klasörde components klasörü
-oluşturuldu.
+- Mobil
+- Tablet
+- Desktop
 
-\***_ SON OLARAK_**
+**Örnek:**
 
-Umarım güzel bir hafta geçirerek iyi bir proje ortaya çıkarırız. projemiz şu
-anda canlıya alındı.
+```css
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
 
-https://go-it-c-takimi.github.io/cinemania/
+@media (min-width: 768px) {
+  .container {
+    width: 76.8rem;
+  }
+}
 
-linkten ulaşabilirsiniz.
+@media (min-width: 1280px) {
+  .container {
+    width: 128rem;
+  }
+}
+```
+
+Tablet 768px, Desktop 1280px olacak şekilde ayarlamalısınız.
+
+**Öneri:** Mobil, tablet ve desktop için ayrı CSS dosyaları (`mobil.css`,
+`tablet.css`, `desktop.css`) oluşturun. Mobil için detaylı yazdıktan sonra
+sadece değişmesi gereken alanları tablet ve desktop dosyalarına ekleyin.
+
+### Genel Buton Özellikleri
+
+Projede kullanılacak genel buton özellikleri `styless.css` içerisine tanımlandı.
+Buton tasarımları yapıldı, tekrar yapmanıza gerek yok. Butonları CSS olmadan da
+ekleseniz efektleri dahil çıkacaktır.
+
+---
+
+### **Dosya Yapısı**
+
+Her bölümün ayrı bir yapısı olacak. `partials` alanında mevcut sectionların
+klasörleri ve dosyaları ile birlikte CSS dosyaları olacak. Genel olarak herkesin
+kullanacağı özellikleri `components` içerisine koyarak farklı sayfalarda o
+özelliği import edebiliriz.
+
+---
+
+### **Son Olarak**
+
+Umarım güzel bir hafta geçirerek iyi bir proje ortaya çıkarırız. Projemiz şu
+anda canlıya alındı:
+
+[https://go-it-c-takimi.github.io/cinemania/](https://go-it-c-takimi.github.io/cinemania/)
+
+Linkten ulaşabilirsiniz.
