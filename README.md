@@ -1,4 +1,4 @@
-# GOT C Takımı Cinemania Projesi
+# GOIT C Takımı Cinemania Projesi
 
 Öncelikle herkese güzel bir hafta diliyorum. İnşallah çok verimli çalışarak
 güzel bir proje çıkaracağız. Proje hazırlık aşamasında yaptığımız değişiklikleri
