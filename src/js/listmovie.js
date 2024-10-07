@@ -1,3 +1,3 @@
 export function listMovie() {
-    console.log('listmovie sayfasinin js i calisti')
+    console.log('listmovie sayfasinin js i calisti asdasd')
 }
