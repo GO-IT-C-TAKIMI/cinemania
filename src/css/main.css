@@ -1,5 +1,7 @@
 @import './reset.css';
 @import './styles.css';
+@import './popup/popup-desktop.css';
+@import './header/header-desktop.css';
 @import './footer/footer.css';
-@import './footer/footer-tablet.css';
-@import './footer/footer-desktop.css';
+@import './main/hero/hero-desktop.css';
+
