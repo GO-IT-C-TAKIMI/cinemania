@@ -19,7 +19,7 @@ export function addToLibrary(arr){
     document.body.appendChild(divLibrary);
 
 }
-
+// pseudo code for localstorage
 function localsto(){
     const resimler = localStorage.getItem("resimler");
     let user = { name: 'John', age: 30 };
