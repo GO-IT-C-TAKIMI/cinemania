@@ -13,10 +13,9 @@ export async function getMovies() {
   return JSON.stringify(data);
 }
 
-async function fetchMovies() {
+export async function fetchMovies() {
   try {
     const movies = await getMovies();
-    console.log(movies);
   } catch (error) {
     console.error('Error fetching movies:', error);
   }
