@@ -169,6 +169,9 @@
     align-items: center;
     gap: 40px;
   }
+  .upcoming-content__name {
+    font-size: 2rem;
+  }
 
   .upcoming-content__img {
     width: 50%; /* Masaüstü için genişlik */
