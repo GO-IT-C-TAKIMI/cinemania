@@ -24,7 +24,7 @@ function localsto(){
     const resimler = localStorage.getItem("resimler");
     let user = { name: 'John', age: 30 };
 localStorage.setItem('user', JSON.stringify(user));
-let user = JSON.parse(localStorage.getItem('user'));
+let user2 = JSON.parse(localStorage.getItem('user'));
 console.log(user.name);  // Output: John
 
 if (localStorage.getItem('username') !== null) {
