@@ -47,6 +47,7 @@
   margin-bottom: 10px;
 }
 
+/* Bilgilerin yan yana yerleştirilmesi için flex düzeni */
 .upcoming-list {
   list-style: none;
   padding: 0;
@@ -54,6 +55,8 @@
 }
 
 .upcoming-list__item {
+  display: flex; /* Bilgi başlığı ve veriyi yan yana sıralamak için */
+  justify-content: space-between;
   margin-bottom: 5px;
   color: var(--second-text-color);
   font-size: 1.6rem;
@@ -63,6 +66,23 @@
   font-weight: bold;
   color: var(--main-white-color);
   font-size: 1.6rem;
+}
+
+.upcoming-list__date,
+.upcoming-list__vote,
+.upcoming-list__pop,
+.upcoming-list__genre {
+  font-size: 1rem;
+  color: var(--second-text-color);
+}
+
+/* Vote için arka plan rengi */
+.upcoming-list__vote span {
+  padding: 2px 6px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 .upcoming-content__title {
@@ -80,6 +100,7 @@
 .upcoming-content__btn,
 .upcoming-content__btn-remove {
   padding: 10px 20px;
+  margin-top: 12px;
   font-size: 0.9rem;
   background: var(--btn-background);
   border-radius: var(--btn-border-radius);
@@ -139,10 +160,11 @@
   }
 
   .upcoming__title {
-    font-size: 2rem; /* Masaüstü için başlık boyutu */
+    font-size: 3.2rem; /* Masaüstü için başlık boyutu */
   }
 
   .upcoming-content {
+    display: flex;
     flex-direction: row;
     align-items: center;
     gap: 40px;
@@ -159,8 +181,22 @@
     text-align: left;
   }
 
+  /* Alt alta sıralamak için */
   .upcoming-thumb {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column; /* Yatay yerine dikey hizalama */
+    justify-content: flex-start;
+    gap: 10px; /* Her öğe arasında boşluk */
+  }
+
+  .upcoming-list__item {
+    margin-bottom: 10px; /* Alt alta gelmesi için margin */
+    font-size: 1rem; /* Masaüstü için metin boyutu */
+  }
+
+  .upcoming-list__text {
+    font-weight: bold;
+    color: var(--main-white-color);
   }
 
   .upcoming-content__btn,
