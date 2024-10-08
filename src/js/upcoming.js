@@ -3,6 +3,7 @@ export function upcoming() {
 
     const apiKey = '3e7bd78082a78694a13d5e52c5addee0';  // API anahtarı
     const upcomingURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`;
+    const genreURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`; // Genre listesini almak için
     const moviePoster = document.getElementById('movie-poster');
     const movieTitle = document.getElementById('movie-title');
     const releaseDate = document.getElementById('release-date');
@@ -14,19 +15,31 @@ export function upcoming() {
     const addBtn = document.getElementById('add-btn');
     const removeBtn = document.getElementById('remove-btn');
 
-    // API'den upcoming filmleri çek
-    fetch(upcomingURL)
+    let genreMap = {}; // Genre ID'lerini isimlerle eşleştirmek için
+
+    // Genre listesini çek
+    fetch(genreURL)
       .then(response => response.json())
       .then(data => {
-        const films = data.results;
-        if (films.length > 0) {
-          const randomFilm = films[Math.floor(Math.random() * films.length)];
-          displayFilm(randomFilm);
-        } else {
-          document.querySelector('.upcoming__title').textContent = 'No upcoming movies this month';
-        }
+        data.genres.forEach(genre => {
+          genreMap[genre.id] = genre.name;  // Genre ID'lerini isimlere eşleştir
+        });
+
+        // Ardından upcoming filmleri çek
+        fetch(upcomingURL)
+          .then(response => response.json())
+          .then(data => {
+            const films = data.results;
+            if (films.length > 0) {
+              const randomFilm = films[Math.floor(Math.random() * films.length)];
+              displayFilm(randomFilm);
+            } else {
+              document.querySelector('.upcoming__title').textContent = 'No upcoming movies this month';
+            }
+          })
+          .catch(error => console.error('Error fetching movies:', error));
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch(error => console.error('Error fetching genres:', error));
 
     function displayFilm(film) {
       moviePoster.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
@@ -36,16 +49,16 @@ export function upcoming() {
       movieVote.textContent = film.vote_average;
       voteCount.textContent = film.vote_count;
       popularity.textContent = film.popularity;
-      
+
+      // Genre ID'lerini isimlerle değiştir
+      genres.textContent = film.genre_ids.map(id => genreMap[id]).join(', ');
+
       // Eğer overview (açıklama) mevcutsa ekrana bas, yoksa boş bırak veya alternatif mesaj göster
       if (film.overview && film.overview.trim() !== "") {
         overview.textContent = film.overview;
       } else {
         overview.textContent = 'No overview available for this movie.';
       }
-
-      // Genre (Tür) bilgileri
-      genres.textContent = film.genre_ids.join(', ');
 
       // Kütüphanede mi kontrol et
       const isInLibrary = checkLibrary(film.id);
@@ -93,4 +106,3 @@ export function upcoming() {
       updateLibraryButton(false, filmId);
     }
 }
-
