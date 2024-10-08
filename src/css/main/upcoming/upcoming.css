@@ -1,12 +1,11 @@
-/* Mobile-first upcoming section */
+/* Mobile-First Varsayılan Stil */
 .upcoming {
   margin-top: 20px;
   padding: 10px;
 }
 
 .upcoming__title {
-  font-size: 1.6rem;
-  text-align: center;
+  font-size: 1.6rem; /* Mobil için uygun boyut */
   margin-bottom: 10px;
   color: var(--main-text-color);
 }
@@ -19,26 +18,31 @@
 }
 
 .upcoming-content__img {
-  width: 100%; /* Mobilde tam genişlik */
-  max-width: 300px; /* Mobilde maksimum genişlik */
-  border-radius: var(--cards-border-radius);
-  box-shadow: var(--cards-box-shadow); /* Görsel için gölge efekti */
+  width: 100%; /* Mobil için tam genişlik */
+  max-width: 280px; /* Mobildeki maksimum genişlik */
+  height: 402px; /* Mobilde sabit yükseklik */
+  border-radius: 5px 0px 0px 0px; /* Figma'daki köşe yumuşatma */
 }
 
 .upcoming-content__desktop {
-  width: 100%; /* Mobilde tam genişlik */
+  width: 100%; /* Mobil için tam genişlik */
   text-align: left;
 }
 
 .upcoming-content__name {
-  font-size: 1.4rem; /* Mobil için başlık boyutu */
-  color: var(--main-white-color);
+  width: 139px;
+  height: 23px;
+  font-size: 2rem; /* 20px = 2rem (root 10px) */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 2.344rem;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 .upcoming-thumb {
   display: flex;
-  flex-direction: column; /* Üst üste yerleştirme */
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -52,23 +56,24 @@
 .upcoming-list__item {
   margin-bottom: 5px;
   color: var(--second-text-color);
-  font-size: 0.9rem; /* Mobil için metin boyutu */
+  font-size: 1.6rem;
 }
 
 .upcoming-list__text {
   font-weight: bold;
   color: var(--main-white-color);
+  font-size: 1.6rem;
 }
 
 .upcoming-content__title {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin-top: 15px;
   margin-bottom: 10px;
   color: var(--main-white-color);
 }
 
 .upcoming-content__text {
-  font-size: 0.9rem; /* Mobil için açıklama metni boyutu */
+  font-size: 1.4rem;
   color: var(--second-text-color);
 }
 
@@ -78,21 +83,89 @@
   font-size: 0.9rem;
   background: var(--btn-background);
   border-radius: var(--btn-border-radius);
-  width: 100%; /* Buton genişliği mobilde tam olacak */
-  max-width: 300px; /* Maksimum genişlik */
+  width: 100%;
+  max-width: 280px; /* Mobilde butonlar genişlik sınırlı */
 }
 
 .upcoming-content__btn-remove {
   background: #f44336;
-  border-radius: var(--btn-border-radius);
 }
 
-/* Mobil için ekstra aralıklar ve genel düzenlemeler */
-.upcoming {
-  padding: 10px;
+/* Tablet ve Daha Büyük Ekranlar İçin (min-width: 768px) */
+@media (min-width: 768px) {
+  .upcoming-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .upcoming-content__img {
+    width: 60%;
+    max-width: none;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .upcoming-content__desktop {
+    width: 40%;
+    text-align: left;
+  }
+
+  .upcoming-content__name {
+    font-size: 1.8rem; /* Tablet için daha küçük boyut */
+    width: auto;
+    height: auto;
+  }
+
+  .upcoming-thumb {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .upcoming-list__item {
+    font-size: 1rem;
+  }
+
+  .upcoming-content__btn,
+  .upcoming-content__btn-remove {
+    width: auto; /* Tablet ve üzeri için genişlik sınırlaması yok */
+  }
 }
 
-.upcoming__title {
-  font-size: 1.6rem;
-  margin-bottom: 15px;
+/* Masaüstü ve Daha Geniş Ekranlar İçin (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .upcoming {
+    margin-top: 50px;
+  }
+
+  .upcoming__title {
+    font-size: 2rem; /* Masaüstü için başlık boyutu */
+  }
+
+  .upcoming-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .upcoming-content__img {
+    width: 50%; /* Masaüstü için genişlik */
+    border-radius: var(--cards-border-radius);
+    box-shadow: var(--cards-box-shadow); /* Görsel gölge efekti */
+  }
+
+  .upcoming-content__desktop {
+    width: 50%;
+    text-align: left;
+  }
+
+  .upcoming-thumb {
+    justify-content: space-between;
+  }
+
+  .upcoming-content__btn,
+  .upcoming-content__btn-remove {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
 }
