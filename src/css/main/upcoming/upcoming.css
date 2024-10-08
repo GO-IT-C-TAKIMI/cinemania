@@ -72,7 +72,7 @@
 .upcoming-list__vote,
 .upcoming-list__pop,
 .upcoming-list__genre {
-  font-size: 1rem;
+  font-size: 1.6rem;
   color: var(--second-text-color);
 }
 
@@ -101,7 +101,7 @@
 .upcoming-content__btn-remove {
   padding: 10px 20px;
   margin-top: 12px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   background: var(--btn-background);
   border-radius: var(--btn-border-radius);
   width: 100%;
@@ -144,7 +144,7 @@
   }
 
   .upcoming-list__item {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 
   .upcoming-content__btn,
@@ -160,7 +160,7 @@
   }
 
   .upcoming__title {
-    font-size: 3.2rem; /* Masaüstü için başlık boyutu */
+    font-size: 2.8rem; /* Masaüstü için başlık boyutu */
   }
 
   .upcoming-content {
@@ -170,7 +170,7 @@
     gap: 40px;
   }
   .upcoming-content__name {
-    font-size: 2rem;
+    font-size: 3.2rem;
   }
 
   .upcoming-content__img {
@@ -194,7 +194,7 @@
 
   .upcoming-list__item {
     margin-bottom: 10px; /* Alt alta gelmesi için margin */
-    font-size: 1rem; /* Masaüstü için metin boyutu */
+    font-size: 1.6rem; /* Masaüstü için metin boyutu */
   }
 
   .upcoming-list__text {
@@ -205,6 +205,6 @@
   .upcoming-content__btn,
   .upcoming-content__btn-remove {
     padding: 12px 24px;
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 }
