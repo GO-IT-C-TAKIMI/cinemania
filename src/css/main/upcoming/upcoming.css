@@ -1,12 +1,13 @@
 /* Mobile-first upcoming section */
 .upcoming {
-  margin-top: 50px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .upcoming__title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: var(--main-text-color);
 }
 
@@ -19,25 +20,27 @@
 
 .upcoming-content__img {
   width: 100%; /* Mobilde tam genişlik */
+  max-width: 300px; /* Mobilde maksimum genişlik */
   border-radius: var(--cards-border-radius);
+  box-shadow: var(--cards-box-shadow); /* Görsel için gölge efekti */
 }
 
 .upcoming-content__desktop {
-  width: 100%;
-  text-align: center;
+  width: 100%; /* Mobilde tam genişlik */
+  text-align: left;
 }
 
 .upcoming-content__name {
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Mobil için başlık boyutu */
+  color: var(--main-white-color);
   margin-bottom: 10px;
-  color: var(--main-text-color);
 }
 
 .upcoming-thumb {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Üst üste yerleştirme */
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .upcoming-list {
@@ -49,76 +52,47 @@
 .upcoming-list__item {
   margin-bottom: 5px;
   color: var(--second-text-color);
+  font-size: 0.9rem; /* Mobil için metin boyutu */
 }
 
 .upcoming-list__text {
   font-weight: bold;
+  color: var(--main-white-color);
 }
 
 .upcoming-content__title {
   font-size: 1.2rem;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 10px;
-  color: var(--main-text-color);
+  color: var(--main-white-color);
 }
 
 .upcoming-content__text {
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* Mobil için açıklama metni boyutu */
   color: var(--second-text-color);
 }
 
 .upcoming-content__btn,
 .upcoming-content__btn-remove {
   padding: 10px 20px;
+  font-size: 0.9rem;
   background: var(--btn-background);
-  color: var(--main-white-color);
-  border: none;
   border-radius: var(--btn-border-radius);
-  cursor: pointer;
+  width: 100%; /* Buton genişliği mobilde tam olacak */
+  max-width: 300px; /* Maksimum genişlik */
 }
 
 .upcoming-content__btn-remove {
-  background-color: #f44336;
+  background: #f44336;
+  border-radius: var(--btn-border-radius);
 }
 
-.hidden {
-  display: none;
+/* Mobil için ekstra aralıklar ve genel düzenlemeler */
+.upcoming {
+  padding: 10px;
 }
 
-/* Tablet ve Daha Büyük Ekranlar İçin (min-width: 768px) */
-@media (min-width: 768px) {
-  .upcoming-content {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .upcoming-content__img {
-    width: 50%;
-  }
-
-  .upcoming-content__desktop {
-    width: 50%;
-    text-align: left;
-  }
-
-  .upcoming-thumb {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .upcoming-list__item {
-    text-align: left;
-  }
-}
-
-/* Masaüstü ve Daha Geniş Ekranlar İçin (min-width: 1200px) */
-@media (min-width: 1200px) {
-  .upcoming-content__img {
-    width: 40%;
-  }
-
-  .upcoming-content__desktop {
-    width: 60%;
-  }
+.upcoming__title {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
 }
