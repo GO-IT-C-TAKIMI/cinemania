@@ -26,11 +26,18 @@
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+body.light-theme {
+  --main-background: #fff;
+  --main-text-color: #000;
+  --second-text-color: #333;
+  --grey-text-color: #888;
+}
 /* Global Styles */
 body {
   background-color: var(--main-background);
   font-family: Roboto, sans-serif;
   font-size: 10px;
+  color: var(--main-text-color);
   transition: background-color 0.4s ease-out;
 }
 
