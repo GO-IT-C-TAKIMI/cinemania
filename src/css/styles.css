@@ -103,7 +103,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: var(--btn-border-radius);
-  padding: 1rem 2.4rem;
+  padding: 1.2rem 2.4rem;
   font-size: 1.4rem;
   transition: 0.3s ease;
 }

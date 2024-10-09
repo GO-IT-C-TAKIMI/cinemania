@@ -1,63 +1,67 @@
-#movies-image-container{
-    height: 380px;
+#movies-image-container {
+  height: 380px;
 }
-.gradient{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0) 80%);
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0) 80%
+  );
 }
-.image{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position:26%;
-}
-
-#movies-description-container{
-    position: absolute;
-    top: 40px;
-    left: 20px;
-    z-index: 10;
-    gap: 20px;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-}
-.hero-movies-container{
-    position: relative;
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 26%;
 }
 
-.movie-desc{
-    color: white;
-    font-size: 1.4rem;
-    width: 200px;
+#movies-description-container {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  z-index: 10;
+  gap: 15px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.hero-movies-container {
+  position: relative;
 }
 
-.stars{
-    color:white;
-    list-style: none;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-.stars li{
-    font-size: 1.6rem;
+.movie-desc {
+  color: white;
+  font-size: 1.4rem;
+  width: 200px;
 }
 
-.movie-title{
-    color: white;
-    font-size: 3.2rem;
+.stars {
+  color: white;
+  list-style: none;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.stars li {
+  font-size: 1.6rem;
 }
 
-.hero-movie-buttons{
-    display: flex;
-    z-index: 9999;
-    gap: 8px;
+.movie-title {
+  color: white;
+  font-size: 3.2rem;
+}
+
+.hero-movie-buttons {
+  display: flex;
+  z-index: 9999;
+  gap: 8px;
 }
