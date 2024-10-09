@@ -1,4 +1,3 @@
-import { getMovies } from './js/fetchingdata';
 import { header } from './js/header';
 import { popup } from './js/popup';
 import { mylibrary } from './js/mylibrary';
