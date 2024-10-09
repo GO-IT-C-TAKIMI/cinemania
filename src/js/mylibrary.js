@@ -1,4 +1,3 @@
-
 export function mylibrary() {
 
   const getid = async (params)  => {
@@ -27,11 +26,7 @@ function getAndSetStorage(){
     localStorage.setItem('myLibrary', JSON.stringify(library));
 
 }
-getAndSetStorage()
-
-
-
-
+getAndSetStorage();
 
 function addToLibrary(filmId){
 
