@@ -130,3 +130,7 @@ body.light {
   --main-black-color: #fff;
   --hero-background-color: #e0e0e0;
 }
+
+.hidden{
+  display: none;
+}
