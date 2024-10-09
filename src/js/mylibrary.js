@@ -1,3 +1,8 @@
+import {fetchMovies,getMovies} from './fetchingdata.js';
+
+const moviesFav = getMovies();
+console.log('${moviesFav}');
+
 export function addToLibrary(arr){
     arr.forEach(film => {
         
@@ -33,3 +38,18 @@ if (localStorage.getItem('username') !== null) {
     console.log('Username does not exist');
   }
 }
+let favorites;
+function removeFromLibrary(filmremove){
+    document.getElementById("removefavorite").addEventListener("click",()=>{
+        favorites = favorites.filter(favItem=>favItem !== filmremove);
+    
+          // HTML'deki öğeyi de kaldır
+          const favListItem = document.querySelector(`#${filmremove}`);
+          if (favListItem) {
+            favListItem.remove();
+          }
+        });
+}
+
+
+
