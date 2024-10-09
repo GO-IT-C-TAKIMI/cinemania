@@ -16,13 +16,20 @@ function getAndSetStorage(){
 
 export function addToLibrary(filmId){
 
-    const divLibrary = document.createElement("div");
-    divLibrary.classList.add("div-library");
+    const divLibrary = document.getElementById("myLibrary");
+    const libraryUl = document.getElementById("library-list");
 
     const imgFilm = document.createElement("img");
     imgFilm.classList.add("img-film");
     imgFilm.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
     imgFilm.alt = film.title;
+
+    const imgLink = document.createElement("a");
+    imgLink.classList.add("link-img");
+    imgLink.href=`https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
+
+    const imgList = document.createElement("li");
+    imgList.className.add("list-img");
 
     const description = document.createElement("div");
     description.classList.add("description-film");
@@ -30,8 +37,11 @@ export function addToLibrary(filmId){
                             <p>film.release_date</p>
                             <p>film.genre_ids.join(', ')</p>
                             <p>|/p>`;
+    imgLink.appendChild(imgFilm);
+    imgList.appendChild(imgLink);
+    libraryUl.appendChild(imgList);
 
-    divLibrary.appendChild(imgFilm);
+    divLibrary.appendChild(libraryUl);
     divLibrary.appendChild(description);
     document.body.appendChild(divLibrary);
 
