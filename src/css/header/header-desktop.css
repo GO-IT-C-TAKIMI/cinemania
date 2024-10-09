@@ -1,2 +1,74 @@
-@import url("header-tablet.css");
-@import url("header.css")
+@import url('header-tablet.css');
+@import url('header.css');
+.toggle-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.toggle-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px;
+  height: 24px;
+  background: var(--btn-background);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  padding: 1.2rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--main-text-color);
+  transition: background 0.25s var(--cubic), color 0.25s var(--cubic);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: var(--btn-border-radius);
+  transition: transform 0.4s ease, var(--cubic);
+}
+
+input[type='checkbox']:checked + label .toggle-slider {
+  transform: translateX(35px);
+  background: #fff; /* Güneşin arka planı da temayla birlikte değişir */
+}
+
+input[type='checkbox']:checked + label {
+  background: var(--brend-color);
+}
+
+.toggle-sun,
+.toggle-moon {
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.toggle-sun {
+  left: 4px; /* Güneşi solda biraz kaydırdık */
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+}
+
+.toggle-moon {
+  right: 5px; /* Ayı sağa kaydırdık */
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+}
