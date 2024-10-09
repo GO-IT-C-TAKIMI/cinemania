@@ -1,11 +1,25 @@
-import {fetchMovies,getMovies} from './fetchingdata.js';
 
-const moviesFav = getMovies();
-console.log('${moviesFav}');
+export function mylibrary() {
+
+  const getid = async (params)  => {
+    for(const i of params){
+      try{
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=3e7bd78082a78694a13d5e52c5addee0&language=en-US`);
+        const data = await response.json();
+        console.log(data)
+      }catch(error){
+        console.log(error);
+      }
+    }
+   
+  }
+ 
+
 let library;// kutuphanedeki filmlerin bulundugu obje veya array
 function getAndSetStorage(){
     if (localStorage.getItem('myLibrary') !== null) {
         library= JSON.parse(localStorage.getItem("myLibrary"));
+        getid(library);
       } else {
         console.log('Library does not exist');
       }
@@ -13,8 +27,13 @@ function getAndSetStorage(){
     localStorage.setItem('myLibrary', JSON.stringify(library));
 
 }
+getAndSetStorage()
 
-export function addToLibrary(filmId){
+
+
+
+
+function addToLibrary(filmId){
 
     const divLibrary = document.getElementById("myLibrary");
     const libraryUl = document.getElementById("library-list");
@@ -63,5 +82,7 @@ function removeFromLibrary(filmremove){
 
 function seeFilmContent(){
     let modal ;
+}
+
 }
 
