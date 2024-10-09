@@ -1,4 +1,4 @@
-/* .popup-container{
+.popup-container{
     display: flex;
     align-items: center;
     width: 50px;
@@ -20,4 +20,4 @@
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
-} */
+}
