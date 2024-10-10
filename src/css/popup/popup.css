@@ -40,21 +40,111 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 60px;
 }
 
 .popup-afis{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    margin-top: 50px;
+}
+
+.popup-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 24px;
+    gap: 29px;
 }
 
 .film-title{
     color: var(--main-white-color);
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 2.6rem;
     line-height: 23.44px;
     text-align: left;
 }
+
+.film-details{
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 24px;
+}
+
+.film-stats{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: var(--main-gray-color);
+    gap: 24px;
+}
+
+.film-rating{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 24px;
+}
+
+.vote-container{
+    display: flex;
+    gap: 10px;
+}
+
+.vote {
+    padding: 1px 8px;
+    color: var(--main-background);
+    background-color: var(--main-white-color);
+    border-radius: 5px;
+}
+
+.film-genre{
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.2em;
+}
+
+.film-about-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 24px;
+    gap: 16px;
+}
+
+.film-about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;    
+}
+
+.film-about {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 16.41px;
+    color: var(--main-gray-color);
+}
+
+.film-about-title {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 30px;
+    color: var(--second-text-color);
+}
+
+.film-btn {
+    width: 150px;
+    height: 40px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 14.06px;
+    margin-bottom: 52px;
+}
+
 
 
