@@ -1,0 +1,210 @@
+/* Mobile-First Varsayılan Stil */
+.upcoming {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.upcoming__title {
+  font-size: 1.6rem; /* Mobil için uygun boyut */
+  margin-bottom: 10px;
+  color: var(--main-text-color);
+}
+
+.upcoming-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.upcoming-content__img {
+  width: 100%; /* Mobil için tam genişlik */
+  max-width: 280px; /* Mobildeki maksimum genişlik */
+  height: 402px; /* Mobilde sabit yükseklik */
+  border-radius: 5px 0px 0px 0px; /* Figma'daki köşe yumuşatma */
+}
+
+.upcoming-content__desktop {
+  width: 100%; /* Mobil için tam genişlik */
+  text-align: left;
+}
+
+.upcoming-content__name {
+  width: 139px;
+  height: 23px;
+  font-size: 2rem; /* 20px = 2rem (root 10px) */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 2.344rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.upcoming-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Bilgilerin yan yana yerleştirilmesi için flex düzeni */
+.upcoming-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.upcoming-list__item {
+  display: flex; /* Bilgi başlığı ve veriyi yan yana sıralamak için */
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: var(--second-text-color);
+  font-size: 1.6rem;
+}
+
+.upcoming-list__text {
+  font-weight: bold;
+  color: var(--main-white-color);
+  font-size: 1.6rem;
+}
+
+.upcoming-list__date,
+.upcoming-list__vote,
+.upcoming-list__pop,
+.upcoming-list__genre {
+  font-size: 1rem;
+  color: var(--second-text-color);
+}
+
+/* Vote için arka plan rengi */
+.upcoming-list__vote span {
+  padding: 2px 6px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.upcoming-content__title {
+  font-size: 1.6rem;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: var(--main-white-color);
+}
+
+.upcoming-content__text {
+  font-size: 1.4rem;
+  color: var(--second-text-color);
+}
+
+.upcoming-content__btn,
+.upcoming-content__btn-remove {
+  padding: 10px 20px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  background: var(--btn-background);
+  border-radius: var(--btn-border-radius);
+  width: 100%;
+  max-width: 280px; /* Mobilde butonlar genişlik sınırlı */
+}
+
+.upcoming-content__btn-remove {
+  background: #f44336;
+}
+
+/* Tablet ve Daha Büyük Ekranlar İçin (min-width: 768px) */
+@media (min-width: 768px) {
+  .upcoming-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .upcoming-content__img {
+    width: 60%;
+    max-width: none;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .upcoming-content__desktop {
+    width: 40%;
+    text-align: left;
+  }
+
+  .upcoming-content__name {
+    font-size: 1.8rem; /* Tablet için daha küçük boyut */
+    width: auto;
+    height: auto;
+  }
+
+  .upcoming-thumb {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .upcoming-list__item {
+    font-size: 1rem;
+  }
+
+  .upcoming-content__btn,
+  .upcoming-content__btn-remove {
+    width: auto; /* Tablet ve üzeri için genişlik sınırlaması yok */
+  }
+}
+
+/* Masaüstü ve Daha Geniş Ekranlar İçin (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .upcoming {
+    margin-top: 50px;
+  }
+
+  .upcoming__title {
+    font-size: 3.2rem; /* Masaüstü için başlık boyutu */
+  }
+
+  .upcoming-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+  .upcoming-content__name {
+    font-size: 2rem;
+  }
+
+  .upcoming-content__img {
+    width: 50%; /* Masaüstü için genişlik */
+    border-radius: var(--cards-border-radius);
+    box-shadow: var(--cards-box-shadow); /* Görsel gölge efekti */
+  }
+
+  .upcoming-content__desktop {
+    width: 50%;
+    text-align: left;
+  }
+
+  /* Alt alta sıralamak için */
+  .upcoming-thumb {
+    display: flex;
+    flex-direction: column; /* Yatay yerine dikey hizalama */
+    justify-content: flex-start;
+    gap: 10px; /* Her öğe arasında boşluk */
+  }
+
+  .upcoming-list__item {
+    margin-bottom: 10px; /* Alt alta gelmesi için margin */
+    font-size: 1rem; /* Masaüstü için metin boyutu */
+  }
+
+  .upcoming-list__text {
+    font-weight: bold;
+    color: var(--main-white-color);
+  }
+
+  .upcoming-content__btn,
+  .upcoming-content__btn-remove {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
