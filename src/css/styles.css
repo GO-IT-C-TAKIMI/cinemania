@@ -11,6 +11,11 @@
     #fff 50%,
     #fff 100%
   );
+  --theme-toggle-background: linear-gradient(
+    141.22deg,
+    #ffc226 9.4%,
+    #f84119 100%
+  );
   --star-background: linear-gradient(141.22deg, #f84119 9.4%, #f89f19ad 91.91%);
   --card-background: linear-gradient(180deg, #0000 63.48%, #000000e6 92.16%);
   --hero-background: linear-gradient(87.8deg, #0e0e0e 15.61%, #0e0e0e00 60.39%),
@@ -124,7 +129,7 @@ button.orange-button {
 button.white-button {
   font-weight: 500;
   color: #fff;
-  border: 1px solid white; 
+  border: 1px solid white;
   background: transparent;
 }
 button.orange-button:hover {
@@ -145,6 +150,6 @@ body.light {
   --hero-background-color: #e0e0e0;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
