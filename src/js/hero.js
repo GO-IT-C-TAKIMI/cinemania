@@ -1,5 +1,5 @@
-
 import { myDetailsFunction } from './popup.js';
+import { stars } from './stars.js';
 
 export function hero() {
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
@@ -8,6 +8,7 @@ export function hero() {
   const descriptionContainer = document.getElementById(
     'movies-description-container'
   );
+  
 
   const fetchTrendingByDay = async () => {
     try {
@@ -30,8 +31,10 @@ export function hero() {
   };
 
   const displayMovie = async movie => {
-    const rating = movie.vote_average;
-    
+    const rating = (movie.vote_average / 2).toFixed(1);
+    const fullStars = Math.floor(rating);
+    const halfStars = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
     try {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${movie.id}/images?&api_key=${api_key}&language=en&language=null`
@@ -42,21 +45,40 @@ export function hero() {
           Math.floor(Math.random() * imageData.backdrops.length)
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 21).join(' ');
-      imageContainer.innerHTML += `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" />`;
-      descriptionContainer.innerHTML += `<h1 class="movie-title">${movie.title}</h1>
-    <p class="movie-desc">${movieOverview} ...</p>
-    <div class="hero-movie-buttons">
-    <button id="trailer" class="orange-button btn-hero trailer">Watch trailer</button>
-    <button id="details" class="white-button btn-hero details">More details</button>
-      </div>`;
 
+      imageContainer.innerHTML += `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" />`;
+      descriptionContainer.innerHTML += `
+        <h1 class="movie-title">${movie.title}</h1>
+        <div class="stars-container" id="starsContainer"></div>
+        <p class="movie-desc">${movieOverview}...</p>
+      <div class="hero-movie-buttons">
+        <button id="trailer" class="orange-button btn-hero trailer">Watch trailer</button>
+        <button id="details" class="white-button btn-hero details">More details</button>
+      </div>
+      `;
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
-      
-      detailsButton.addEventListener('click', () => {
-        const movieID = movie.id
-        myDetailsFunction(movieID);
+      const starsContainer = document.getElementById('starsContainer');
 
+      
+        if(movie.vote_average === 0){
+          starsContainer.innerHTML += `<h1>NOT REALESED YET</h1>`;
+          return;
+        }else if (stars.map(star => {
+          if (star.name === 'fullStar') {
+            starsContainer.innerHTML += star.svg.repeat(fullStars);
+          }
+          if (star.name === 'halfStar') {
+            starsContainer.innerHTML += star.svg.repeat(halfStars);
+          }
+          if (star.name === 'emptyStar') {
+            starsContainer.innerHTML += star.svg.repeat(emptyStars);
+          }
+        }));
+
+      detailsButton.addEventListener('click', () => {
+        const movieID = movie.id;
+        myDetailsFunction(movieID);
       });
 
       trailerButton.addEventListener('click', async () => {
