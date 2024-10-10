@@ -62,6 +62,20 @@
 
 .hero-movie-buttons {
   display: flex;
-  z-index: 9999;
   gap: 8px;
+}
+
+.star-icon-empty{
+  stroke:var(--brend-color) ;
+  fill: transparent;
+}
+
+.star-icon-full{
+  fill: var(--brend-color-rgba);
+  stroke:var(--brend-color) ;
+}
+
+.star-icon-half{
+  fill: transparent;
+  stroke:var(--brend-color) ;
 }

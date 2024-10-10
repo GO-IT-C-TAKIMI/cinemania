@@ -1,3 +1,6 @@
+
+import { myDetailsFunction } from './popup.js';
+
 export function hero() {
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
 
@@ -49,10 +52,15 @@ export function hero() {
 
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
+      
       detailsButton.addEventListener('click', () => {
-        console.log('detay butonuna tiklandi');
+        const movieID = movie.id
+        myDetailsFunction(movieID);
+
       });
+
       trailerButton.addEventListener('click', async () => {
+        modal.innerHTML = '';
         try {
           const res = await fetch(
             `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`
@@ -61,8 +69,6 @@ export function hero() {
           const trailer = data.results.find(
             result => result.type === 'Trailer' || result.type === 'Teaser'
           );
-          console.log(trailer.key);
-          console.log(modal);
           modal.innerHTML += `<iframe src="https://www.youtube.com/embed/${trailer.key}" allowfullscreen></iframe>`;
         } catch (error) {
           console.error('Error fetching trailer:', error);
