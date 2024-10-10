@@ -1,17 +1,5 @@
-#myLibrary{
-    margin: 0 auto;
-}
-
-img{
- width: 100%;
- height: auto;
-}
-
-#library-list{
-    display: flex;
-    flex-wrap: wrap;   
-}
-
-#library-list li{
-    width: calc((100% / 3)-2rem);  
+@media (max-width: 600px) {
+    .list-img {
+        width: 100%;  /* Adjust to 1 column on very small screens */
+    }
 }

@@ -1,0 +1,6 @@
+@media (max-width: 1024px) {
+    .list-img {
+        width: calc(50% - 20px);  /* Adjust to 2 columns on smaller screens */
+    }
+}
+

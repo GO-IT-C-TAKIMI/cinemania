@@ -1,2 +1,39 @@
 @import url("libraryList-tablet.css");
 @import url("libraryList.css");
+
+
+#myLibrary{
+    margin: 0 auto;
+}
+
+
+#library-list{
+    display: flex;
+    flex-wrap: wrap;   
+    list-style: none;
+    justify-content: space-between;  /* Add spacing between items */
+    padding: 0;
+    margin: 0;
+}
+
+#library-list li{
+    width: calc(33.33% - 20px);  /* Each list item takes 1/3 of the row with some space in between */
+    margin-bottom: 20px;  /* Add space between rows */
+    box-sizing: border-box; 
+    height: 325px;
+}
+
+img{
+    width: 100%;
+   }
+
+
+#film-title{
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#film-genre{
+    font-size: 11px;
+    line-height: 1.5;
+}
