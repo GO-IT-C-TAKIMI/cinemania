@@ -6,6 +6,9 @@
     margin: 0 auto;
 }
 
+#film-category{
+width: 100px;
+}
 
 #library-list{
     display: flex;
