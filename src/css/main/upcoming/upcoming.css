@@ -68,7 +68,11 @@
   font-size: 1.6rem;
 }
 
-.upcoming-list__date,
+.upcoming-list__date {
+  color: #f87719;
+  font-size: 1.6rem;
+}
+
 .upcoming-list__vote,
 .upcoming-list__pop,
 .upcoming-list__genre {
