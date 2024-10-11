@@ -1,3 +1,4 @@
 export function header() {
-  console.log('header sayfasinin js i calisti')
+  const overlay = document.querySelector('.overlay');
+  const menu = document.querySelector('.header-link-container');
 }
