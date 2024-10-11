@@ -1,2 +1,8 @@
-@import url('header-tablet.css');
 @import url('header.css');
+@import url('header-tablet.css');
+
+@media (min-width: 1200px) {
+    .header-title{
+        color: blue;
+    }
+}
