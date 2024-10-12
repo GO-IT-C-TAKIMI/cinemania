@@ -1,4 +1,4 @@
-export function listmovie() {
+export async function listmovie() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
   const apiUrl =
     'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' +
@@ -61,7 +61,7 @@ export function listmovie() {
   // İlk sayfayı ve film türlerini yükle
   async function init() {
     await fetchGenres(); // Önce türleri çek
-    fetchMovies();
+    await fetchMovies();
   }
 
   init(); // Sayfa yüklendiğinde çalışacak
@@ -204,7 +204,7 @@ export function listmovie() {
     nextPageBtn.disabled = currentPage === totalPages;
   }
 
-  function addPageButton(pageNum) {
+  async function addPageButton(pageNum) {
     const pageButton = document.createElement('button');
     pageButton.textContent = pageNum;
     pageButton.classList.add('page-number');
@@ -214,10 +214,10 @@ export function listmovie() {
     }
 
     // Sayfa numarasına tıklanıldığında
-    pageButton.addEventListener('click', () => {
+    pageButton.addEventListener('click', async () => {
       // Seçilen sayfayı güncelle
       currentPage = pageNum;
-      fetchMovies(currentPage);
+      await fetchMovies(currentPage);
       updatePagination(); // Sayfa numaralarını güncelle
     });
 
@@ -226,22 +226,22 @@ export function listmovie() {
 
   //-------------------------------PREV VE NEXT FONSİYONLARI SON------------------------------------------------
 
-  prevPageBtn.addEventListener('click', () => {
+  prevPageBtn.addEventListener('click', async () => {
     if (currentPage > 1) {
       currentPage--;
-      fetchMovies(currentPage);
+      await fetchMovies(currentPage);
       updatePagination();
     }
   });
 
-  nextPageBtn.addEventListener('click', () => {
+  nextPageBtn.addEventListener('click', async () => {
     if (currentPage < totalPages) {
       currentPage++;
-      fetchMovies(currentPage);
+      await fetchMovies(currentPage);
       updatePagination();
     }
   });
 
   // İlk sayfayı yükle
-  fetchMovies();
+  await fetchMovies();
 }
