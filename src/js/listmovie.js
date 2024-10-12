@@ -4,7 +4,8 @@ export function listmovie() {
     'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' +
     apiKey;
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-
+  let query = '';
+  let year = '';
   const movieGallery = document.getElementById('catalog-movie-gallery');
   const prevPageBtn = document.getElementById('prevPageBtn');
   const nextPageBtn = document.getElementById('nextPageBtn');
@@ -32,14 +33,15 @@ export function listmovie() {
   }
 
   // API'den filmleri getirmek için fonksiyon
-  async function fetchMovies(page = 1, query = '') {
+  async function fetchMovies(page = 1, query = '', year = '') {
     const apiPage = Math.ceil((page * 9) / 20);
 
     let url = `${apiUrl}&page=${apiPage}`;
-    if (query) {
+    if (query && !year) {
       url = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${apiKey}&page=${apiPage}`;
+    } else if (query && year) {
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&primary_release_year=${year}&page=${apiPage}`;
     }
-
     try {
       const response = await fetch(url);
       const data = await response.json();
