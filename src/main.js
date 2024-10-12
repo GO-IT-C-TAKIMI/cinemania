@@ -8,6 +8,7 @@ import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
 import { searchbar } from './js/searchbar';
 
+
 import theme from './js/theme';
 if (window.location.pathname === '/catalog.html') {
   header();

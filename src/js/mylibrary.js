@@ -1,3 +1,4 @@
+import SimpleLightbox from 'simplelightbox';
 let film;
 export function mylibrary() {
 console.log("mylibrary sayfasinin js i calisti")
@@ -36,44 +37,51 @@ function getAndSetStorage(){
 }
 getAndSetStorage();
 let filmGenres;
-function addToLibrary(film){
+function addToLibrary(film) {
+  const divLibrary = document.getElementById("myLibrary");
+  const libraryUl = document.getElementById("library-list");
 
-    const divLibrary = document.getElementById("myLibrary");
-    const libraryUl = document.getElementById("library-list");
+  const imgFilm = document.createElement("img");
+  imgFilm.classList.add("img-film");
+  imgFilm.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
+  imgFilm.alt = film.title;
 
-    const imgFilm = document.createElement("img");
-    imgFilm.classList.add("img-film");
-    imgFilm.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
-    imgFilm.alt = film.title;
+  const imgLink = document.createElement("a");
+  imgLink.classList.add("link-img");
+  imgLink.href = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
 
-    const imgLink = document.createElement("a");
-    imgLink.classList.add("link-img");
-    imgLink.href=`https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
+  const imgList = document.createElement("li");
+  imgList.classList.add("list-img");
+  const filmGenres = film.genres.map(genre => genre.name).join(', ');
 
-    const imgList = document.createElement("li");
-    imgList.classList.add("list-img");
-    filmGenres = film.genres.map(genre => genre.name).join(', ');
+  const yearFilm = film.release_date.slice(0, 4);
+  const description = document.createElement("div");
+  description.classList.add("description-film");
+  description.innerHTML = `
+      <p id="film-title">${film.title}</p>
+      <p id="film-genre">${filmGenres}</p>
+      <p>|</p>
+      <p>${yearFilm}</p>
+      <p>${film.vote_average}</p>
+  `;
 
-    let yearFilm = film.release_date.slice(0,4);
-    const description = document.createElement("div");
-    description.classList.add("description-film");
-    description.innerHTML=` <p id="film-title">${film.title}</p>
-                            <p id="film-genre">${filmGenres}</p>
-                            <p>|</p>
-                             <p>${yearFilm}</p>
-                            <p>${film.vote_average}</p>
-                            `;
+  imgLink.appendChild(imgFilm);
+  imgList.appendChild(imgLink);
+  imgList.appendChild(description);
+  libraryUl.appendChild(imgList);
 
-    imgLink.appendChild(imgFilm);
-    imgList.appendChild(imgLink);
-    imgList.appendChild(description);
-    libraryUl.appendChild(imgList);
-
-    if (!divLibrary.contains(libraryUl)) {
-      divLibrary.appendChild(libraryUl);
+  // Lightbox'ı sadece bir kez başlatıyoruz
+  if (!window.lightboxInstance) {
+      window.lightboxInstance = new SimpleLightbox('.link-img', {
+          captionsData: 'alt',
+          captionDelay: 250,
+      });
+  } else {
+      // Yeni eklenen imgLink'ler için lightbox'ı yeniden etkinleştiriyoruz
+      window.lightboxInstance.refresh();
   }
-
 }
+
 // pseudo code for localstorage
 
 let favorites;
