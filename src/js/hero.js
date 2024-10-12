@@ -50,10 +50,12 @@ export function hero() {
       descriptionContainer.innerHTML += `
         <h1 class="hero-movie-title">${movie.title}</h1>
         <div class="stars-container" id="starsContainer"></div>
+        <div class="desc-button-container">
         <p class="movie-desc">${movieOverview}...</p>
       <div class="hero-movie-buttons">
         <button id="trailer" class="orange-button btn-hero trailer">Watch trailer</button>
         <button id="details" class="white-button btn-hero details">More details</button>
+      </div>
       </div>
       `;
       const trailerButton = document.getElementById('trailer');
