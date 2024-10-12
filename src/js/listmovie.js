@@ -161,32 +161,39 @@ export function listmovie() {
   function updatePagination() {
     pageNumbersContainer.innerHTML = ''; // Önceki sayfa numaralarını temizle
 
-    const totalPageLinks = 5; // Kaç sayfa numarası göstereceğiz
+    const totalPageLinks = 3; // Orta kısımda kaç sayfa numarası göstereceğiz
+    const sidePageLinks = 1; // Başta ve sonda kaç sayfa göstereceğiz
 
-    // 1'den 3'e kadar sayfa numaralarını ekliyoruz
-    for (let i = 1; i <= 3; i++) {
-      addPageButton(i);
-    }
+    // İlk sayfa her zaman gösterilir
+    addPageButton(1);
 
-    // Eğer şu anki sayfa 4'ten büyükse, araya "..." ekliyoruz
-    if (currentPage > 4) {
+    // Şu anki sayfa sidePageLinks'lerden büyükse araya "..." ekliyoruz
+    if (currentPage > sidePageLinks + 2) {
       const dots = document.createElement('span');
       dots.textContent = '...';
       pageNumbersContainer.appendChild(dots);
     }
 
     // Dinamik olarak sayfa aralığını hesapla ve butonları ekle
-    const startPage = Math.max(4, currentPage - 1);
-    const endPage = Math.min(currentPage + 1, totalPages);
+    const startPage = Math.max(2, currentPage - Math.floor(totalPageLinks / 2));
+    const endPage = Math.min(
+      totalPages - 1,
+      currentPage + Math.floor(totalPageLinks / 2)
+    );
+
     for (let i = startPage; i <= endPage; i++) {
       addPageButton(i);
     }
 
-    // Son sayfa ekle
-    if (currentPage < totalPages - 2) {
+    // Eğer sondaki sayfalar gizliyse araya "..." ekliyoruz
+    if (currentPage < totalPages - sidePageLinks - 1) {
       const dots = document.createElement('span');
       dots.textContent = '...';
       pageNumbersContainer.appendChild(dots);
+    }
+
+    // Son sayfa her zaman gösterilir
+    if (totalPages > 1) {
       addPageButton(totalPages);
     }
 
