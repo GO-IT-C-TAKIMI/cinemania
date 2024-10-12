@@ -1,4 +1,4 @@
-export async function listmovie() {
+export async function movielist() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
   const apiUrl =
     'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' +

@@ -85,6 +85,11 @@
   cursor: pointer;
 }
 
+.pagi-svg path{
+  stroke: var(--main-gray-color);
+  fill: transparent;
+}
+
 .page-number svg text {
   font-size: 12px;
   fill: white;
