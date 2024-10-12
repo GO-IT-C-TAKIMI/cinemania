@@ -25,7 +25,6 @@ export function listmovie() {
           map[genre.id] = genre.name;
           return map;
         }, {});
-        console.log(genreMap);
       } catch (error) {
         console.error('Error fetching genres:', error);
       }

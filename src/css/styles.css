@@ -6,6 +6,7 @@
   --main-background: #111;
   --overlay-background: #FFFFFF33;
   --main-background-rgba: #11111180;
+  
   --btn-background: linear-gradient(
     141.22deg,
     #ffc226 9.4%,
@@ -26,6 +27,7 @@
   --second-text-color: #f8f8f8;
   --grey-text-color: #111;
   --main-gray-color: #595959;
+  --header-text-color: #B7B7B7;
   --main-white-color: #fff;
   --main-black-color: #000;
   --hero-background-color: #2f303a;
@@ -45,6 +47,8 @@ body.light-theme {
   --overlay-background : #00000033;
   --second-text-color: #333;
   --grey-text-color: #888;
+  --main-black-color: #fff;
+  --header-text-color: #595959;
 }
 /* Global Styles */
 body {
@@ -65,9 +69,14 @@ p {
   margin: 0;
 }
 
-a {
+a{
   text-decoration: none;
   color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: unset;
 }
 
 /* Container */
@@ -123,7 +132,7 @@ button {
 button.orange-button {
   background: var(--btn-background);
   font-weight: 600;
-  color: var(--main-black-color);
+  color: #000;
   background-size: 400%;
 }
 button.white-button {
