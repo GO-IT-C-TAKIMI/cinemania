@@ -4,7 +4,7 @@ export function listmovie() {
     const apiUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' + apiKey;
     const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
     
-    const movieGallery = document.getElementById('movie-gallery');
+    const movieGallery = document.getElementById('catalog-movie-gallery');
     const prevPageBtn = document.getElementById('prevPageBtn');
     const nextPageBtn = document.getElementById('nextPageBtn');
     const pageNumbersContainer = document.querySelector('.page-numbers');
@@ -124,33 +124,33 @@ export function listmovie() {
     
     
         const movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card');
+        movieCard.classList.add('catalog-movie-card');
     
     
         const moviePoster = document.createElement('img');
         moviePoster.src = imageBaseUrl + movie.poster_path;
         moviePoster.alt = movie.title;
-        moviePoster.classList.add('movie-poster');
+        moviePoster.classList.add('catalog-movie-poster');
     
     
         const movieInfo = document.createElement('div');
-        movieInfo.classList.add('movie-info');
+        movieInfo.classList.add('catalog-movie-info');
     
     
         const movieTitle = document.createElement('h2');
         movieTitle.textContent = movie.title;
-        movieTitle.classList.add('movie-title');
+        movieTitle.classList.add('catalog-movie-title');
     
     
         const movieDetails = document.createElement('p');
         const genreNames = movie.genre_ids.map(id => genreMap[id] || 'Unknown').filter(Boolean);
         movieDetails.textContent = `${genreNames.join(', ')} | ${movie.release_date.split('-')[0]}`;
-        movieDetails.classList.add('movie-details');
+        movieDetails.classList.add('catalog-movie-details');
     
     
         const movieRating = document.createElement('p');
         movieRating.innerHTML = displayMovieRating(movie.vote_average); // Güncel yıldız sistemi
-        movieRating.classList.add('movie-rating');
+        movieRating.classList.add('catalog-movie-rating');
     
     
         movieInfo.appendChild(movieTitle);

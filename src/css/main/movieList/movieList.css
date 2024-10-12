@@ -1,5 +1,5 @@
 
-  #movie-gallery {
+  #catalog-movie-gallery {
     display: grid;
     width: 90%;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -8,7 +8,7 @@
     margin: 0 auto;
   }
   
-  .movie-card {
+  .catalog-movie-card {
     background-color: #333;
     border-radius: 10px;
     overflow: hidden;
@@ -17,11 +17,11 @@
     transform: scale(0.99);
   }
   
-  .movie-card:hover {
+  .catalog-movie-card:hover {
     transform: scale(1.05);
   }
   
-  .movie-info {
+  .catalog-movie-info {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -33,22 +33,22 @@
     gap: 5px;
   }
   
-  .movie-rating {
+  .catalog-movie-rating {
     fill: #F89F19AD;
   }
   
-  .movie-poster {
+  .catalog-movie-poster {
     width: 100%;
     height: auto;
   }
   
-  .movie-title {
+  .catalog-movie-title {
     font-size: 18px;
     margin: 0;
     font-weight: bold;
   }
   
-  .movie-details {
+  .catalog-movie-details {
     font-size: 14px;
     color: #ccc;
   }

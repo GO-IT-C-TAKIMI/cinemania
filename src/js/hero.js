@@ -48,7 +48,7 @@ export function hero() {
 
       imageContainer.innerHTML += `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" />`;
       descriptionContainer.innerHTML += `
-        <h1 class="movie-title">${movie.title}</h1>
+        <h1 class="hero-movie-title">${movie.title}</h1>
         <div class="stars-container" id="starsContainer"></div>
         <p class="movie-desc">${movieOverview}...</p>
       <div class="hero-movie-buttons">
