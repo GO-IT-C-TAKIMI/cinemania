@@ -5,33 +5,142 @@
     <link rel="icon" type="image/svg+xml" href="/cinemania/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinemania</title>
-    <script type="module" crossorigin src="/cinemania/assets/main-B3QxEbLC.js"></script>
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-Z4Sx0lxm.css">
+    <script type="module" crossorigin src="/cinemania/assets/main-BdvoCoAd.js"></script>
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-BKkrelKc.css">
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/mylibrary-C3-uF4tN.css">
   </head>
   <body>
     <header>
-      <section><h1>HEADER</h1>
-  <div><a href="/">ANA SAYFA</a></div>
-  <div><a class="catalog-button" href="../../catalog.html">CATALOG</a></div>
-  <div><a href="../../mylibrary.html">LIBRARI</a></div></section>
+      <section class="header-section container">
+  <div class="header-icon-container">
+    <svg class="header-icon">
+      <use href="/cinemania/assets/symbol-defs-C4SVOrL0.svg#icon-logo-cinema"></use>
+    </svg>
+    <h1 class="header-title">Cinemania</h1>
+  </div>
+  <ul id="header-links" class="header-link-container">
+    <li><a href="/">HOME</a></li>
+    <li><a class="catalog-button" href="../../catalog.html">CATALOG</a></li>
+    <li><a href="../../mylibrary.html">LIBRARY</a></li>
+  </ul>
+  <div class="menu-button-div"><button class="menu-button">MENU</button></div>
+  <div class="toggle-container">
+    <div class="toggle-theme">
+      <input type="checkbox" id="theme-toggle" />
+      <label class="theme-toggle" for="theme-toggle">
+        <span class="toggle-sun">
+          <img
+            class="toggle-sun-icon"
+            src="../../public/sun.svg"
+            width="13"
+            height="13"
+            alt="Güneş"
+          />
+        </span>
+        <span class="toggle-moon">
+          <img
+            class="toggle-moon-icon"
+            src="../../public/moon.svg"
+            width="13"
+            height="13"
+            alt="Ay"
+          />
+        </span>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+  <div class="responsive-menu">
+    <svg class="header-icon">
+      <use href="/cinemania/assets/symbol-defs-C4SVOrL0.svg#icon-logo-cinema"></use>
+    </svg>
+    <ul id="header-links" class="header-link-container">
+      <li><a href="/">HOME</a></li>
+      <li><a class="catalog-button" href="../../catalog.html">CATALOG</a></li>
+      <li><a href="../../mylibrary.html">LIBRARI</a></li>
+    </ul>
+  </div>
+  <div class="responsive-overlay"></div>
+</section>
 
     </header>
     <main>
-      <h1>MY LİBRARY SAYFASI</h1>
-      <section><h1>HERO</h1></section>
-      <section>mylibrary</section>
+      <section class="container">
+  <div id="heroMovies" class="hero-movies-container">
+    
+    <div id="movies-description-container">
+      
+    </div>
+    <div id="movies-image-container">
+      <div class="gradient"></div>
+    </div>
+  </div>
+  <div id="modal"></div>
+  
+</section>
+
+      <section>
+    <div id="myLibrary">
+        <ul id="library-list"></ul>
+      </div>
+</section>
     </main>
     <footer>
       <section><h1>FOOTER</h1></section>
     </footer>
 
-    <section class="hidden">
+    <section class="popup-section-container hidden">
+  <div class="popup-section">
+    <button class="close-btn">
+      <svg class="close-svg" width="30" height="30">
+        <use href="../../svg/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
     <div class="popup-container">
-        genis
-        <div class="popup-content">
-            icerik
+      <div class="popup-afis">
+        <img src="../../img/John Wick.png" class="afis-img" />
+      </div>
+
+      <div class="popup-content">
+        <h2 class="film-title">John Wick: Chapter 4</h2>
+
+        <div class="film-details">
+          <div class="film-stats">
+            <p>Vote / Votes</p>
+            <p>Popularity</p>
+            <p>Genre</p>
+          </div>
+
+          <div class="film-rating">
+            <p class="vote-container">
+              <span class="vote">7.3</span> / <span class="vote">1260</span>
+            </p>
+            <p>100.2</p>
+            <p class="film-genre">Action Thriller Crime</p>
+          </div>
         </div>
+      </div>
+
+      <div class="film-about-container">
+        <div class="film-about-content">
+          <h3 class="film-about">ABOUT</h3>
+          <p class="film-about-title">
+            John Wick (Keanu Reeves) takes on his most lethal adversaries yet in
+            the upcoming fourth instalment of the series. With the price on his
+            head ever increasing, John Wick uncovers a path to defeating The
+            High Table. But before he can earn his freedom, Wick must face off
+            against a new enemy with powerful alliances across the globe and
+            forces that turn old friends into foes.
+          </p>
+        </div>
+
+        <button type="button" class="film-btn orange-button">
+          Add to my library
+        </button>
+      </div>
     </div>
+  </div>
 </section>
+
   </body>
 </html>
