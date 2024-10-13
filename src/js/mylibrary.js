@@ -49,6 +49,7 @@ function addToLibrary(film) {
   const imgLink = document.createElement("a");
   imgLink.classList.add("link-img");
   imgLink.href = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
+  imgLink.setAttribute("data-film-id", film.id);
 
   const imgList = document.createElement("li");
   imgList.classList.add("list-img");
@@ -70,32 +71,94 @@ function addToLibrary(film) {
   imgList.appendChild(description);
   libraryUl.appendChild(imgList);
 
-  // Lightbox'ı sadece bir kez başlatıyoruz
-  if (!window.lightboxInstance) {
-      window.lightboxInstance = new SimpleLightbox('.link-img', {
-          captionsData: 'alt',
-          captionDelay: 250,
-      });
-  } else {
-      // Yeni eklenen imgLink'ler için lightbox'ı yeniden etkinleştiriyoruz
-      window.lightboxInstance.refresh();
-  }
-}
-
-// pseudo code for localstorage
-
-let favorites;
-function removeFromLibrary(filmremove){
-    document.getElementById("removefavorite").addEventListener("click",()=>{
-        favorites = favorites.filter(favItem=>favItem !== filmremove);
+  const linkImages = document.querySelectorAll(".link-img");
+  linkImages.forEach(link=>{
+    link.addEventListener("click",(event)=>{
+      event.preventDefault();
+      const divForFilm = document.createElement("div");
+      divForFilm.classList.add("div-for-film");
     
-          // HTML'deki öğeyi de kaldır
-          const favListItem = document.querySelector(`#${filmremove}`);
-          if (favListItem) {
-            favListItem.remove();
-          }
-        });
+      const contentForFilm = document.createElement("div");
+      contentForFilm.classList.add("content-div");
+
+      const imgForFilm= document.createElement("img");
+      imgForFilm.classList.add("img-for-film");
+      imgForFilm.src=link.href;
+      imgForFilm.alt=link.querySelector("img").alt; 
+
+      const filmTitle = document.createElement("p");
+      filmTitle.innerText = link.querySelector("img").alt;
+
+      const filmAbout = document.createElement("p");
+      filmAbout.classList.add("about");
+      filmAbout.innerText = "About";
+  
+      
+      const closeButton = document.createElement("button");
+      closeButton.classList.add("close-button");
+      closeButton.textContent = "Remove from my library";  // Kapatma işareti
+
+
+
+      closeButton.addEventListener("click", () => {
+        document.body.removeChild(modalDiv);
+      });
+  
+      contentForFilm.appendChild(filmTitle);
+      contentForFilm.appendChild(filmAbout);
+      contentForFilm.appendChild(closeButton);
+
+      divForFilm.appendChild(contentForFilm);
+      
+      divForFilm.appendChild(imgForFilm);
+  
+      // Modalı sayfaya ekle
+      document.body.appendChild(divForFilm);
+  
+
+      divForFilm.addEventListener("click", (event) => {
+        if (event.target !== divForFilm) {
+          document.body.removeChild(divForFilm);
+        }
+      });
+    })
+  });
+
 }
+
+function addRemoveButton(filmId, lightbox) {
+
+  // Butonu oluştur
+  const removeButton = document.createElement("button");
+  removeButton.innerText = "Remove from my library";
+  removeButton.classList.add("remove-button");
+  console.log("remobe butonu var")
+  // Butonun tıklama olayını tanımla
+  removeButton.addEventListener("click", () => {
+    removeFromLibrary(filmId);
+    window.lightboxInstance.close(); // Lightbox'ı kapat
+});
+
+  // Lightbox içeriğine butonu ekle
+  const lightboxContent = document.querySelector('.slbOuter');
+  lightboxContent.appendChild(removeButton);
+}
+
+function removeFromLibrary(filmId) {
+  // Kütüphaneden silme işlemleri
+  const libraryUl = document.getElementById("library-list");
+  const filmElement = libraryUl.querySelector(`a[data-film-id='${filmId}']`).closest('.list-img');
+
+  if (filmElement) {
+    filmElement.remove(); // DOM'dan kaldır
+}
+
+  // Yerel depolamadan silme işlemleri (varsa)
+  let libraryIds = JSON.parse(localStorage.getItem('myLibrary')) || [];
+  libraryIds = libraryIds.filter(id => id !== filmId); // ID'yi kaldır
+  localStorage.setItem('myLibrary', JSON.stringify(libraryIds)); // Güncellenmiş kütüphaneyi kaydet
+}
+
 
 function seeFilmContent(){
     let modal ;

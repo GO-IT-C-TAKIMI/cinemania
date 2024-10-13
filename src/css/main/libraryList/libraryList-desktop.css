@@ -14,7 +14,7 @@ width: 100px;
     display: flex;
     flex-wrap: wrap;   
     list-style: none;
-    justify-content: space-between;  /* Add spacing between items */
+    justify-content: space-around;  /* Add spacing between items */
     padding: 0;
     margin: 0;
 }
@@ -39,4 +39,56 @@ img{
 #film-genre{
     font-size: 11px;
     line-height: 1.5;
+}
+
+.div-for-film{
+    display: flex;
+    position: fixed;  /* Ekranda sabit durmasını sağlar */
+    top: 50%;         /* Yatayda ortalamak için */
+    left: 50%;        /* Dikeyde ortalamak için */
+    transform: translate(-50%, -50%);  /* Gerçek ortalamayı sağlar */
+    z-index: 1001;    /* Üstte görünmesini sağlar */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 2px 12px rgba(208, 104, 44, 0.1);
+    border-radius: 8px;
+    width: 80%;       /* İçeriğin genişliğini ayarlar, isteğe bağlı */
+    max-width: 600px; /* Maksimum genişliği ayarlar */
+
+  }
+
+.content-for-film{
+    display: grid;
+    grid-template-columns: 150px 2fr;
+}
+
+.content-for-film img{
+    width: calc(50%-5px);
+}
+
+.close-button{
+    height: auto;
+    border: 1px solid var(--brend-color);
+    color: #fff;
+    cursor: pointer;
+    background-color: #111;
+    border-radius: 74px;
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color .25s cubic-bezier(.4,0,.2,1), background-color .25s cubic-bezier(.4,0,.2,1);
+    display: block;
+    width: 190px;
+}
+
+.about{
+    text-transform: uppercase;
+    color: var(--modal-keys-color);
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
 }
