@@ -1,0 +1,37 @@
+.footer-section {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1, 641rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  color: var(--header-text-color);
+}
+.footer-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Varsayılan olarak sütun halinde */
+}
+.footer-li {
+  margin: 0 15px; /* Aralarına boşluk bırak */
+}
+
+@media (min-width: 768px) {
+  .footer-section {
+    font-size: 1.6rem;
+    line-height: 1.875rem;
+  }
+  .footer-ul {
+    gap: 3px;
+    flex-direction: row; /* Yatayda yan yana */
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer-section {
+    font-size: 1.6rem;
+    line-height: 1.875rem;
+  }
+}

@@ -1,9 +1,12 @@
 :root {
   --brend-color: #f87719;
+  --transition: 0.4s ease-out;
   --brend-color-rgba: #f87719cc;
   --brend-color-active: #188ce8;
   --main-background: #111;
+  --overlay-background: #ffffff33;
   --main-background-rgba: #11111180;
+
   --btn-background: linear-gradient(
     141.22deg,
     #ffc226 9.4%,
@@ -24,6 +27,7 @@
   --second-text-color: #f8f8f8;
   --grey-text-color: #111;
   --main-gray-color: #595959;
+  --header-text-color: #b7b7b7;
   --main-white-color: #fff;
   --main-black-color: #000;
   --hero-background-color: #2f303a;
@@ -40,8 +44,11 @@
 body.light-theme {
   --main-background: #fff;
   --main-text-color: #000;
-  --second-text-color: #333;
+  --overlay-background: #00000033;
+  --second-text-color: #282828;
   --grey-text-color: #888;
+  --main-black-color: #fff;
+  --header-text-color: #595959;
 }
 /* Global Styles */
 body {
@@ -49,7 +56,7 @@ body {
   font-family: Roboto, sans-serif;
   font-size: 10px;
   color: var(--main-text-color);
-  transition: background-color 0.4s ease-out;
+  transition: background-color var(--transition);
 }
 
 h1,
@@ -64,21 +71,23 @@ p {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: unset;
 }
 
 /* Container */
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
 }
 
 @media (min-width: 768px) {
   .container {
     width: 76.8rem;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
   }
 }
 
@@ -123,7 +132,7 @@ button {
 button.orange-button {
   background: var(--btn-background);
   font-weight: 600;
-  color: var(--main-black-color);
+  color: #000;
   background-size: 400%;
 }
 button.white-button {

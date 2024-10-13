@@ -7,6 +7,7 @@
 .upcoming__title {
   font-size: 1.6rem; /* Mobil için uygun boyut */
   margin-bottom: 10px;
+  margin-left: 20px;
   color: var(--main-text-color);
 }
 
@@ -15,18 +16,14 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  padding: 20px;
 }
-.upcoming-content__img-container {
-  width: 100%;
-  height: 402px;
-  max-width: 280px;
-  object-fit: cover;
-  display: block;
-}
+
 .upcoming-content__img {
-  /* Mobildeki maksimum genişlik */
-  /* Mobilde sabit yükseklik */
-  border-radius: 5px 0px 0px 0px; /* Figma'daki köşe yumuşatma */
+  width: 100%; /* Mobildeki maksimum genişlik */
+  height: 402px; /* Mobilde sabit yükseklik */
+  border-radius: 5px 5px 5px 5px; /* Figma'daki köşe yumuşatma */
+  object-fit: cover;
 }
 
 .upcoming-content__desktop {
@@ -35,14 +32,16 @@
 }
 
 .upcoming-content__name {
-  width: 139px;
-  height: 23px;
+  width: 90%; /* Tam genişlikte olmasını sağlar */
+  height: auto; /* Yükseklik otomatik olur */
   font-size: 2rem; /* 20px = 2rem (root 10px) */
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   line-height: 2.344rem;
-  color: (var(--main-text-color));
+  color: var(--main-text-color); /* Parantezler kaldırıldı */
   margin-bottom: 10px;
+  white-space: normal; /* Metnin wrap olmasına izin verir */
+  word-wrap: break-word; /* Uzun kelimelerin kırılmasına izin verir */
 }
 
 .upcoming-thumb {
@@ -50,6 +49,8 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
+  white-space: normal; /* Metnin wrap olmasına izin verir */
+  word-wrap: break-word;
 }
 
 /* Bilgilerin yan yana yerleştirilmesi için flex düzeni */
@@ -184,11 +185,9 @@
   .upcoming-content__name {
     font-size: 3.2rem;
   }
-  .upcoming-content__img-container {
-    width: 100%;
-    object-fit: cover;
-  } /* Masaüstü için genişlik */
+
   .upcoming-content__img {
+    width: 50%; /* Masaüstü için genişlik */
     border-radius: var(--cards-border-radius);
     box-shadow: var(--cards-box-shadow); /* Görsel gölge efekti */
   }
