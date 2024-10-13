@@ -4,6 +4,7 @@
 @import url("libraryList.css");
 #myLibrary{
     margin: 0 auto;
+    margin-bottom: 5rem;
 }
 
 #film-category{
@@ -38,11 +39,6 @@ img{
     width: 100%;
     height: 100%;   
 }
-
-.img-for-film{
-    width: 65%;
-   }
-
 
 
 .description-film{
@@ -147,8 +143,8 @@ img{
   
   .img-for-film {
     width: 100%;
-    height: 100%; 
-    object-fit: fill; /* Resmi div boyutuna göre kırparak orantıyı korur */
+    height: 80%; 
+    object-fit: cover; /* Resmi orantılı şekilde div'e sığdırır */
     border-radius: 8px; 
   }
 
