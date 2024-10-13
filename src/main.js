@@ -5,8 +5,6 @@ import { hero } from './js/hero';
 import { movielist } from './js/movielist';
 import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
-/* import { searchbar } from './js/searchbar';
- */
 import theme from './js/theme';
 if (window.location.pathname === '/catalog.html') {
   header();
@@ -14,8 +12,7 @@ if (window.location.pathname === '/catalog.html') {
   popup();
   movielist();
   footer();
-  /*   searchbar();
-   */ theme();
+  theme();
 }
 if (window.location.pathname === '/mylibrary.html') {
   header();
