@@ -29,6 +29,12 @@ width: 100px;
 img{
     width: 100%;
 }
+
+.img-film{
+    width: 100%;
+    height: 100%;   
+}
+
 .img-for-film{
     width: 65%;
    }
@@ -38,15 +44,69 @@ img{
     font-size: 12px;
     line-height: 1.5;
 }
-
+.description-film{
+    display: flex;
+    gap:10px;
+    font-size: 11px;
+    line-height: 1;
+}
 #film-genre{
     font-size: 11px;
     line-height: 1.5;
 }
+.film-title{
+    color: var(--main-text-color);
+    margin-bottom: 29px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23px;
+}
+.about-ul{
+    list-style: none;
+    padding: 0;
+}
+
+.headers-content{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+.stats-content{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.div-vote{
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--grey-text-color);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+}
+#about-header{
+    text-transform: uppercase;
+    color: var(--modal-keys-color);
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+.about-text{
+    margin-bottom: 16px;
+    font-size: 12px;
+    line-height: 20px;
+}
 
 .div-for-film{
-    display: flex;
+    display: grid;
+    grid-template-columns: 25rem 1fr;
     position: fixed;  /* Ekranda sabit durmasını sağlar */
+    grid-gap:20px;
     top: 50%;         /* Yatayda ortalamak için */
     left: 50%;        /* Dikeyde ortalamak için */
     transform: translate(-50%, -50%);  /* Gerçek ortalamayı sağlar */
@@ -57,8 +117,14 @@ img{
     border-radius: 8px;
     width: 80%;       /* İçeriğin genişliğini ayarlar, isteğe bağlı */
     max-width: 600px; /* Maksimum genişliği ayarlar */
-
+ 
   }
+
+.about-li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
 
 .content-for-film{
     display: grid;
@@ -74,13 +140,15 @@ img{
     padding: 20px;
     border-radius: 10px;
     max-width: 90%; /* Ekrana göre uyum sağlamak için */
-    max-height: 90%;
+    height: 100%;
     overflow: auto; /* İçerik sığmazsa kaydırma ekler */
   }
   
   .img-for-film {
-    max-width: 100%;
-    height: auto; /* Görüntü orantılarını korur */
+    width: 100%;
+    height: 100%; 
+    object-fit: fill; /* Resmi div boyutuna göre kırparak orantıyı korur */
+    border-radius: 8px; 
   }
 
 .close-button{
@@ -111,8 +179,16 @@ img{
 }
 
 .close-screen{
-    height: 2em;
-    width: 0.2em;
-    background-color: #fff;
-    color: #111;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: box-shadow .25s var(--cubic), scale .25s var(--cubic);
+    background-color: #0000;
+    border: none;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    right: 16px;
 }

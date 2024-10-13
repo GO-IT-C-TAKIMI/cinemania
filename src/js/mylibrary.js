@@ -53,13 +53,15 @@ function addToLibrary(film) {
 
   const imgList = document.createElement("li");
   imgList.classList.add("list-img");
-  const filmGenres = film.genres.map(genre => genre.name).join(', ');
+  const filmGenres = film.genres.map(genre => genre.name).slice(0, 2).join(', ');
 
+  const filmTitle = document.createElement("p");
+  filmTitle.innerHTML=`<p id="film-title">${film.title}</p>`;
+  
   const yearFilm = film.release_date.slice(0, 4);
   const description = document.createElement("div");
   description.classList.add("description-film");
   description.innerHTML = `
-      <p id="film-title">${film.title}</p>
       <p id="film-genre">${filmGenres}</p>
       <p>|</p>
       <p>${yearFilm}</p>
@@ -68,6 +70,7 @@ function addToLibrary(film) {
 
   imgLink.appendChild(imgFilm);
   imgList.appendChild(imgLink);
+  imgList.appendChild(filmTitle);
   imgList.appendChild(description);
   libraryUl.appendChild(imgList);
 
@@ -87,7 +90,7 @@ function addToLibrary(film) {
 
       const divForFilm = document.createElement("div");
       divForFilm.classList.add("div-for-film");
-      divForFilm.style.display = "flex"; 
+ 
       const contentForFilm = document.createElement("div");
       contentForFilm.classList.add("content-div");
 
@@ -97,6 +100,7 @@ function addToLibrary(film) {
       imgForFilm.alt=link.querySelector("img").alt; 
 
       const filmTitle = document.createElement("p");
+      filmTitle.classList.add("film-title");
       filmTitle.innerText = link.querySelector("img").alt;
 
       const filmAbout = document.createElement("p");
@@ -110,7 +114,7 @@ function addToLibrary(film) {
       liAbout.classList.add("about-li");
 
       const voteAbout = document.createElement("p");
-      voteAbout.classList.add("about-vote");
+      voteAbout.classList.add("headers-content");
       voteAbout.innerText = `Vote / Votes`;
 
       const voteDiv = document.createElement("div");
@@ -126,9 +130,11 @@ function addToLibrary(film) {
       liAboutTwo.classList.add("about-li");
 
       const textpop = document.createElement("p");
+      textpop.classList.add("headers-content");
       textpop.textContent="Popularity";
 
       const popularity = document.createElement("p");
+      popularity.classList.add("stats-content");
       popularity.innerText = `${film.popularity}`
 
       liAboutTwo.appendChild(textpop);
@@ -138,23 +144,35 @@ function addToLibrary(film) {
       const liAboutThree = document.createElement("li"); 
       liAboutThree.classList.add("about-li");
 
+      const genreheader = document.createElement("p");
+      genreheader.classList.add("headers-content");
+      genreheader.textContent="Genre";
+
+      
       const textgenre = document.createElement("p");
+      textgenre.classList.add("stats-content");
       textgenre.textContent=`${filmGenres}`;
 
       const genre = document.createElement("p");
       genre.innerText=`${film.vote_average}`;
 
+
+      liAboutThree.appendChild(genreheader);
       liAboutThree.appendChild(textgenre);
-      liAboutThree.appendChild(genre);
       ulAbout.appendChild(liAboutThree);
+
+      const about = document.createElement("p");
+      about.id="about-header";
+      about.textContent="ABOUT";
 
       const textAbout = document.createElement("p");
       textAbout.classList.add("about-text");
-      textAbout.innerText = `${film.about}`;
+      textAbout.innerText = `${film.overview}`;
 
       const screenClose = document.createElement("button");
       screenClose.classList.add("close-screen");
-      screenClose.textContent = ""; 
+      screenClose.textContent = "X"; 
+
 
       screenClose.addEventListener("click", () => {
         document.body.removeChild(divForFilm);
@@ -171,18 +189,23 @@ function addToLibrary(film) {
         document.body.removeChild(divForFilm); 
         removeFromLibrary(film.id); 
       });
-  
-      contentForFilm.appendChild(filmTitle);
-      contentForFilm.appendChild(ulAbout);
-      contentForFilm.appendChild(closeButton);
-
-      divForFilm.appendChild(contentForFilm);
-      
-      divForFilm.appendChild(imgForFilm);
       divForFilm.appendChild(screenClose);
+      divForFilm.appendChild(imgForFilm);
+
+
+      contentForFilm.appendChild(filmTitle);
   
-      // Modalı sayfaya ekle
+      contentForFilm.appendChild(ulAbout);
+
+      contentForFilm.appendChild(about);
+      contentForFilm.appendChild(textAbout);
+      contentForFilm.appendChild(closeButton);
+      divForFilm.appendChild(contentForFilm);
+
       document.body.appendChild(divForFilm);
+  
+
+
   
       divForFilm.addEventListener("click", (event) => {
         if (event.target === divForFilm) {
@@ -247,7 +270,6 @@ function selectGenre(films){
           });
       });
   
-      // Create options for each genre
       allGenres.forEach(genre => {
           const optionSelect = document.createElement("option");
           optionSelect.value = genre;
