@@ -5,11 +5,9 @@ import { hero } from './js/hero';
 import { movielist } from './js/movielist';
 import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
-<<<<<<< HEAD
 import { searchbar } from './js/searchbar';
 
-=======
->>>>>>> e339ace087d0387510aaac45f6dab3547b3a8988
+
 import theme from './js/theme';
 if (window.location.pathname === '/catalog.html') {
   header();
