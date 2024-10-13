@@ -115,13 +115,16 @@ function addToLibrary(film) {
 
       const voteAbout = document.createElement("p");
       voteAbout.classList.add("headers-content");
-      voteAbout.innerText = `Vote / Votes`;
+      voteAbout.innerText = `Vote/Votes`;
 
       const voteDiv = document.createElement("div");
       voteDiv.classList.add("div-vote");
-      voteDiv.innerHTML = `<span class="vote-num">${film.vote_average}</span>
+      voteDiv.innerHTML = `
+      <span class="vote-num">${film.vote_average}</span>
       <span class="slash">/</span>
-      <span class="vote-num">${film.vote_average}</span>`;
+      <span class="vote-num">${film.vote_count}</span>
+    `;
+      
       liAbout.appendChild(voteAbout);
       liAbout.appendChild(voteDiv);
       ulAbout.appendChild(liAbout);
@@ -153,8 +156,7 @@ function addToLibrary(film) {
       textgenre.classList.add("stats-content");
       textgenre.textContent=`${filmGenres}`;
 
-      const genre = document.createElement("p");
-      genre.innerText=`${film.vote_average}`;
+    
 
 
       liAboutThree.appendChild(genreheader);
