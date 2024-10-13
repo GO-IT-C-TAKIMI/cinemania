@@ -1,0 +1,33 @@
+@media screen and (min-width: 768px) {
+  .popup-section {
+    width: 704px;
+    height: 488px;
+    padding: 44px;
+  }
+
+  .popup-content-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  .popup-film-content {
+    gap: 26px;
+  }
+
+  .film-title {
+    font-size: 2.4rem;
+    line-height: 28.13px;
+  }
+
+  .film-details {
+    line-height: 1.9em;
+  }
+
+  .film-about-title {
+    font-size: 1.2rem;
+  }
+
+  .film-btn {
+    height: 50px;
+  }
+}

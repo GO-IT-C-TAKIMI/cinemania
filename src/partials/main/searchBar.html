@@ -1,7 +1,18 @@
-<section class="search-bar-section .container">
-  <div class="search-bar-main-div">
-    <input class="search-bar-input" type="text" placeholder="Search" /><button
-      class="button.orange-button"
-    ></button>
+<section>
+  <div>
+    <div class="search_conteiner">
+      <input type="text" placeholder="film" id="movieName" />
+      <div>
+        <select placeholder="year" id="movieYear" hidden="none"></select>
+      </div>
+
+      <img id="searchButton" src="../../svg/searchdark.svg" alt="Icon" />
+    </div>
+
+    <div id="results">
+      <!-- catalog bölümüdeki filmlerin olduğu alan -->
+    </div>
   </div>
+  <script src="/src/js/searchbar.js"></script>
+  <script src="/src/js/listmovie.js"></script>
 </section>
