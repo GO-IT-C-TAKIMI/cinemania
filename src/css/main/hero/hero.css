@@ -6,8 +6,9 @@
   width: 100%;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 1) 30%,
-    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.98) 15%,
+    rgba(0, 0, 0, 0.9) 35%,
+    rgba(0, 0, 0, 0.5) 60%,
     rgba(0, 0, 0, 0) 80%
   );
 }
@@ -39,11 +40,17 @@
   height: 380px;
   overflow: hidden;
 }
+.desc-button-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-.movie-desc {
+.hero-movie-desc {
   color: white;
   font-size: 1.4rem;
-  width: 200px;
+  min-width: 235px;
+  line-height: 16.41px;
 }
 
 .stars-container {
@@ -64,6 +71,7 @@
 .hero-movie-title {
   color: white;
   font-size: 3.2rem;
+  min-width: 235px;
 }
 
 .hero-movie-buttons {
@@ -84,4 +92,9 @@
 .star-icon-half{
   fill: transparent;
   stroke:var(--brend-color) ;
+}
+
+.btn-hero{
+  height: 38px;
+  font-size: 1.2rem;
 }
