@@ -260,7 +260,6 @@ export async function movielist() {
       updatePagination();
     }
   });
-<<<<<<< HEAD
 
 
 
@@ -338,6 +337,4 @@ export async function movielist() {
   await fetchMovies();
 
   // İlk sayfayı yükle
-=======
->>>>>>> a1f8bb5212e3479154004abed9a8b1c9a99f3397
 }
