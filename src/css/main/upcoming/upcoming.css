@@ -28,18 +28,18 @@
 }
 
 .upcoming-content__desktop {
-  width: 100%; 
+  width: 100%;
   text-align: left;
 }
 
 .upcoming-content__name {
-  width: 90%; 
-  height: auto; 
-  font-size: 2rem; 
+  width: 90%;
+  height: auto;
+  font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   line-height: 2.344rem;
-  color: var(--main-text-color); 
+  color: var(--main-text-color);
   margin-bottom: 10px;
   white-space: normal; /* Metnin wrap olmasına izin verir */
   word-wrap: break-word; /* Uzun kelimelerin kırılmasına izin verir */
@@ -50,7 +50,7 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
-  white-space: normal; 
+  white-space: normal;
   word-wrap: break-word;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .upcoming-list__item {
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
   color: var(--second-text-color);
@@ -130,9 +130,11 @@
     align-items: flex-start;
     gap: 20px;
   }
-.upcoming-content__title {
-  font-size: 2.4rem;
-  line-height: 2.8rem;
+  .upcoming-content__title {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+  }
+
   .upcoming-content__img {
     width: 100%;
     max-width: none;
@@ -204,14 +206,14 @@
   /* Alt alta sıralamak için */
   .upcoming-thumb {
     display: flex;
-    flex-direction: column; /* Yatay yerine dikey hizalama */
+    flex-direction: column;
     justify-content: flex-start;
-    gap: 10px; /* Her öğe arasında boşluk */
+    gap: 10px;
   }
 
   .upcoming-list__item {
-    margin-bottom: 10px; /* Alt alta gelmesi için margin */
-    font-size: 1.6rem; /* Masaüstü için metin boyutu */
+    margin-bottom: 10px;
+    font-size: 1.6rem;
   }
 
   .upcoming-list__text {
