@@ -5,6 +5,7 @@
   }
   .hero-movie-title {
     font-size: 4.4rem;
+    min-width: 357px;
   }
   .btn-hero {
     height: 40px;
@@ -12,5 +13,9 @@
   }
   .desc-button-container{
     gap: 28px;
+  }
+  .hero-movie-desc{
+    min-width: 295px;
+    
   }
 }
