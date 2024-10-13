@@ -5,12 +5,6 @@ import { hero } from './js/hero';
 import { movielist } from './js/movielist';
 import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> mylibrary
 import theme from './js/theme';
 if (window.location.pathname === '/catalog.html') {
   header();
