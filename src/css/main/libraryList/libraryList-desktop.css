@@ -2,7 +2,6 @@
 @import url("libraryList-tablet.css");
 @import url("libraryList-tablet.css");
 @import url("libraryList.css");
-
 #myLibrary{
     margin: 0 auto;
 }
@@ -190,3 +189,4 @@ img{
     top: 20px;
     right: 16px;
 }
+
