@@ -4,9 +4,9 @@
   --brend-color-rgba: #f87719cc;
   --brend-color-active: #188ce8;
   --main-background: #111;
-  --overlay-background: #FFFFFF33;
+  --overlay-background: #ffffff33;
   --main-background-rgba: #11111180;
-  
+
   --btn-background: linear-gradient(
     141.22deg,
     #ffc226 9.4%,
@@ -27,7 +27,7 @@
   --second-text-color: #f8f8f8;
   --grey-text-color: #111;
   --main-gray-color: #595959;
-  --header-text-color: #B7B7B7;
+  --header-text-color: #b7b7b7;
   --main-white-color: #fff;
   --main-black-color: #000;
   --hero-background-color: #2f303a;
@@ -44,7 +44,7 @@
 body.light-theme {
   --main-background: #fff;
   --main-text-color: #000;
-  --overlay-background : #00000033;
+  --overlay-background: #00000033;
   --second-text-color: #333;
   --grey-text-color: #888;
   --main-black-color: #fff;
@@ -69,7 +69,7 @@ p {
   margin: 0;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -162,4 +162,3 @@ body.light {
 .hidden {
   display: none;
 }
-

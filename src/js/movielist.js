@@ -10,6 +10,13 @@ export async function movielist() {
   const prevPageBtn = document.getElementById('prevPageBtn');
   const nextPageBtn = document.getElementById('nextPageBtn');
   const pageNumbersContainer = document.querySelector('.page-numbers');
+  //search bar
+  const showButton = document.getElementById('searchButton');
+  const mySelect = document.getElementById('movieYear');
+  const searchButton = document.getElementById('searchButton');
+  const resultsDiv = document.getElementById('results');
+
+  //SEARCH BAR END
 
   let totalPages = 100;
   let currentPage = 1;
@@ -53,6 +60,7 @@ export async function movielist() {
       displayMovies(paginatedResults);
       totalPages = data.total_pages;
       updatePagination();
+      return data;
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -241,7 +249,87 @@ export async function movielist() {
       updatePagination();
     }
   });
+  ///   SEARCH BAR JS
+
+  // showButton ile select görünürlüğünü değiştiriyoruz
+
+  // Arama işlemi
+  let selectedYear = ''; // Seçilen yılı tutmak için değişken
+  document.getElementById('movieName').addEventListener('input', () => {
+    // Select içeriğini sıfırla ve görünmez yap
+    const movieYearSelect = document.getElementById('movieYear');
+    movieYearSelect.innerHTML = ''; // Select içeriğini temizle
+    mySelect.style.display = 'none'; // Select'i görünmez yap
+
+    // Seçilen yılı temizle
+    selectedYear = '';
+  });
+
+  // showButton ile select görünürlüğünü değiştiriyoruz
+  searchButton.addEventListener('click', () => {
+    if (mySelect.style.display === 'none' || mySelect.style.display === '') {
+      mySelect.style.display = 'block'; // Görünür yap
+    } /* else if({
+      mySelect.style.display = 'none'; // Gizle
+    } */
+  });
+
+  // Arama işlemi
+  searchButton.addEventListener('click', async () => {
+    try {
+      const movieName = document.getElementById('movieName').value; // Input'tan arama kelimesini al
+      selectedYear = document.getElementById('movieYear').value || ''; // Select'ten seçilen yılı al (boş ise '')
+
+      // İlk arama: Eğer select'ten bir yıl seçilmediyse sadece movieName'e göre arama yap
+      const searchvideos = async (movieName, selectedYear = '') => {
+        console.log('MOVIE NAME:', movieName);
+        console.log('SELECTED YEAR:', selectedYear);
+        return await fetchMovies(1, movieName, selectedYear); // API'yi input ve year ile sorgulama
+      };
+
+      // Sorguyu yap ve sonuçları al
+      const movies = await searchvideos(movieName, selectedYear);
+
+      console.log('movies:', movies.results);
+
+      if (Array.isArray(movies.results)) {
+        // İlk arama: Select'teki yılı doldur
+        if (!selectedYear) {
+          // Eğer yıl seçilmemişse yeni yılları al ve select'e ekle
+          const years = movies.results
+            .map(movie =>
+              movie.release_date
+                ? new Date(movie.release_date).getFullYear()
+                : null
+            )
+            .filter(year => year !== null); // null değerleri temizle
+
+          const uniqueYears = [...new Set(years)]; // Yılları tekrarsız yap
+          const movieYearSelect = document.getElementById('movieYear');
+
+          if (movieYearSelect.innerHTML === '') {
+            // Yılları sadece ilk kez ekle
+            uniqueYears.forEach(year => {
+              const option = document.createElement('option');
+              option.value = year;
+              option.text = year;
+              movieYearSelect.appendChild(option); // Select elementine yeni option ekleme
+            });
+          }
+        }
+
+        // Sonuçları işleyebilir veya kullanıcıya gösterebilirsin.
+        console.log('Filtered movies:', movies.results);
+      } else {
+        console.error('Beklenmeyen sonuç: movies bir dizi değil');
+      }
+    } catch (error) {
+      console.error('Film verilerini işlerken hata:', error);
+    }
+  });
+
+  /// SEARCH BAR JS END
+  await fetchMovies();
 
   // İlk sayfayı yükle
-  await fetchMovies();
 }
