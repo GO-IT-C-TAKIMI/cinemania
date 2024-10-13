@@ -7,7 +7,11 @@
 }
 
 #film-category{
-width: 100px;
+width: 10rem;
+margin-bottom: 2rem;
+margin-top: 2rem;
+color: white;
+background-color: #111;
 }
 
 #library-list{
