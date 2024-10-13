@@ -16,11 +16,16 @@
   align-items: center;
   gap: 15px;
 }
-
+.upcoming-content__img-container {
+  width: 100%;
+  height: 402px;
+  max-width: 280px;
+  object-fit: cover;
+  display: block;
+}
 .upcoming-content__img {
-  width: 100%; /* Mobil için tam genişlik */
-  max-width: 280px; /* Mobildeki maksimum genişlik */
-  height: 402px; /* Mobilde sabit yükseklik */
+  /* Mobildeki maksimum genişlik */
+  /* Mobilde sabit yükseklik */
   border-radius: 5px 0px 0px 0px; /* Figma'daki köşe yumuşatma */
 }
 
@@ -179,9 +184,11 @@
   .upcoming-content__name {
     font-size: 3.2rem;
   }
-
+  .upcoming-content__img-container {
+    width: 100%;
+    object-fit: cover;
+  } /* Masaüstü için genişlik */
   .upcoming-content__img {
-    width: 50%; /* Masaüstü için genişlik */
     border-radius: var(--cards-border-radius);
     box-shadow: var(--cards-box-shadow); /* Görsel gölge efekti */
   }
