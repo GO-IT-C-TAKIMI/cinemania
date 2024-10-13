@@ -34,6 +34,7 @@
     
     #film-title {
         font-size: 14px;
+        color: var(--main-text-color);;
     }
     
     .description-film {
