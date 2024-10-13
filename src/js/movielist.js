@@ -264,15 +264,7 @@ export async function movielist() {
     // Seçilen yılı temizle
     selectedYear = '';
   });
-
   // showButton ile select görünürlüğünü değiştiriyoruz
-  searchButton.addEventListener('click', () => {
-    if (mySelect.style.display === 'none' || mySelect.style.display === '') {
-      mySelect.style.display = 'block'; // Görünür yap
-    } /* else if({
-      mySelect.style.display = 'none'; // Gizle
-    } */
-  });
 
   // Arama işlemi
   searchButton.addEventListener('click', async () => {
@@ -282,15 +274,16 @@ export async function movielist() {
 
       // İlk arama: Eğer select'ten bir yıl seçilmediyse sadece movieName'e göre arama yap
       const searchvideos = async (movieName, selectedYear = '') => {
-        console.log('MOVIE NAME:', movieName);
-        console.log('SELECTED YEAR:', selectedYear);
         return await fetchMovies(1, movieName, selectedYear); // API'yi input ve year ile sorgulama
       };
 
       // Sorguyu yap ve sonuçları al
       const movies = await searchvideos(movieName, selectedYear);
-
-      console.log('movies:', movies.results);
+      if (movies.results.length === 0) {
+        mySelect.style.display = 'none';
+      } else {
+        mySelect.style.display = 'block'; // Görünür yap
+      }
 
       if (Array.isArray(movies.results)) {
         // İlk arama: Select'teki yılı doldur
@@ -304,7 +297,7 @@ export async function movielist() {
             )
             .filter(year => year !== null); // null değerleri temizle
 
-          const uniqueYears = [...new Set(years)]; // Yılları tekrarsız yap
+          const uniqueYears = [...new Set(years)].sort((a, b) => a - b);
           const movieYearSelect = document.getElementById('movieYear');
 
           if (movieYearSelect.innerHTML === '') {
@@ -319,7 +312,6 @@ export async function movielist() {
         }
 
         // Sonuçları işleyebilir veya kullanıcıya gösterebilirsin.
-        console.log('Filtered movies:', movies.results);
       } else {
         console.error('Beklenmeyen sonuç: movies bir dizi değil');
       }
