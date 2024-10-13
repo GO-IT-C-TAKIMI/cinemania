@@ -1,5 +1,75 @@
 @media (max-width: 600px) {
-    .list-img {
-        width: 100%;  /* Adjust to 1 column on very small screens */
+    #myLibrary {
+        margin: 0 auto;
+        width: 100%;
     }
+    
+    #film-category {
+        width: 120px;
+    }
+    
+    #library-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;  /* Ortalanmış görünüm */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    #library-list li {
+        width: 100%;  /* Tek kolon kaplamasını sağlar */
+        margin-bottom: 15px;  /* Alt alta boşluk bırakır */
+        height: auto;  /* Yüksekliği içeriğe göre ayarlansın */
+        box-sizing: border-box;
+    }
+    
+    .img-film {
+        width: 100%;
+        height: auto;  /* Resmin boyutunu içerik ile orantılı ayarlar */
+    }
+    
+    .img-for-film {
+        width: 100%;  /* Mobilde resmi tam genişlikte gösterir */
+    }
+    
+    #film-title {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    .description-film {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+    
+    .film-title {
+        font-size: 22px;
+        line-height: 1.8;
+    }
+    
+    .about-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    .div-for-film {
+        grid-template-columns: 1fr;  /* Tek sütun düzeni */
+        width: 95%;  /* Modal genişliği mobil ekranı kaplasın */
+        padding: 10px;
+    }
+    
+    .close-button {
+        width: 150px;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+    
+    .close-screen {
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        right: 10px;
+    }
+    
 }

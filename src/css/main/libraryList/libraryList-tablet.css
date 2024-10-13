@@ -2,5 +2,65 @@
     .list-img {
         width: calc(50% - 20px);  /* Adjust to 2 columns on smaller screens */
     }
+    #myLibrary {
+        margin: 0 auto;
+        width: 90%;
+    }
+    
+    #film-category {
+        width: 150px;
+    }
+    
+    #library-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    #library-list li {
+        width: calc(50% - 15px);  /* Each list item takes 1/2 of the row */
+        margin-bottom: 15px;
+        height: 275px;  /* Reduce height for tablets */
+    }
+    
+    .img-film {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .img-for-film {
+        width: 75%;
+    }
+    
+    #film-title {
+        font-size: 14px;
+    }
+    
+    .description-film {
+        gap: 5px;
+        font-size: 12px;
+    }
+    
+    .film-title {
+        font-size: 18px;
+    }
+    
+    .stats-content, .headers-content {
+        font-size: 12px;
+    }
+    
+    .div-for-film {
+        width: 90%;  /* Slightly smaller modal for tablets */
+        grid-template-columns: 1fr;
+    }
+    
+    .close-button {
+        width: 170px;
+        font-size: 12px;
+    }
+    
 }
 
