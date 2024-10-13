@@ -75,9 +75,19 @@ function addToLibrary(film) {
   linkImages.forEach(link=>{
     link.addEventListener("click",(event)=>{
       event.preventDefault();
+
+      const existingDivForFilm = document.querySelector(".div-for-film");
+      if (existingDivForFilm) {
+        existingDivForFilm.remove();
+      }
+      
+      if (document.querySelector(".div-for-film")) {
+        return;  // If it exists, don't create another one
+      }
+
       const divForFilm = document.createElement("div");
       divForFilm.classList.add("div-for-film");
-    
+      divForFilm.style.display = "flex"; 
       const contentForFilm = document.createElement("div");
       contentForFilm.classList.add("content-div");
 
@@ -92,7 +102,64 @@ function addToLibrary(film) {
       const filmAbout = document.createElement("p");
       filmAbout.classList.add("about");
       filmAbout.innerText = "About";
-  
+
+      const ulAbout = document.createElement("ul"); 
+      ulAbout.classList.add("about-ul");
+
+      const liAbout = document.createElement("li"); 
+      liAbout.classList.add("about-li");
+
+      const voteAbout = document.createElement("p");
+      voteAbout.classList.add("about-vote");
+      voteAbout.innerText = `Vote / Votes`;
+
+      const voteDiv = document.createElement("div");
+      voteDiv.classList.add("div-vote");
+      voteDiv.innerHTML = `<span class="vote-num">${film.vote_average}</span>
+      <span class="slash">/</span>
+      <span class="vote-num">${film.vote_average}</span>`;
+      liAbout.appendChild(voteAbout);
+      liAbout.appendChild(voteDiv);
+      ulAbout.appendChild(liAbout);
+
+      const liAboutTwo = document.createElement("li"); 
+      liAboutTwo.classList.add("about-li");
+
+      const textpop = document.createElement("p");
+      textpop.textContent="Popularity";
+
+      const popularity = document.createElement("p");
+      popularity.innerText = `${film.popularity}`
+
+      liAboutTwo.appendChild(textpop);
+      liAboutTwo.appendChild(popularity);
+      ulAbout.appendChild(liAboutTwo);
+
+      const liAboutThree = document.createElement("li"); 
+      liAboutThree.classList.add("about-li");
+
+      const textgenre = document.createElement("p");
+      textgenre.textContent=`${filmGenres}`;
+
+      const genre = document.createElement("p");
+      genre.innerText=`${film.vote_average}`;
+
+      liAboutThree.appendChild(textgenre);
+      liAboutThree.appendChild(genre);
+      ulAbout.appendChild(liAboutThree);
+
+      const textAbout = document.createElement("p");
+      textAbout.classList.add("about-text");
+      textAbout.innerText = `${film.about}`;
+
+      const screenClose = document.createElement("button");
+      screenClose.classList.add("close-screen");
+      screenClose.textContent = ""; 
+
+      screenClose.addEventListener("click", () => {
+        document.body.removeChild(divForFilm);
+      });
+
       
       const closeButton = document.createElement("button");
       closeButton.classList.add("close-button");
@@ -101,26 +168,34 @@ function addToLibrary(film) {
 
 
       closeButton.addEventListener("click", () => {
-        document.body.removeChild(modalDiv);
+        document.body.removeChild(divForFilm); 
+        removeFromLibrary(film.id); 
       });
   
       contentForFilm.appendChild(filmTitle);
-      contentForFilm.appendChild(filmAbout);
+      contentForFilm.appendChild(ulAbout);
       contentForFilm.appendChild(closeButton);
 
       divForFilm.appendChild(contentForFilm);
       
       divForFilm.appendChild(imgForFilm);
+      divForFilm.appendChild(screenClose);
   
       // Modalı sayfaya ekle
       document.body.appendChild(divForFilm);
   
-
       divForFilm.addEventListener("click", (event) => {
-        if (event.target !== divForFilm) {
+        if (event.target === divForFilm) {
           document.body.removeChild(divForFilm);
         }
       });
+
+    divForFilm.addEventListener("click", (event) => {
+  if (event.target === divForFilm) {  // Sadece modalın dışına tıklanınca modal kapanacak
+    document.body.removeChild(divForFilm);
+  }
+});
+
     })
   });
 

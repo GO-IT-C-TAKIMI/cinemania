@@ -28,6 +28,9 @@ width: 100px;
 
 img{
     width: 100%;
+}
+.img-for-film{
+    width: 65%;
    }
 
 
@@ -66,6 +69,20 @@ img{
     width: calc(50%-5px);
 }
 
+.content-div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%; /* Ekrana göre uyum sağlamak için */
+    max-height: 90%;
+    overflow: auto; /* İçerik sığmazsa kaydırma ekler */
+  }
+  
+  .img-for-film {
+    max-width: 100%;
+    height: auto; /* Görüntü orantılarını korur */
+  }
+
 .close-button{
     height: auto;
     border: 1px solid var(--brend-color);
@@ -91,4 +108,11 @@ img{
     font-size: 14px;
     font-weight: 500;
     line-height: 16px;
+}
+
+.close-screen{
+    height: 2em;
+    width: 0.2em;
+    background-color: #fff;
+    color: #111;
 }
