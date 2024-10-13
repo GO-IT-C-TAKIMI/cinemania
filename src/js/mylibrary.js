@@ -1,9 +1,12 @@
 import SimpleLightbox from 'simplelightbox';
 let film;
+let filmData = [];  // Tüm filmleri tutacak dizi
+let currentPage = 1;  // Şu anki sayfa
+const filmsPerPage = 9;  // Her sayfada kaç film gösterilecek
 export function mylibrary() {
 console.log("mylibrary sayfasinin js i calisti")
   const getId = async (filmIds)  => {
-    const filmData = [];
+    
     for(const id of filmIds){
       try{
         
@@ -11,14 +14,47 @@ console.log("mylibrary sayfasinin js i calisti")
         film = await response.json();
         filmData.push(film); 
         console.log("filmler",filmData);
-        addToLibrary(film);
+        if (filmData.length <= filmsPerPage) {
+          addToLibrary(film);  // İlk sayfa dolmadan ekleyelim
+      }
       }catch(error){
         console.log(error);
       }
       
     }
-   selectGenre(filmData)
+   selectGenre(filmData);
+   createLoadMoreButton();
   }
+
+  function createLoadMoreButton() {
+    const loadMoreButton = document.createElement("button");
+    loadMoreButton.id = "load-more-btn";
+    loadMoreButton.textContent = "Load More";
+    loadMoreButton.classList.add("load-more-button");
+    document.body.appendChild(loadMoreButton);
+
+    loadMoreButton.addEventListener("click", loadMoreFilms);
+}
+
+  // Load More işlevi
+  function loadMoreFilms() {
+    currentPage++;  // Sonraki sayfaya geç
+
+    const start = (currentPage - 1) * filmsPerPage;
+    const end = currentPage * filmsPerPage;
+
+    const filmsToLoad = filmData.slice(start, end);  // Bir sonraki 9 filmi seç
+
+    // Eğer ekleyecek film kalmadıysa, butonu gizle
+    if (filmsToLoad.length === 0) {
+        document.getElementById("load-more-btn").style.display = "none";
+        return;
+    }
+
+    // Yeni filmleri ekrana bas
+    filmsToLoad.forEach(film => addToLibrary(film));
+}
+
  
 
 let libraryIds;// kutuphanedeki filmlerin bulundugu obje veya array
