@@ -249,6 +249,9 @@ export async function movielist() {
       updatePagination();
     }
   });
+
+
+
   ///   SEARCH BAR JS
 
   // showButton ile select görünürlüğünü değiştiriyoruz
@@ -271,7 +274,6 @@ export async function movielist() {
     try {
       const movieName = document.getElementById('movieName').value; // Input'tan arama kelimesini al
       selectedYear = document.getElementById('movieYear').value || ''; // Select'ten seçilen yılı al (boş ise '')
-
       // İlk arama: Eğer select'ten bir yıl seçilmediyse sadece movieName'e göre arama yap
       const searchvideos = async (movieName, selectedYear = '') => {
         return await fetchMovies(1, movieName, selectedYear); // API'yi input ve year ile sorgulama

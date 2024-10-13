@@ -13,6 +13,5 @@ export default function theme() {
         : 'light-theme';
       localStorage.setItem('theme', newTheme);
     });
-    console.log('theme js calıstı');
   });
 }
