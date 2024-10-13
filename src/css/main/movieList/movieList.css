@@ -85,7 +85,7 @@
   cursor: pointer;
 }
 
-.pagi-svg path{
+.pagi-svg path {
   stroke: var(--main-gray-color);
   fill: transparent;
 }

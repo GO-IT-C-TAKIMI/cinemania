@@ -1,22 +1,14 @@
-export async function movielist() {
+export function listmovie() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
   const apiUrl =
     'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' +
     apiKey;
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-  let query = '';
-  let year = '';
+
   const movieGallery = document.getElementById('catalog-movie-gallery');
   const prevPageBtn = document.getElementById('prevPageBtn');
   const nextPageBtn = document.getElementById('nextPageBtn');
   const pageNumbersContainer = document.querySelector('.page-numbers');
-  //search bar
-  const showButton = document.getElementById('searchButton');
-  const mySelect = document.getElementById('movieYear');
-  const searchButton = document.getElementById('searchButton');
-  const resultsDiv = document.getElementById('results');
-
-  //SEARCH BAR END
 
   let totalPages = 100;
   let currentPage = 1;
@@ -40,15 +32,14 @@ export async function movielist() {
   }
 
   // API'den filmleri getirmek için fonksiyon
-  async function fetchMovies(page = 1, query = '', year = '') {
+  async function fetchMovies(page = 1, query = '') {
     const apiPage = Math.ceil((page * 9) / 20);
 
     let url = `${apiUrl}&page=${apiPage}`;
-    if (query && !year) {
+    if (query) {
       url = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${apiKey}&page=${apiPage}`;
-    } else if (query && year) {
-      url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&primary_release_year=${year}&page=${apiPage}`;
     }
+
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -60,7 +51,6 @@ export async function movielist() {
       displayMovies(paginatedResults);
       totalPages = data.total_pages;
       updatePagination();
-      return data;
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -69,7 +59,7 @@ export async function movielist() {
   // İlk sayfayı ve film türlerini yükle
   async function init() {
     await fetchGenres(); // Önce türleri çek
-    await fetchMovies();
+    fetchMovies();
   }
 
   init(); // Sayfa yüklendiğinde çalışacak
@@ -169,167 +159,79 @@ export async function movielist() {
   //-----------------------------------------SAYFA NUMARALNADIRMA-----------------------------------------------------
 
   function updatePagination() {
-    pageNumbersContainer.innerHTML = ''; // Önceki sayfa numaralarını temizle
+    const pageNumbersContainer = document.querySelector('.page-numbers');
+    pageNumbersContainer.innerHTML = '';
 
-    const totalPageLinks = 3; // Orta kısımda kaç sayfa numarası göstereceğiz
-    const sidePageLinks = 1; // Başta ve sonda kaç sayfa göstereceğiz
+    const totalPageLinks = 5;
 
-    // İlk sayfa her zaman gösterilir
-    addPageButton(1);
+    for (let i = 1; i <= 3; i++) {
+      addPageButton(i, currentPage);
+    }
 
-    // Şu anki sayfa sidePageLinks'lerden büyükse araya "..." ekliyoruz
-    if (currentPage > sidePageLinks + 2) {
+    if (currentPage > 4) {
       const dots = document.createElement('span');
       dots.textContent = '...';
       pageNumbersContainer.appendChild(dots);
     }
 
-    // Dinamik olarak sayfa aralığını hesapla ve butonları ekle
-    const startPage = Math.max(2, currentPage - Math.floor(totalPageLinks / 2));
-    const endPage = Math.min(
-      totalPages - 1,
-      currentPage + Math.floor(totalPageLinks / 2)
-    );
-
+    const startPage = Math.max(4, currentPage - 1);
+    const endPage = Math.min(currentPage + 1, totalPages);
     for (let i = startPage; i <= endPage; i++) {
-      addPageButton(i);
+      addPageButton(i, currentPage);
     }
 
-    // Eğer sondaki sayfalar gizliyse araya "..." ekliyoruz
-    if (currentPage < totalPages - sidePageLinks - 1) {
+    if (currentPage < totalPages - 2) {
       const dots = document.createElement('span');
       dots.textContent = '...';
       pageNumbersContainer.appendChild(dots);
+      addPageButton(totalPages, currentPage);
     }
 
-    // Son sayfa her zaman gösterilir
-    if (totalPages > 1) {
-      addPageButton(totalPages);
-    }
-
-    // Önceki ve Sonraki sayfa butonlarının durumunu ayarla
     prevPageBtn.disabled = currentPage === 1;
     nextPageBtn.disabled = currentPage === totalPages;
   }
 
-  async function addPageButton(pageNum) {
+  function addPageButton(pageNum, currentPage) {
     const pageButton = document.createElement('button');
     pageButton.textContent = pageNum;
     pageButton.classList.add('page-number');
 
     if (pageNum === currentPage) {
-      pageButton.classList.add('active'); // Aktif sayfa vurgulanır
+      pageButton.classList.add('active');
     }
 
-    // Sayfa numarasına tıklanıldığında
-    pageButton.addEventListener('click', async () => {
-      // Seçilen sayfayı güncelle
+    pageButton.addEventListener('click', () => {
+      document.querySelectorAll('.page-number').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      pageButton.classList.add('active');
+
       currentPage = pageNum;
-      await fetchMovies(currentPage);
-      updatePagination(); // Sayfa numaralarını güncelle
+      fetchMovies(currentPage);
     });
 
-    pageNumbersContainer.appendChild(pageButton);
+    document.querySelector('.page-numbers').appendChild(pageButton);
   }
 
   //-------------------------------PREV VE NEXT FONSİYONLARI SON------------------------------------------------
 
-  prevPageBtn.addEventListener('click', async () => {
+  prevPageBtn.addEventListener('click', () => {
     if (currentPage > 1) {
       currentPage--;
-      await fetchMovies(currentPage);
+      fetchMovies(currentPage);
       updatePagination();
     }
   });
 
-  nextPageBtn.addEventListener('click', async () => {
+  nextPageBtn.addEventListener('click', () => {
     if (currentPage < totalPages) {
       currentPage++;
-      await fetchMovies(currentPage);
+      fetchMovies(currentPage);
       updatePagination();
     }
   });
-  ///   SEARCH BAR JS
-
-  // showButton ile select görünürlüğünü değiştiriyoruz
-
-  // Arama işlemi
-  let selectedYear = ''; // Seçilen yılı tutmak için değişken
-  document.getElementById('movieName').addEventListener('input', () => {
-    // Select içeriğini sıfırla ve görünmez yap
-    const movieYearSelect = document.getElementById('movieYear');
-    movieYearSelect.innerHTML = ''; // Select içeriğini temizle
-    mySelect.style.display = 'none'; // Select'i görünmez yap
-
-    // Seçilen yılı temizle
-    selectedYear = '';
-  });
-
-  // showButton ile select görünürlüğünü değiştiriyoruz
-  searchButton.addEventListener('click', () => {
-    if (mySelect.style.display === 'none' || mySelect.style.display === '') {
-      mySelect.style.display = 'block'; // Görünür yap
-    } /* else if({
-      mySelect.style.display = 'none'; // Gizle
-    } */
-  });
-
-  // Arama işlemi
-  searchButton.addEventListener('click', async () => {
-    try {
-      const movieName = document.getElementById('movieName').value; // Input'tan arama kelimesini al
-      selectedYear = document.getElementById('movieYear').value || ''; // Select'ten seçilen yılı al (boş ise '')
-
-      // İlk arama: Eğer select'ten bir yıl seçilmediyse sadece movieName'e göre arama yap
-      const searchvideos = async (movieName, selectedYear = '') => {
-        console.log('MOVIE NAME:', movieName);
-        console.log('SELECTED YEAR:', selectedYear);
-        return await fetchMovies(1, movieName, selectedYear); // API'yi input ve year ile sorgulama
-      };
-
-      // Sorguyu yap ve sonuçları al
-      const movies = await searchvideos(movieName, selectedYear);
-
-      console.log('movies:', movies.results);
-
-      if (Array.isArray(movies.results)) {
-        // İlk arama: Select'teki yılı doldur
-        if (!selectedYear) {
-          // Eğer yıl seçilmemişse yeni yılları al ve select'e ekle
-          const years = movies.results
-            .map(movie =>
-              movie.release_date
-                ? new Date(movie.release_date).getFullYear()
-                : null
-            )
-            .filter(year => year !== null); // null değerleri temizle
-
-          const uniqueYears = [...new Set(years)]; // Yılları tekrarsız yap
-          const movieYearSelect = document.getElementById('movieYear');
-
-          if (movieYearSelect.innerHTML === '') {
-            // Yılları sadece ilk kez ekle
-            uniqueYears.forEach(year => {
-              const option = document.createElement('option');
-              option.value = year;
-              option.text = year;
-              movieYearSelect.appendChild(option); // Select elementine yeni option ekleme
-            });
-          }
-        }
-
-        // Sonuçları işleyebilir veya kullanıcıya gösterebilirsin.
-        console.log('Filtered movies:', movies.results);
-      } else {
-        console.error('Beklenmeyen sonuç: movies bir dizi değil');
-      }
-    } catch (error) {
-      console.error('Film verilerini işlerken hata:', error);
-    }
-  });
-
-  /// SEARCH BAR JS END
-  await fetchMovies();
 
   // İlk sayfayı yükle
+  fetchMovies();
 }
