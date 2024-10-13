@@ -2,13 +2,18 @@
     .list-img {
         width: calc(50% - 20px);  /* Adjust to 2 columns on smaller screens */
     }
+    #library-section{
+        align-content: center;
+    }
     #myLibrary {
         margin: 0 auto;
         width: 90%;
     }
     
     #film-category {
-        width: 150px;
+        
+        width: 10rem;
+        height: 2rem;
     }
     
     #library-list {
@@ -31,6 +36,9 @@
         height: 100%;
     }
 
+    #library-list li{
+        margin-bottom: 5rem;
+    }
     
     #film-title {
         font-size: 14px;
