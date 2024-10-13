@@ -190,11 +190,6 @@ function addToLibrary(film) {
         }
       });
 
-    divForFilm.addEventListener("click", (event) => {
-  if (event.target === divForFilm) {  // Sadece modalın dışına tıklanınca modal kapanacak
-    document.body.removeChild(divForFilm);
-  }
-});
 
     })
   });
