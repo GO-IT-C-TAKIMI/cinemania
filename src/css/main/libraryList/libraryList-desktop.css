@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+@import url("libraryList.css");
+@import url("libraryList-tablet.css");
 @import url("libraryList-tablet.css");
 @import url("libraryList.css");
 
@@ -117,7 +118,4 @@ img{
     background-color: #fff;
     color: #111;
 }
-=======
-@import url("libraryList.css");
-@import url("libraryList-tablet.css");
->>>>>>> c23efa5afd834d7afc1471a56ed87fcb838c33f5
+
