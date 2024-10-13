@@ -46,10 +46,11 @@
   gap: 20px;
 }
 
-.movie-desc {
+.hero-movie-desc {
   color: white;
   font-size: 1.4rem;
-  width: 200px;
+  min-width: 235px;
+  line-height: 16.41px;
 }
 
 .stars-container {
@@ -70,7 +71,7 @@
 .hero-movie-title {
   color: white;
   font-size: 3.2rem;
-  width: max-content;
+  min-width: 235px;
 }
 
 .hero-movie-buttons {
