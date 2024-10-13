@@ -1,13 +1,96 @@
-.search-bar-section {
+.search_conteiner {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px 0 20px;
-  gap: 16px;
+  justify-content: center; /* Yatayda ortalama */
+  align-items: center; /* Dikeyde ortalama */
+
+  font-family: Roboto;
+  color: rgba(183, 183, 183, 1);
+}
+#movieName {
+  width: 31.5rem;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #ffffff; /* border color included in border */
 }
 
-.search-bar-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+#movieYear {
+  width: 9.5rem;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #ffffff;
+  margin-left: 2rem;
+}
+#searchButton {
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-left: 2rem;
+}
+/* Tablet ve üstü - max-width: 1024px */
+@media only screen and (max-width: 1024px) {
+  .search_conteiner {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.875rem;
+  }
+}
+#searchButton {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+/* Mobil - max-width: 768px */
+@media only screen and (max-width: 768px) {
+  .search_conteiner {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.641rem;
+  }
+
+  #movieName {
+    width: 18.8rem;
+    height: 4.4rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #ffffff; /* border style */
+  }
+
+  #movieYear {
+    width: 9.5rem;
+    height: 4.4rem;
+    border-radius: 0.8rem;
+
+    padding: 1.2rem 6rem 1.2rem 2rem;
+  }
+  #searchButton {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
+/* Güçlü Mobil - max-width: 480px */
+@media only screen and (max-width: 480px) {
+  .search_conteiner {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.641rem;
+  }
+
+  #movieName {
+    width: 22.4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #ffffff;
+    padding: 1rem 14.2rem 1rem 2rem; /* padding values corrected */
+  }
+
+  #movieYear {
+    width: 9.5rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+
+    padding: 1.2rem 6rem 1.2rem 2rem;
+  }
+  #searchButton {
+    width: 4rem;
+    height: 4rem;
+  }
 }
