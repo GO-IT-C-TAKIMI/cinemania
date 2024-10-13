@@ -1,3 +1,7 @@
 export function popup() {
-    console.log('popup sayfasinin js i calisti')
+    
+}
+
+export function myDetailsFunction(movieId) {
+    console.log(movieId);
 }
