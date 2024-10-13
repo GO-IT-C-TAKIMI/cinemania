@@ -1,3 +1,5 @@
+import { myDetailsFunction } from "./popup";
+
 export async function movielist() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
   const apiUrl =
@@ -123,6 +125,7 @@ export async function movielist() {
     movies.forEach(movie => {
       const movieCard = document.createElement('div');
       movieCard.classList.add('catalog-movie-card');
+      movieCard.dataset.movieId = movie.id;
 
       const moviePoster = document.createElement('img');
       moviePoster.src = imageBaseUrl + movie.poster_path;
@@ -155,6 +158,14 @@ export async function movielist() {
       movieCard.appendChild(moviePoster);
       movieCard.appendChild(movieInfo);
       movieGallery.appendChild(movieCard);
+    });
+    const catalogCards = document.querySelectorAll('.catalog-movie-card');
+
+    catalogCards.forEach(catalogCard => {
+      catalogCard.addEventListener('click', e => {
+        const filmId = Number(e.currentTarget.dataset.movieId);
+        myDetailsFunction(filmId);
+      });
     });
   }
 
@@ -241,7 +252,4 @@ export async function movielist() {
       updatePagination();
     }
   });
-
-  // İlk sayfayı yükle
-  await fetchMovies();
 }
