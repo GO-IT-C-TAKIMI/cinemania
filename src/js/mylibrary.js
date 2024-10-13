@@ -135,10 +135,10 @@ function addToLibrary(film) {
       const textpop = document.createElement("p");
       textpop.classList.add("headers-content");
       textpop.textContent="Popularity";
-
+      const popularityCeil = film.popularity.toFixed(1);;
       const popularity = document.createElement("p");
       popularity.classList.add("stats-content");
-      popularity.innerText = `${film.popularity}`
+      popularity.innerText = `${popularityCeil}`
 
       liAboutTwo.appendChild(textpop);
       liAboutTwo.appendChild(popularity);
