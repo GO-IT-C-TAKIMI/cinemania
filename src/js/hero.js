@@ -8,6 +8,8 @@ export function hero() {
   const descriptionContainer = document.getElementById(
     'movies-description-container'
   );
+  const popupContainer = document.querySelector('.popup-section-container');
+  const body = document.querySelector('body');
 
   const initialContent = () => {
     if (pathname === '/' || pathname === '/catalog.html') {
@@ -108,6 +110,8 @@ export function hero() {
       }
   
       detailsButton.addEventListener('click', () => {
+        popupContainer.classList.remove('hidden');
+        body.style.overflow = 'hidden';
         const movieID = movie.id;
         myDetailsFunction(movieID);
       });

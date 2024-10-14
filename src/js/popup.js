@@ -60,29 +60,42 @@ export function myDetailsFunction(popupId) {
       </div>
       </div>`;
 
-      closeBtn.addEventListener ('click', () => {
-        //close butona bastigim zaman modal kapansin
+      let isModalOpen = false;
+
+      function closeModal() {
         popupSectionContainer.classList.add('hidden');
         body.style.overflow = 'auto';
-        popupContent.innerHTML = ''
-      })
-
-      let isModalOpen = false;
-      if(!popupSectionContainer.classList.contains('hidden')){
-        isModalOpen = true;
-        document.addEventListener('click', (e) => {
-            if( isModalOpen &&
-                !popupSection.contains(e.target)){
-    
-                popupSectionContainer.classList.add('hidden')
-                body.style.overflow = 'auto';
-                popupContent.innerHTML = ''
-                isModalOpen = false;
-            }
-            console.log(isModalOpen)
-          });
+        popupContent.innerHTML = '';
+        isModalOpen = false;
+        document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('keydown', handleEscapePress);
+        closeBtn.removeEventListener('click', handleCloseClick);
+      }
+      
+      function handleOutsideClick(e) {
+        if (isModalOpen && !popupSection.contains(e.target)) {
+          closeModal();
+        }
+      }
+      function handleCloseClick(e){
+        if (isModalOpen){
+          closeModal();
+        }
+      }
+      function handleEscapePress(e) {
+        if (isModalOpen && e.key === 'Escape') {
+          closeModal();
+        }
+      }
+      
+      if (!popupSectionContainer.classList.contains('hidden')) {
+        isModalOpen = true; //modal acik
+        document.addEventListener('click', handleOutsideClick);
+        document.addEventListener('keydown', handleEscapePress);
+        closeBtn.addEventListener('click', handleCloseClick);
       }
 
+      // remove library, add library
      
      
 
