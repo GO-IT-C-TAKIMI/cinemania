@@ -318,6 +318,8 @@ function selectGenre(films){
   selectionGenre.addEventListener("change",(event)=>{
     const selectedGenre = event.target.value;
   
+    const libraryUl = document.getElementById("library-list");
+    libraryUl.innerHTML = '';  // Clear previous results
 
     if (selectedGenre === "") {
       // If "Select a Genre" is chosen, display all films
@@ -328,10 +330,6 @@ function selectGenre(films){
         film.genres.some(genre => genre.name === selectedGenre)
       );
       
-
-      // Clear the current library display
-      const libraryUl = document.getElementById("library-list");
-      libraryUl.innerHTML = '';  // Clear previous results
 
       // Add the filtered films to the library
       filteredFilms.forEach(film => addToLibrary(film));
