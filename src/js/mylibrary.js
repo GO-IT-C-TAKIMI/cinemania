@@ -93,23 +93,25 @@ function addToLibrary(film) {
   imgList.classList.add("list-img");
   const filmGenres = film.genres.map(genre => genre.name).slice(0, 2).join(', ');
 
-  const filmTitle = document.createElement("p");
-  filmTitle.innerHTML=`<p id="film-title">${film.title}</p>`;
+  const movieInfo = document.createElement('div');
+  movieInfo.classList.add('catalog-movie-info');
+
+  const filmTitle = document.createElement("h2");
+  filmTitle.classList.add("catalog-movie-title");
+  filmTitle.textContent=`${film.title}`;
   
   const yearFilm = film.release_date.slice(0, 4);
-  const description = document.createElement("div");
+  const description = document.createElement("p");
   description.classList.add("description-film");
-  description.innerHTML = `
-      <p id="film-genre">${filmGenres}</p>
-      <p>|</p>
-      <p>${yearFilm}</p>
-      <p>${film.vote_average}</p>
-  `;
+  description.textContent = `${filmGenres} | ${yearFilm} ${film.vote_average}  `;
+
+  movieInfo.appendChild(filmTitle);
+  movieInfo.appendChild(description);
 
   imgLink.appendChild(imgFilm);
   imgList.appendChild(imgLink);
-  imgList.appendChild(filmTitle);
-  imgList.appendChild(description);
+  imgList.appendChild(movieInfo);
+  imgList.appendChild(movieInfo);
   libraryUl.appendChild(imgList);
 
   const linkImages = document.querySelectorAll(".link-img");
