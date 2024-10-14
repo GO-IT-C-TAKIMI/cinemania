@@ -6,6 +6,7 @@ import { movielist } from './js/movielist';
 import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
 import theme from './js/theme';
+import { weeklytrend } from './js/weeklytrend';
 if (window.location.pathname === '/catalog.html') {
   header();
   hero();
@@ -25,6 +26,7 @@ if (window.location.pathname === '/mylibrary.html') {
 if (window.location.pathname === '/') {
   header();
   hero();
+  weeklytrend();
   popup();
   movielist();
   upcoming();

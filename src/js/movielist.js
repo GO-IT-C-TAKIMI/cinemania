@@ -12,12 +12,13 @@ export async function movielist() {
   const prevPageBtn = document.getElementById('prevPageBtn');
   const nextPageBtn = document.getElementById('nextPageBtn');
   const pageNumbersContainer = document.querySelector('.page-numbers');
+  const pathname = window.location.pathname;
   //search bar
   const showButton = document.getElementById('searchButton');
   const mySelect = document.getElementById('movieYear');
   const searchButton = document.getElementById('searchButton');
   const resultsDiv = document.getElementById('results');
-
+  console.log(pathname)
   //SEARCH BAR END
 
   let totalPages = 100;
