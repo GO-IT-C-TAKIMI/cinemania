@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  #movie-gallery {
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+  .movie-card {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* Bu, kartın içindeki elemanları konumlandırmamıza izin veriryor */
+    transition: transform 0.3s;
+    transform: scale(0.99);
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .movie-rating {
+    fill: #F89F19AD;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+  }
+  
+  .movie-title {
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .movie-details {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+
+ /* Desktop için (1024px ve üzeri) */
+@media only screen and (min-width: 1024px) {
+    #movie-gallery-trend {
+      grid-template-columns: repeat(3, 1fr); /* 3 sütun */
+    }
+  }
+  
+  /* Tablet için (768px ile 1024px arası) */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    #movie-gallery-trend {
+      grid-template-columns: repeat(3, 1fr); /* Tablet için de 3 sütun */
+    }
+  }
+  
+  /* Mobil için (768px ve altı) */
+  @media only screen and (max-width: 767px) {
+    #movie-gallery-trend {
+      grid-template-columns: 1fr; /* Mobil için tek sütun */
+    }
+  }
+
+
+
+
+.weekly-trends {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#see-all-link {
+    font-size: 16px;
+    color: #ff7f00;
+    text-decoration: none;
+}
+
+#see-all-link:hover {
+    text-decoration: underline;
+}
