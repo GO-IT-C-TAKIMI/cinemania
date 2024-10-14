@@ -5,6 +5,7 @@
 #myLibrary{
     margin: 0 auto;
     margin-bottom: 5rem;
+    width: 90%;
 }
 
 #film-category{
@@ -24,7 +25,12 @@ background-color: #111;
     margin: 0;
 }
 #library-section{
-    padding: 2rem;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #library-list li{

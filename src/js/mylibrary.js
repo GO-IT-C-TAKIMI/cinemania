@@ -27,11 +27,13 @@ console.log("mylibrary sayfasinin js i calisti")
   }
 
   function createLoadMoreButton() {
+    const libSection = document.getElementById("library-section");
+
     const loadMoreButton = document.createElement("button");
     loadMoreButton.id = "load-more-btn";
     loadMoreButton.textContent = "Load More";
     loadMoreButton.classList.add("load-more-button");
-    document.body.appendChild(loadMoreButton);
+    libSection.appendChild(loadMoreButton);
 
     loadMoreButton.addEventListener("click", loadMoreFilms);
 }
