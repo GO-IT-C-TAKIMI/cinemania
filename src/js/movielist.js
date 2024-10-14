@@ -18,8 +18,6 @@ export async function movielist() {
   const searchButton = document.getElementById('searchButton');
   const resultsDiv = document.getElementById('results');
 
-  //SEARCH BAR END
-
   let totalPages = 100;
   let currentPage = 1;
   let genreMap = {};
@@ -168,11 +166,17 @@ export async function movielist() {
       movieGallery.appendChild(movieCard);
     });
     const catalogCards = document.querySelectorAll('.catalog-movie-card');
+    const popupContainer = document.querySelector('.popup-section-container');
+    const body = document.querySelector('body');
+
+   
 
     catalogCards.forEach(catalogCard => {
       catalogCard.addEventListener('click', e => {
         const filmId = Number(e.currentTarget.dataset.movieId);
         myDetailsFunction(filmId);
+        popupContainer.classList.remove('hidden');
+        body.style.overflow = 'hidden';
       });
     });
   }
