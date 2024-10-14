@@ -17,12 +17,14 @@ background-color: #111;
 }
 
 #library-list{
-    display: flex;
-    flex-wrap: wrap;   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap:2rem; 
     list-style: none;
     justify-content: space-around;  /* Add spacing between items */
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    width: 85%;
 }
 #library-section{
     margin: 0 auto;
@@ -33,11 +35,11 @@ background-color: #111;
     flex-direction: column;
 }
 
-#library-list li{
-    width: calc((100% /3) - 20px);  /* Each list item takes 1/3 of the row with some space in between */
-    margin-bottom: 5rem;  /* Add space between rows */
+.list-img{
+    width: 100%;
+    margin-bottom: 5rem; 
     box-sizing: border-box; 
-    height: 325px;
+    height: auto;
 }
 
 img{
@@ -71,9 +73,7 @@ img{
     list-style: none;
     padding: 0;
 }
-.list-img{
-    margin-bottom: 5rem;
-}
+
 .headers-content{
     font-size: 14px;
     font-weight: 500;
