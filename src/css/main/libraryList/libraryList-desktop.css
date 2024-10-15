@@ -136,6 +136,16 @@ img{
     font-size: 12px;
     line-height: 20px;
 }
+.catalog-movie-rating{
+    fill: #f89f19ad;
+    position: absolute;
+    right: 2rem;
+}
+
+.catalog-info{
+    display: flex;
+    flex-direction: row;
+}
 
 .div-for-film{
     display: grid;
@@ -148,7 +158,7 @@ img{
     z-index: 1001;    /* Üstte görünmesini sağlar */
     background-color: var(--main-background);
     padding: 20px;
-    box-shadow: 0px 2px 12px rgba(208, 104, 44, 0.1);
+    box-shadow: 1px 1px 14px 4px #ff6b086b;
     border-radius: 8px;
     width: 80%;       /* İçeriğin genişliğini ayarlar, isteğe bağlı */
     max-width: 600px; /* Maksimum genişliği ayarlar */
@@ -219,7 +229,8 @@ img{
     height: 25px;
     cursor: pointer;
     transition: box-shadow .25s var(--cubic), scale .25s var(--cubic);
-    background-color: #0000;
+    color: var(--main-text-color);
+    background-color: var(--main-background);
     border: none;
     border-radius: 50%;
     margin: 0;
