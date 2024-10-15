@@ -79,6 +79,7 @@ export function upcoming() {
 
     function addToLibrary(filmId) {
       let library = JSON.parse(localStorage.getItem('myLibrary')) || [];
+      console.log(library) 
       if (!library.includes(filmId)) {
         library.push(filmId);
         localStorage.setItem('myLibrary', JSON.stringify(library));
