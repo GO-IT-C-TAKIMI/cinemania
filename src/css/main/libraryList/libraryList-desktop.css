@@ -9,11 +9,12 @@
 }
 
 #film-category{
-width: 10rem;
-margin-bottom: 2rem;
-margin-top: 2rem;
-color: white;
-background-color: #111;
+    width: 10rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    color: var(--main-text-color);
+    background-color: var(--main-background);
 }
 .catalog-movie-title{
     font-size: 2rem;
