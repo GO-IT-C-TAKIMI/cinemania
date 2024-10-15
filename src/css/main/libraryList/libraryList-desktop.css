@@ -1,7 +1,8 @@
 @import url("libraryList.css");
 @import url("libraryList-tablet.css");
-@import url("libraryList-tablet.css");
 @import url("libraryList.css");
+
+
 #myLibrary{
     margin: 0 auto;
     margin-bottom: 5rem;
