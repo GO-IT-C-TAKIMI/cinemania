@@ -46,8 +46,6 @@ console.log("mylibrary sayfasinin js i calisti")
     const end = currentPage * filmsPerPage;
 
     const filmsToLoad = filmData.slice(start, end);  // Bir sonraki 9 filmi seç
-
-
     // Yeni filmleri ekrana bas
     filmsToLoad.forEach(film => addToLibrary(film));
     // Eğer ekleyecek film kalmadıysa, butonu gizle
@@ -57,8 +55,6 @@ console.log("mylibrary sayfasinin js i calisti")
   }
 
 }
-
- 
 
 let libraryIds;// kutuphanedeki filmlerin bulundugu obje veya array
 
@@ -402,5 +398,4 @@ function displayMovieRating(vote_average) {
 
   return starHTML;
 }
-
 }
