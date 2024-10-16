@@ -1,10 +1,10 @@
-import SimpleLightbox from 'simplelightbox';
+
+
+export function mylibrary() {
 let film;
 let filmData = [];  // Tüm filmleri tutacak dizi
 let currentPage = 1;  // Şu anki sayfa
 const filmsPerPage = 9;  // Her sayfada kaç film gösterilecek
-export function mylibrary() {
-console.log("mylibrary sayfasinin js i calisti")
   const getId = async (filmIds)  => {
     
     for(const id of filmIds){
