@@ -2,7 +2,7 @@ import SimpleLightbox from 'simplelightbox';
 let film;
 let filmData = [];  // Tüm filmleri tutacak dizi
 let currentPage = 1;  // Şu anki sayfa
-const filmsPerPage = 9;  // Her sayfada kaç film gösterilecek
+const filmsPerPage = 4;  // Her sayfada kaç film gösterilecek
 export function mylibrary() {
 console.log("mylibrary sayfasinin js i calisti")
   const getId = async (filmIds)  => {
@@ -47,14 +47,15 @@ console.log("mylibrary sayfasinin js i calisti")
 
     const filmsToLoad = filmData.slice(start, end);  // Bir sonraki 9 filmi seç
 
-    // Eğer ekleyecek film kalmadıysa, butonu gizle
-    if (filmsToLoad.length === 0) {
-        document.getElementById("load-more-btn").style.display = "none";
-        return;
-    }
 
     // Yeni filmleri ekrana bas
     filmsToLoad.forEach(film => addToLibrary(film));
+    // Eğer ekleyecek film kalmadıysa, butonu gizle
+    if (end >= filmData.length) {
+      document.getElementById("load-more-btn").style.display = "none";
+      return;
+  }
+
 }
 
  
