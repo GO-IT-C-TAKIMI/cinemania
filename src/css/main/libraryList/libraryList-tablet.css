@@ -16,15 +16,19 @@
         height: 2rem;
     }
     
+    .library-section{
+        min-width: 50rem;
+    }
+
     #library-list{
         display: grid;
         grid-template-columns: 1fr 1fr;  
-        gap:3rem; 
+        gap: 3rem;
         list-style: none;
         padding: 0;
-        margin: 0 auto;
-        width: 85%; 
+        margin: 0 auto; /* Yatayda ortalama */
         margin-bottom: 5rem;
+        width: 100%; 
     }
 
     
