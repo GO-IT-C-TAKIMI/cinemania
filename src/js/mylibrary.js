@@ -1,10 +1,14 @@
-import SimpleLightbox from 'simplelightbox';
+
+
+export function mylibrary() {
 let film;
 let filmData = [];  // Tüm filmleri tutacak dizi
 let currentPage = 1;  // Şu anki sayfa
-const filmsPerPage = 4;  // Her sayfada kaç film gösterilecek
-export function mylibrary() {
-console.log("mylibrary sayfasinin js i calisti")
+
+console.log("mylibrary sayfasinin js i calisti");
+
+const filmsPerPage = 9;  // Her sayfada kaç film gösterilecek
+
   const getId = async (filmIds)  => {
     
     for(const id of filmIds){
@@ -275,11 +279,12 @@ function addRemoveButton(filmId, lightbox) {
   const removeButton = document.createElement("button");
   removeButton.innerText = "Remove from my library";
   removeButton.classList.add("remove-button");
-  console.log("remobe butonu var")
   // Butonun tıklama olayını tanımla
   removeButton.addEventListener("click", () => {
     removeFromLibrary(filmId);
     window.lightboxInstance.close(); // Lightbox'ı kapat
+    console.log(`Film ID: ${filmId}`);
+
 });
 
   // Lightbox içeriğine butonu ekle
@@ -288,20 +293,41 @@ function addRemoveButton(filmId, lightbox) {
 }
 
 function removeFromLibrary(filmId) {
-  // Kütüphaneden silme işlemleri
+  console.log(`removeFromLibrary çağrıldı. filmId: ${filmId}`);
   const libraryUl = document.getElementById("library-list");
-  const filmElement = libraryUl.querySelector(`a[data-film-id='${filmId}']`).closest('.list-img');
+  console.log("libraryUl:", libraryUl);
 
-  if (filmElement) {
-    filmElement.remove(); // DOM'dan kaldır
+  // Tüm film linklerini al
+  const allFilmLinks = libraryUl.querySelectorAll('a[data-film-id]');
+  console.log(`Toplam film linki sayısı: ${allFilmLinks.length}`);
+
+  // Her bir film linkini kontrol et
+  let filmRemoved = false;
+  allFilmLinks.forEach((link) => {
+      const linkFilmId = link.getAttribute('data-film-id');
+      console.log(`Link film ID: ${linkFilmId}, Aranan film ID: ${filmId}`);
+
+      // String karşılaştırması yapılıyor
+      if (linkFilmId === filmId.toString()) {
+          const listItem = link.closest('.list-img');
+          if (listItem) {
+              listItem.remove();
+              console.log(`Film başarıyla kütüphaneden çıkarıldı. Film ID: ${filmId}`);
+              filmRemoved = true;
+          }
+      }
+  });
+
+  if (filmRemoved) {
+      // Local storage'dan kaldırma işlemi
+      let libraryIds = JSON.parse(localStorage.getItem('myLibrary')) || [];
+      libraryIds = libraryIds.filter(id => id !== filmId);
+      localStorage.setItem('myLibrary', JSON.stringify(libraryIds));
+      console.log("Güncellenmiş libraryIds:", libraryIds);
+  } else {
+      console.log(`Film bulunamadı veya çıkarılamadı. Film ID: ${filmId}`);
+  }
 }
-
-  // Yerel depolamadan silme işlemleri (varsa)
-  let libraryIds = JSON.parse(localStorage.getItem('myLibrary')) || [];
-  libraryIds = libraryIds.filter(id => id !== filmId); // ID'yi kaldır
-  localStorage.setItem('myLibrary', JSON.stringify(libraryIds)); // Güncellenmiş kütüphaneyi kaydet
-}
-
 
 function seeFilmContent(){
     let modal ;
