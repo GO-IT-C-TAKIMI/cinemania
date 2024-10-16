@@ -8,12 +8,19 @@
 }
 
 .catalog-movie-card {
+  max-height: 538px;
+  max-width: 357px;
   background-color: #333;
   border-radius: 10px;
   overflow: hidden;
   position: relative; /* Bu, kartın içindeki elemanları konumlandırmamıza izin veriryor */
   transition: transform 0.3s;
   transform: scale(0.99);
+}
+.catalog-movie-details-rating{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .catalog-movie-card:hover {
@@ -24,21 +31,29 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 10px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-  color: white;
+  padding: 12px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
   display: flex;
+  color: #fff;
   flex-direction: column;
+  gap: 5px;
+  text-shadow: 0px 1px 5px #000, 0px 1px 10px #000, 0px 1px 15px #000;
+}
+
+.catalog-movie-rating{
+  display: flex;
+  align-items: center;
   gap: 5px;
 }
 
-.catalog-movie-rating {
-  fill: #f89f19ad;
+.catalog-movie-rating svg{
+  height: 14px;
+  width: 14px;
 }
 
 .catalog-movie-poster {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .catalog-movie-title {
@@ -104,24 +119,7 @@
   transition: background-color 0.3s ease;
 }
 
-@media only screen and (max-width: 1024px) {
-  #movie-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
-@media only screen and (max-width: 768px) {
-  #movie-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
 
-  .pagination {
-    max-height: fit-content;
-  }
-}
 
-@media only screen and (max-width: 480px) {
-  #movie-gallery {
-    grid-template-columns: 1fr; /* Mobilde tek sütun */
-  }
-}
+

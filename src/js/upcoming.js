@@ -1,3 +1,4 @@
+import { checkLibrary, addToLibrary, removeFromLibrary, updateLibraryButton } from './addRemoveCheck.js';
 export function upcoming() { 
     console.log('upcoming sayfasinin js i calisti');
 
@@ -10,9 +11,7 @@ export function upcoming() {
     const voteCount = document.getElementById('vote-count');
     const popularity = document.getElementById('popularity');
     const genres = document.getElementById('genres');
-    const overview = document.getElementById('overview');  // Overview elemanı
-    const addBtn = document.getElementById('add-btn');
-    const removeBtn = document.getElementById('remove-btn');
+    const overview = document.getElementById('overview'); 
 
     // API'den upcoming filmleri çek
     fetch(upcomingURL)
@@ -52,46 +51,5 @@ export function upcoming() {
       updateLibraryButton(isInLibrary, film.id);
     }
 
-    function checkLibrary(filmId) {
-      const library = JSON.parse(localStorage.getItem('myLibrary')) || [];
-      return library.includes(filmId);
-    }
-
-    function updateLibraryButton(isInLibrary, filmId) {
-      if (isInLibrary) {
-        addBtn.classList.add('hidden');
-        removeBtn.classList.remove('hidden');
-      } else {
-        addBtn.classList.remove('hidden');
-        removeBtn.classList.add('hidden');
-      }
-
-      // Kütüphaneye ekle
-      addBtn.addEventListener('click', () => {
-        addToLibrary(filmId);
-      });
-
-      // Kütüphaneden çıkar
-      removeBtn.addEventListener('click', () => {
-        removeFromLibrary(filmId);
-      });
-    }
-
-    function addToLibrary(filmId) {
-      let library = JSON.parse(localStorage.getItem('myLibrary')) || [];
-      console.log(library) 
-      if (!library.includes(filmId)) {
-        library.push(filmId);
-        localStorage.setItem('myLibrary', JSON.stringify(library));
-        updateLibraryButton(true, filmId);
-      }
-    }
-
-    function removeFromLibrary(filmId) {
-      let library = JSON.parse(localStorage.getItem('myLibrary')) || [];
-      library = library.filter(id => id !== filmId);
-      localStorage.setItem('myLibrary', JSON.stringify(library));
-      updateLibraryButton(false, filmId);
-    }
 }
 

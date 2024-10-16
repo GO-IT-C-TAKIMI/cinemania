@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+  #movie-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pagination {
+    max-height: fit-content;
+  }
+}
+
+@media (min-width: 480px) {
+  #movie-gallery {
+    grid-template-columns: 1fr; /* Mobilde tek sütun */
+  }
+}

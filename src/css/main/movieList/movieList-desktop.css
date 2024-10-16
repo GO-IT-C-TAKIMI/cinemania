@@ -1,2 +1,15 @@
 @import url("movieList.css");
 @import url("movieList-tablet.css");
+
+@media (min-width: 1280px) {
+    #movie-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .catalog-movie-info{
+        padding: 20px;
+    }
+    .catalog-movie-rating svg{
+        height: 18px;
+        width: 18px;
+      }
+  }

@@ -1,120 +1,126 @@
-import { myDetailsFunction } from './popup';
+import { myDetailsFunction } from './mydetailsfunction';
+
 export function mylibraryUpdate() {
   const mylibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
-    console.log(mylibrary)
-  const getId = async mylibrary => {
+  let fetchedMovies = []; // Çekilen filmleri saklayacağımız array.
+  const mylibraryContainer = document.querySelector('#mylibrary-container');
+  const loadMoreButton = document.querySelector('.load-more-button');
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+
+  let currentIndex = 0;
+  const moviesPerPage = 9;
+
+  // Başlangıçta API'den tüm filmleri çek.
+  const getMovies = async () => {
     try {
       const filmPromises = mylibrary.map(async filmID => {
         const res = await fetch(
           `https://api.themoviedb.org/3/movie/${filmID}?api_key=3e7bd78082a78694a13d5e52c5addee0&language=en-US`
         );
-        if (!res.ok) throw new Error('API request failed'); // Hata kontrolü
+        if (!res.ok) throw new Error('API request failed');
         return res.json();
       });
 
-      const films = await Promise.all(filmPromises);
-      displayMovies(films); // Filmleri gösterme fonksiyonuna gönder
+      fetchedMovies = await Promise.all(filmPromises);
+      console.log(fetchedMovies);
+      renderMovies(); // İlk render.
     } catch (e) {
       console.error('Error fetching films:', e);
     }
   };
 
-  if (mylibrary.length > 0) {
-    getId(mylibrary);
-  } else {
-    console.log('empty');
+  // Filmleri ekrana basan fonksiyon.
+  function renderMovies() {
+    mylibraryContainer.innerHTML = ''; // Eski içerikleri temizle.
+
+    const nextMovies = fetchedMovies.slice(
+      currentIndex,
+      currentIndex + moviesPerPage
+    );
+
+    nextMovies.forEach(movie => {
+      const movieCard = createMovieCard(movie);
+      mylibraryContainer.appendChild(movieCard);
+    });
+
+    currentIndex += moviesPerPage;
+
+    if (currentIndex >= fetchedMovies.length) {
+      loadMoreButton.classList.add('hidden');
+    }
   }
 
-  let currentIndex = 0; // Gösterilen film sayısını takip eder
-  const moviesPerPage = 9; // Her seferde gösterilecek film sayısı
+  // Film kartını oluşturan fonksiyon.
+  function createMovieCard(movie) {
+    const movieCard = document.createElement('div');
+    movieCard.classList.add('catalog-movie-card');
+    movieCard.dataset.movieId = movie.id;
 
-  function displayMovies(movies = []) {
-    if (!Array.isArray(movies) || movies.length === 0) {
-      console.log('No movies to display');
-      return;
-    }
+    const moviePoster = document.createElement('img');
+    moviePoster.src = imageBaseUrl + movie.poster_path;
+    moviePoster.alt = movie.title;
+    moviePoster.classList.add('catalog-movie-poster');
 
-    const mylibraryContainer = document.querySelector('#mylibrary-container');
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-    mylibraryContainer.innerHTML = ''; // Eski içerikleri temizler
+    const movieInfo = document.createElement('div');
+    movieInfo.classList.add('catalog-movie-info');
 
-    // Eğer film sayısı 9'dan az ise butonu oluşturma
-    if (movies.length <= moviesPerPage) {
-      renderMovies(movies); // Tüm filmleri direkt göster
-      return;
-    }
+    const movieTitle = document.createElement('h2');
+    movieTitle.textContent = movie.title;
+    movieTitle.classList.add('catalog-movie-title');
 
-    const loadMoreButton = document.createElement('button');
-    loadMoreButton.textContent = 'Load More';
-    loadMoreButton.classList.add('load-more-button');
+    const movieDetails = document.createElement('p');
+    const genreNames =
+      movie.genre_ids?.map(id => genreMap[id] || 'Unknown').filter(Boolean) || [];
+    movieDetails.textContent = `${genreNames.join(', ')} | ${
+      movie.release_date.split('-')[0]
+    }`;
+    movieDetails.classList.add('catalog-movie-details');
 
-    function renderMovies() {
-      const nextMovies = movies.slice(
-        currentIndex,
-        currentIndex + moviesPerPage
-      );
+    const movieRating = document.createElement('p');
+    movieRating.classList.add('catalog-movie-rating');
 
-      nextMovies.forEach(movie => {
-        if (!movie) return; // Boş veri durumunda koruma
-        const movieCard = document.createElement('div');
-        movieCard.classList.add('catalog-movie-card');
-        movieCard.dataset.movieId = movie.id;
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Remove';
+    deleteButton.classList.add('delete-button');
+    deleteButton.addEventListener('click', () => removeMovie(movie.id));
 
-        const moviePoster = document.createElement('img');
-        moviePoster.src = imageBaseUrl + movie.poster_path;
-        moviePoster.alt = movie.title;
-        moviePoster.classList.add('catalog-movie-poster');
+    movieInfo.appendChild(movieTitle);
+    movieInfo.appendChild(movieDetails);
+    movieInfo.appendChild(movieRating);
+    movieCard.appendChild(moviePoster);
+    movieCard.appendChild(movieInfo);
+    movieCard.appendChild(deleteButton);
 
-        const movieInfo = document.createElement('div');
-        movieInfo.classList.add('catalog-movie-info');
-
-        const movieTitle = document.createElement('h2');
-        movieTitle.textContent = movie.title;
-        movieTitle.classList.add('catalog-movie-title');
-
-        const movieDetails = document.createElement('p');
-        const genreNames =
-          movie.genre_ids
-            ?.map(id => genreMap[id] || 'Unknown')
-            .filter(Boolean) || [];
-        movieDetails.textContent = `${genreNames.join(', ')} | ${
-          movie.release_date.split('-')[0]
-        }`;
-        movieDetails.classList.add('catalog-movie-details');
-
-        const movieRating = document.createElement('p');
-        movieRating.classList.add('catalog-movie-rating');
-
-        movieInfo.appendChild(movieTitle);
-        movieInfo.appendChild(movieDetails);
-        movieInfo.appendChild(movieRating);
-        movieCard.appendChild(moviePoster);
-        movieCard.appendChild(movieInfo);
-        mylibraryContainer.appendChild(movieCard);
-      });
-
-      currentIndex += moviesPerPage;
-
-      if (currentIndex >= movies.length) {
-        loadMoreButton.classList.add('hidden'); // Filmler bittiğinde butonu gizle
+    movieCard.addEventListener('click', e => {
+      if (e.target !== deleteButton) {
+        const filmId = Number(e.currentTarget.dataset.movieId);
+        myDetailsFunction(filmId);
+        document.querySelector('.popup-section-container').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
       }
-      const catalogCards = document.querySelectorAll('.catalog-movie-card');
-      const popupContainer = document.querySelector('.popup-section-container');
-      const body = document.querySelector('body');
+    });
 
-      catalogCards.forEach(catalogCard => {
-        catalogCard.addEventListener('click', e => {
-          const filmId = Number(e.currentTarget.dataset.movieId);
-          myDetailsFunction(filmId);
-          popupContainer.classList.remove('hidden');
-          body.style.overflow = 'hidden';
-        });
-      });
-    }
+    return movieCard;
+  }
 
-    renderMovies(); // İlk 9 filmi göster
+  // Film silme fonksiyonu.
+  function removeMovie(movieId) {
+    // FetchedMovies array'inden sil.
+    fetchedMovies = fetchedMovies.filter(movie => movie.id !== movieId);
+    // localStorage'dan ilgili ID'yi sil.
+    const updatedLibrary = mylibrary.filter(id => id !== movieId);
+    localStorage.setItem('myLibrary', JSON.stringify(updatedLibrary));
 
-    loadMoreButton.addEventListener('click', renderMovies); // Butona tıklandığında 9 film daha göster
-    document.body.appendChild(loadMoreButton); // Butonu sayfaya ekle
+    // Sayfayı yeniden render et.
+    currentIndex = 0;
+    renderMovies();
+  }
+
+  loadMoreButton.addEventListener('click', renderMovies);
+
+  if (mylibrary.length > 0) {
+    getMovies();
+  } else {
+    console.log('Library is empty');
   }
 }
