@@ -1,5 +1,5 @@
 import { myDetailsFunction } from './mydetailsfunction';
-import { updateLibraryButton, checkLibrary, removeFromLibrary } from './addRemoveCheck';
+import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
 export function mylibraryUpdate() {
