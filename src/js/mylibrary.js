@@ -340,11 +340,8 @@ removeButtons.forEach(button => {
 
 function selectGenre(films){
   const selectionGenre=document.getElementById("film-category");
-
-      // Assuming 'films' is an array of movie objects, each containing genres
       const allGenres = new Set();
     
-      // Extract unique genres from the films
       films.forEach(film => {
           film.genres.forEach(genre => {
               allGenres.add(genre.name);  // Collect genre names
@@ -362,19 +359,15 @@ function selectGenre(films){
     const selectedGenre = event.target.value;
   
     const libraryUl = document.getElementById("library-list");
-    libraryUl.innerHTML = '';  // Clear previous results
+    libraryUl.innerHTML = ''; 
 
     if (selectedGenre === "") {
-      // If "Select a Genre" is chosen, display all films
       films.forEach(film => addToLibrary(film));
     } else {
-      // Otherwise, filter by the selected genre
       const filteredFilms = films.filter(film => 
         film.genres.some(genre => genre.name === selectedGenre)
       );
       
-
-      // Add the filtered films to the library
       filteredFilms.forEach(film => addToLibrary(film));
     }
   });
