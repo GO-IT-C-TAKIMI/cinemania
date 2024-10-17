@@ -8,11 +8,17 @@
   .popup-content-container {
     display: flex;
     gap: 20px;
+    height: 100%;
   }
 
   .popup-film-content {
     gap: 26px;
   }
+
+  .popup-img-container {
+    width: 450px;
+  }
+  
 
   .film-title {
     font-size: 2.4rem;

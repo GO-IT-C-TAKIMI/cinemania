@@ -8,6 +8,10 @@
     padding: 60px;
   }
 
+  .popup-img-container {
+    width: 600px
+  }
+
   .popup-film-content {
     gap: 28px;
   }
