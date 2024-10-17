@@ -37,17 +37,13 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  fill: var(--main-white-color);
+  fill: var(--second-text-color);
 }
 
 .close-btn:hover {
   fill: var(--brend-color);
 }
 
-.popup-img-container {
-  width: 400px;
-  height: 700px;
-}
 
 .afis-img {
   width: 100%;
@@ -66,14 +62,15 @@
 .popup-film-content {
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: 20px;
 }
 
 .film-title {
   font-weight: 500;
-  font-size: 2rem; /* 1.4rem */
+  font-size: 2.4rem; /* 2rem */
   line-height: 1.6em;
-  color: var(--main-white-color);
+  color: var(--main-text-color);
+  margin-top: 22px;
 }
 
 .film-details {
@@ -102,7 +99,7 @@
 .vote-description {
   padding: 1px 8px;
   color: var(--main-background);
-  background-color: var(--main-white-color);
+  background-color: var(--second-text-color);
   border-radius: 5px;
   font-weight: 500;
   font-size: 1.2rem;
@@ -117,7 +114,7 @@
   line-height: normal;
 }
 
-.popup-film-about-desc {
+.popup-film-about-title {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -131,7 +128,7 @@
   color: var(--modal-keys-color);
 }
 
-.film-about-title {
+.film-about-desc {
   display: flex;
   flex-wrap: wrap;
   font-weight: 400;
@@ -142,6 +139,15 @@
 
 .film-btn {
   width: 150px;
+  height: 40px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 14.06px;
+}
+
+.film-remove-btn {
+  width: 178px;
   height: 40px;
   padding: 12px 24px;
   font-weight: 500;
