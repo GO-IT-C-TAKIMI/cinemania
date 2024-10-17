@@ -28,6 +28,8 @@ export function mylibraryUpdate() {
     } catch (e) {
       console.error('Error fetching films:', e);
     }
+
+    selectGenre(fetchedMovies);
   };
 
   function renderMovies() {
@@ -100,6 +102,44 @@ export function mylibraryUpdate() {
 
     return movieCard;
   }
+
+  function selectGenre(films){
+    const selectionGenre=document.getElementById("film-category");
+        const allGenres = new Set();
+      
+        films.forEach(film => {
+            film.genres.forEach(genre => {
+                allGenres.add(genre.name);  // Collect genre names
+            });
+        });
+    
+        allGenres.forEach(genre => {
+            const optionSelect = document.createElement("option");
+            optionSelect.value = genre;
+            optionSelect.innerText = genre;
+            selectionGenre.appendChild(optionSelect);
+        });
+  
+    selectionGenre.addEventListener("change",(event)=>{
+      const selectedGenre = event.target.value;
+    
+      const libraryUl = document.getElementById("library-list");
+      libraryUl.innerHTML = ''; 
+  
+      if (selectedGenre === "") {
+        films.forEach(film => addToLibrary(film));
+      } else {
+        const filteredFilms = films.filter(film => 
+          film.genres.some(genre => genre.name === selectedGenre)
+        );
+        
+        filteredFilms.forEach(film => addToLibrary(film));
+      }
+    });
+  
+  
+  }
+  
   loadMoreButton.addEventListener('click', renderMovies);
   if (mylibrary.length > 0) {
     getMovies();
