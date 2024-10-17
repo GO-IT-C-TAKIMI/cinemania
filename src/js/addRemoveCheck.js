@@ -22,16 +22,16 @@ export function checkLibrary(filmId) {
   return library.includes(filmId);
 }
 export function updateLibraryButton(isInLibrary, filmId) {
-  const addBtn = document.getElementById('add-btn');
-  const removeBtn = document.getElementById('remove-btn');
-
+  const addBtn = document.querySelectorAll('.add-btn');
+  const removeBtn = document.querySelectorAll('.remove-btn');
+  
   if (isInLibrary) {
-    addBtn.classList.add('hidden');
-    removeBtn.classList.remove('hidden');
+    addBtn.forEach(btn => btn.classList.add('hidden'))
+    removeBtn.forEach(btn => btn.classList.remove('hidden'));
   } else {
-    addBtn.classList.remove('hidden');
-    removeBtn.classList.add('hidden');
+    addBtn.forEach(btn => btn.classList.remove('hidden'));
+    removeBtn.forEach(btn => btn.classList.add('hidden'));
   }
-  addBtn.onclick = () => addToLibrary(filmId);
-  removeBtn.onclick = () => removeFromLibrary(filmId);
+  addBtn.forEach(btn => btn.onclick = () => addToLibrary(filmId));
+  removeBtn.forEach(btn => btn.onclick = () => removeFromLibrary(filmId));
 }
