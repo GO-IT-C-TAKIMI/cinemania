@@ -299,31 +299,24 @@ function removeFromLibrary(filmId) {
   // Tüm film linklerini al
   const allFilmLinks = libraryUl.querySelectorAll('a[data-film-id]');
 
-  // Her bir film linkini kontrol et
-  let filmRemoved = false;
-  allFilmLinks.forEach((link) => {
-      const linkFilmId = link.getAttribute('data-film-id');
-      console.log(`Link film ID: ${linkFilmId}, Aranan film ID: ${filmId}`);
 
       // String karşılaştırması yapılıyor
       if (linkFilmId === filmId) {
-          const listItem = link.closest('.list-img');
-          console.log("-------------",listItem);
 
           if (listItem) {
               listItem.remove();
               console.log(`Film başarıyla kütüphaneden çıkarıldı. Film ID: ${filmId}`);
               filmRemoved = true;
           }
-      }
-  });
+      };
 
   if (filmRemoved) {
       // Local storage'dan kaldırma işlemi
       let libraryIds = JSON.parse(localStorage.getItem('myLibrary')) || [];
-      libraryIds = libraryIds.filter(id => id !== filmId);
+      libraryIds = libraryIds.filter(film => film.id !== filmId);
       localStorage.setItem('myLibrary', JSON.stringify(libraryIds));
-      console.log("Güncellenmiş libraryIds:", libraryIds);
+      console.log("Güncellenmiş libraryIds:", libraryIds);  
+
   } else {
       console.log(`Film bulunamadı veya çıkarılamadı. Film ID: ${filmId}`);
   }
