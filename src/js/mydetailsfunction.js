@@ -1,5 +1,4 @@
 export function myDetailsFunction(popupId) {
-  console.log(popupId);
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
 
   const popupSectionContainer = document.querySelector(
@@ -23,7 +22,6 @@ export function myDetailsFunction(popupId) {
         `https://api.themoviedb.org/3/movie/${popupId}?api_key=${api_key}&language=en-US`
       );
       const data = await res.json();
-      console.log(data);
       displayDetails(data);
     } catch (error) {
       console.error('Error fetching details:', error);

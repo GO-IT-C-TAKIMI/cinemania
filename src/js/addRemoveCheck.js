@@ -63,10 +63,6 @@ export function updateLibraryUpcomingButton(isInLibrary, filmId) {
   const addBtnUpcoming = document.getElementById('upcoming-add-btn');
   const removeBtnUpcoming = document.getElementById('upcoming-remove-btn');
 
-  console.log(isInLibrary);
-  console.log(filmId);
-  console.log(addBtnUpcoming);
-  console.log(removeBtnUpcoming);
 
   addBtnUpcoming.onclick = () => {
     addToLibrary(filmId);
