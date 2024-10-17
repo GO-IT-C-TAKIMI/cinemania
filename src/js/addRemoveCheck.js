@@ -8,6 +8,7 @@ export function addToLibrary(filmId) {
     localStorage.setItem('myLibrary', JSON.stringify(library));
     updateLibraryButton(true, filmId);
   }
+  
 }
 // Kütüphaneden çıkarma
 export function removeFromLibrary(filmId) {
@@ -36,6 +37,7 @@ function removeMovieFromUI(filmId) {
   }
 }
 
+
 function closeModal() {
   const modal = document.querySelector('.popup-section-container');
   if(modal){
@@ -61,4 +63,32 @@ export function updateLibraryButton(isInLibrary, filmId) {
   }
   addBtn.forEach(btn => btn.onclick = () => addToLibrary(filmId));
   removeBtn.forEach(btn => btn.onclick = () => removeFromLibrary(filmId));
+}
+
+export function updateLibraryUpcomingButton(isInLibrary, filmId) {
+  const addBtnUpcoming = document.getElementById('upcoming-add-btn');
+  const removeBtnUpcoming = document.getElementById('upcoming-remove-btn');
+
+  console.log(isInLibrary);
+  console.log(filmId);
+  console.log(addBtnUpcoming);
+  console.log(removeBtnUpcoming);
+
+
+  addBtnUpcoming.onclick = () => {
+    addToLibrary(filmId);
+    if(isInLibrary){
+      removeBtnUpcoming.classList.remove('hidden');
+      addBtnUpcoming.classList.add('hidden');
+    }
+  };
+
+  removeBtnUpcoming.onclick = () => {
+    removeFromLibrary(filmId);
+    if(isInLibrary){
+      removeBtnUpcoming.classList.add('hidden');
+      addBtnUpcoming.classList.remove('hidden');
+    }
+  }
+
 }

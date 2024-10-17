@@ -1,4 +1,4 @@
-import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
+import { checkLibrary, updateLibraryUpcomingButton } from './addRemoveCheck.js';
 export function upcoming() {
   console.log('upcoming sayfasinin js i calisti');
 
@@ -58,6 +58,6 @@ export function upcoming() {
     }
 
     const isInLibrary = checkLibrary(film.id);
-    updateLibraryButton(isInLibrary, film.id);
+    updateLibraryUpcomingButton(isInLibrary, film.id);
   }
 }

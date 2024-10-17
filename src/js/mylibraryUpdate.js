@@ -24,7 +24,6 @@ export function mylibraryUpdate() {
       });
 
       fetchedMovies = await Promise.all(filmPromises);
-      console.log(fetchedMovies);
       renderMovies();
     } catch (e) {
       console.error('Error fetching films:', e);
@@ -39,7 +38,6 @@ export function mylibraryUpdate() {
 
     nextMovies.forEach(movie => {
       const movieCard = createMovieCard(movie);
-      console.log(movie);
       mylibraryContainer.appendChild(movieCard);
     });
 
