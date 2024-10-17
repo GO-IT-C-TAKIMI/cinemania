@@ -1,9 +1,11 @@
 import { myDetailsFunction } from './mydetailsfunction';
+import { updateLibraryButton, checkLibrary, removeFromLibrary } from './addRemoveCheck';
+import { displayMovieRating } from './displayMovieRating';
 
 export function mylibraryUpdate() {
   const mylibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
   let fetchedMovies = []; // Çekilen filmleri saklayacağımız array.
-  const mylibraryContainer = document.querySelector('#mylibrary-container');
+  const mylibraryContainer = document.querySelector('#catalog-movie-gallery');
   const loadMoreButton = document.querySelector('.load-more-button');
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
@@ -31,8 +33,6 @@ export function mylibraryUpdate() {
 
   // Filmleri ekrana basan fonksiyon.
   function renderMovies() {
-    mylibraryContainer.innerHTML = ''; // Eski içerikleri temizle.
-
     const nextMovies = fetchedMovies.slice(
       currentIndex,
       currentIndex + moviesPerPage
@@ -68,56 +68,65 @@ export function mylibraryUpdate() {
     movieTitle.textContent = movie.title;
     movieTitle.classList.add('catalog-movie-title');
 
+    const movieDetailsRatingDiv = document.createElement('div');
+    movieDetailsRatingDiv.classList.add('catalog-movie-details-rating');
+
     const movieDetails = document.createElement('p');
-    const genreNames =
-      movie.genre_ids?.map(id => genreMap[id] || 'Unknown').filter(Boolean) || [];
-    movieDetails.textContent = `${genreNames.join(', ')} | ${
+    const genreNames = movie.genres.map(genre => genre.name);
+    movieDetails.textContent = `${genreNames[0]}, ${genreNames[1]} | ${
       movie.release_date.split('-')[0]
     }`;
     movieDetails.classList.add('catalog-movie-details');
 
     const movieRating = document.createElement('p');
+    movieRating.innerHTML = displayMovieRating(movie.vote_average);
     movieRating.classList.add('catalog-movie-rating');
 
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Remove';
-    deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', () => removeMovie(movie.id));
-
     movieInfo.appendChild(movieTitle);
-    movieInfo.appendChild(movieDetails);
-    movieInfo.appendChild(movieRating);
+    movieDetailsRatingDiv.appendChild(movieDetails);
+    movieDetailsRatingDiv.appendChild(movieRating);
+    movieInfo.appendChild(movieDetailsRatingDiv);
     movieCard.appendChild(moviePoster);
     movieCard.appendChild(movieInfo);
-    movieCard.appendChild(deleteButton);
 
-    movieCard.addEventListener('click', e => {
-      if (e.target !== deleteButton) {
-        const filmId = Number(e.currentTarget.dataset.movieId);
-        myDetailsFunction(filmId);
-        document.querySelector('.popup-section-container').classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
+    movieCard.addEventListener('click', () => {
+      myDetailsFunction(movie.id);
+      document
+        .querySelector('.popup-section-container')
+        .classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      
+
+      const isInLibrary = checkLibrary(movie.id);
+      updateLibraryButton(isInLibrary, movie.id);
+      const removeBtn = document.getElementById('remove-btn');
+
+      removeBtn.onclick = () => {
+        removeFromLibrary(movie.id);
+        updateLibrary(); 
+      };
+      
     });
 
     return movieCard;
   }
+  function updateLibrary() {
+    const mylibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
+    fetchedMovies = []; // Önceki filmleri temizle
+    currentIndex = 0; // Sayfa sırasını sıfırla
+    mylibraryContainer.innerHTML = ''; // Eski içerikleri temizle
 
-  // Film silme fonksiyonu.
-  function removeMovie(movieId) {
-    // FetchedMovies array'inden sil.
-    fetchedMovies = fetchedMovies.filter(movie => movie.id !== movieId);
-    // localStorage'dan ilgili ID'yi sil.
-    const updatedLibrary = mylibrary.filter(id => id !== movieId);
-    localStorage.setItem('myLibrary', JSON.stringify(updatedLibrary));
-
-    // Sayfayı yeniden render et.
-    currentIndex = 0;
-    renderMovies();
+    if (mylibrary.length > 0) {
+      getMovies(); // Yeni veriyi çekip render et
+    } else {
+      console.log('Library is empty');
+      loadMoreButton.classList.add('hidden');
+    }
   }
 
-  loadMoreButton.addEventListener('click', renderMovies);
+  // Film silme fonksiyonu.
 
+  loadMoreButton.addEventListener('click', renderMovies);
   if (mylibrary.length > 0) {
     getMovies();
   } else {

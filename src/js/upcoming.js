@@ -1,4 +1,4 @@
-import { checkLibrary, addToLibrary, removeFromLibrary, updateLibraryButton } from './addRemoveCheck.js';
+import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 export function upcoming() { 
     console.log('upcoming sayfasinin js i calisti');
 

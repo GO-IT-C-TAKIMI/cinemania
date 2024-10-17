@@ -104,7 +104,7 @@ export async function movielist() {
         .map(id => genreMap[id] || 'Unknown')
         .filter(Boolean);
         
-      movieDetails.textContent = `${genreNames[0]} | ${
+      movieDetails.textContent = `${genreNames[0]}, ${genreNames[1]} | ${
         movie.release_date.split('-')[0]
       }`;
       movieDetails.classList.add('catalog-movie-details');
