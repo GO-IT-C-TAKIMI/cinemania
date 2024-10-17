@@ -1,4 +1,4 @@
-import { checkLibrary, updateLibraryUpcomingButton } from './addRemoveCheck.js';
+import { updateLibraryUpcomingButton } from './addRemoveCheck.js';
 export function upcoming() {
   console.log('upcoming sayfasinin js i calisti');
 
@@ -57,7 +57,6 @@ export function upcoming() {
       overview.textContent = 'No overview available for this movie.';
     }
 
-    const isInLibrary = checkLibrary(film.id);
-    updateLibraryUpcomingButton(isInLibrary, film.id);
+    updateLibraryUpcomingButton(film.id);
   }
 }

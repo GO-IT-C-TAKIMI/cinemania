@@ -59,24 +59,31 @@ export function updateLibraryButton(isInLibrary, filmId) {
   removeBtn.forEach(btn => (btn.onclick = () => removeFromLibrary(filmId)));
 }
 
-export function updateLibraryUpcomingButton(isInLibrary, filmId) {
+export function updateLibraryUpcomingButton(filmId) {
   const addBtnUpcoming = document.getElementById('upcoming-add-btn');
   const removeBtnUpcoming = document.getElementById('upcoming-remove-btn');
 
+  function refreshButtons() {
+    const isInLibrary = checkLibrary(filmId);
+    if (isInLibrary) {
+      addBtnUpcoming.classList.add('hidden');
+      removeBtnUpcoming.classList.remove('hidden');
+    } else {
+      addBtnUpcoming.classList.remove('hidden');
+      removeBtnUpcoming.classList.add('hidden');
+    }
+  }
 
   addBtnUpcoming.onclick = () => {
     addToLibrary(filmId);
-    if (isInLibrary) {
-      removeBtnUpcoming.classList.remove('hidden');
-      addBtnUpcoming.classList.add('hidden');
-    }
+    refreshButtons(); // Butonları güncelle
   };
 
+  
   removeBtnUpcoming.onclick = () => {
     removeFromLibrary(filmId);
-    if (isInLibrary) {
-      removeBtnUpcoming.classList.add('hidden');
-      addBtnUpcoming.classList.remove('hidden');
-    }
+    refreshButtons();
   };
+
+  refreshButtons();
 }
