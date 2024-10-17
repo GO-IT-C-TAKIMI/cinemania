@@ -1,5 +1,6 @@
 import { myDetailsFunction } from './mydetailsfunction.js';
 import { displayMovieRating } from './displayMovieRating.js';
+import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 
 export function hero() {
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
@@ -97,6 +98,8 @@ export function hero() {
         body.style.overflow = 'hidden';
         const movieID = movie.id;
         myDetailsFunction(movieID);
+        const isInLibrary = checkLibrary(movieID);
+        updateLibraryButton(isInLibrary, movieID);
       });
 
       trailerButton.addEventListener('click', async () => {
@@ -122,7 +125,6 @@ export function hero() {
       });
     } catch (error) {
       console.error('Error displaying movie:', error);
-      imageContainer.innerHTML = `<p>Failed to load movie data</p>`;
     }
   };
 
