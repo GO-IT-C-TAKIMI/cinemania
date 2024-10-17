@@ -281,10 +281,9 @@ function addRemoveButton(filmId, lightbox) {
   removeButton.classList.add("remove-button");
   // Butonun tıklama olayını tanımla
   removeButton.addEventListener("click", () => {
-    removeFromLibrary(filmId);
+    console.log(`Remove button clicked for Film ID: ${filmId}`);
+    removeFromLibrary(filmId); // filmId'yi burada kullan
     window.lightboxInstance.close(); // Lightbox'ı kapat
-    console.log(`Film ID: ${filmId}`);
-
 });
 
   // Lightbox içeriğine butonu ekle
@@ -299,7 +298,6 @@ function removeFromLibrary(filmId) {
 
   // Tüm film linklerini al
   const allFilmLinks = libraryUl.querySelectorAll('a[data-film-id]');
-  console.log(`Toplam film linki sayısı: ${allFilmLinks.length}`);
 
   // Her bir film linkini kontrol et
   let filmRemoved = false;
@@ -308,8 +306,10 @@ function removeFromLibrary(filmId) {
       console.log(`Link film ID: ${linkFilmId}, Aranan film ID: ${filmId}`);
 
       // String karşılaştırması yapılıyor
-      if (linkFilmId === filmId.toString()) {
+      if (linkFilmId === filmId) {
           const listItem = link.closest('.list-img');
+          console.log("-------------",listItem);
+
           if (listItem) {
               listItem.remove();
               console.log(`Film başarıyla kütüphaneden çıkarıldı. Film ID: ${filmId}`);
@@ -328,10 +328,15 @@ function removeFromLibrary(filmId) {
       console.log(`Film bulunamadı veya çıkarılamadı. Film ID: ${filmId}`);
   }
 }
+const removeButtons = document.querySelectorAll('button');
 
-function seeFilmContent(){
-    let modal ;
-}
+removeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const filmId = this.previousElementSibling.getAttribute('data-film-id');
+        removeFromLibrary(filmId);
+    });
+});
+
 
 function selectGenre(films){
   const selectionGenre=document.getElementById("film-category");
