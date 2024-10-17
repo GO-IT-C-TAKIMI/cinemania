@@ -11,10 +11,37 @@ export function addToLibrary(filmId) {
 }
 // Kütüphaneden çıkarma
 export function removeFromLibrary(filmId) {
+  const pathname = window.location.pathname;
   let library = JSON.parse(localStorage.getItem('myLibrary')) || [];
   library = library.filter(id => id !== filmId);
   localStorage.setItem('myLibrary', JSON.stringify(library));
   updateLibraryButton(false, filmId);
+
+  if(pathname === '/mylibrary.html'){
+    removeMovieFromUI(filmId);
+    closeModal();
+  }
+}
+
+function removeMovieFromUI(filmId) {
+  const movieCard = document.querySelector(`[data-movie-id="${filmId}"]`);
+  if (movieCard) {
+    movieCard.remove(); 
+  }
+  const library = JSON.parse(localStorage.getItem('myLibrary')) || [];
+  const mylibraryContainer = document.querySelector('#catalog-movie-gallery');
+  
+  if (library.length === 0) {
+    mylibraryContainer.innerHTML = '<p>Your library is empty.</p>';
+  }
+}
+
+function closeModal() {
+  const modal = document.querySelector('.popup-section-container');
+  if(modal){
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
 }
 
 export function checkLibrary(filmId) {
@@ -24,7 +51,7 @@ export function checkLibrary(filmId) {
 export function updateLibraryButton(isInLibrary, filmId) {
   const addBtn = document.querySelectorAll('.add-btn');
   const removeBtn = document.querySelectorAll('.remove-btn');
-  
+
   if (isInLibrary) {
     addBtn.forEach(btn => btn.classList.add('hidden'))
     removeBtn.forEach(btn => btn.classList.remove('hidden'));
