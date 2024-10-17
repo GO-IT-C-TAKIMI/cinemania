@@ -6,7 +6,6 @@ import { footer } from './js/footer';
 import theme from './js/theme';
 import { mylibraryUpdate } from './js/mylibraryUpdate';
 
-
 if (window.location.pathname === '/catalog.html') {
   header();
   hero();
@@ -24,8 +23,8 @@ if (window.location.pathname === '/mylibrary.html') {
 if (window.location.pathname === '/') {
   header();
   hero();
-  movielist();
   upcoming();
+  movielist();
   footer();
   theme();
 }

@@ -48,18 +48,14 @@ export function upcoming() {
       movieVote.textContent = film.vote_average;
       voteCount.textContent = film.vote_count;
       popularity.textContent = film.popularity;
-
-      // Genre ID'lerini isimlerle değiştir
       genres.textContent = film.genre_ids.map(id => genreMap[id]).join(', ');
 
-      // Eğer overview (açıklama) mevcutsa ekrana bas, yoksa boş bırak veya alternatif mesaj göster
       if (film.overview && film.overview.trim() !== "") {
         overview.textContent = film.overview;
       } else {
         overview.textContent = 'No overview available for this movie.';
       }
 
-      // Kütüphanede mi kontrol et
       const isInLibrary = checkLibrary(film.id);
       updateLibraryButton(isInLibrary, film.id);
     }

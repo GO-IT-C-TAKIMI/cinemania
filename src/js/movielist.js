@@ -1,5 +1,6 @@
 import { myDetailsFunction } from './mydetailsfunction';
 import { displayMovieRating } from './displayMovieRating';
+import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 
 export async function movielist() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
@@ -74,7 +75,6 @@ export async function movielist() {
   }
 
   init(); // Sayfa yüklendiğinde çalışacak
-
   //--------------------------Filmleri ekrana yerleştirmek için kullanılan fonksiyon---------------------------------------
   function displayMovies(movies) {
     movieGallery.innerHTML = '';
@@ -103,7 +103,7 @@ export async function movielist() {
       const genreNames = movie.genre_ids
         .map(id => genreMap[id] || 'Unknown')
         .filter(Boolean);
-        
+
       movieDetails.textContent = `${genreNames[0]}, ${genreNames[1]} | ${
         movie.release_date.split('-')[0]
       }`;
@@ -131,12 +131,12 @@ export async function movielist() {
         myDetailsFunction(filmId);
         popupContainer.classList.remove('hidden');
         body.style.overflow = 'hidden';
+        const isInLibrary = checkLibrary(filmId);
+        updateLibraryButton(isInLibrary, filmId);
       });
     });
   }
-
   //-----------------------------------------SAYFA NUMARALNADIRMA-----------------------------------------------------
-
   function updatePagination() {
     pageNumbersContainer.innerHTML = ''; // Önceki sayfa numaralarını temizle
 
@@ -180,7 +180,6 @@ export async function movielist() {
     prevPageBtn.disabled = currentPage === 1;
     nextPageBtn.disabled = currentPage === totalPages;
   }
-
   async function addPageButton(pageNum) {
     const pageButton = document.createElement('button');
     pageButton.textContent = pageNum;
@@ -199,9 +198,7 @@ export async function movielist() {
     });
 
     pageNumbersContainer.appendChild(pageButton);
-  }
-
-  //-------------------------------PREV VE NEXT FONSİYONLARI SON------------------------------------------------
+  } //-------------------------------PREV VE NEXT FONSİYONLARI SON------------------------------------------------
 
   prevPageBtn.addEventListener('click', async () => {
     if (currentPage > 1) {
@@ -210,7 +207,6 @@ export async function movielist() {
       updatePagination();
     }
   });
-
   nextPageBtn.addEventListener('click', async () => {
     if (currentPage < totalPages) {
       currentPage++;
@@ -235,7 +231,6 @@ export async function movielist() {
     selectedYear = '';
   });
   // showButton ile select görünürlüğünü değiştiriyoruz
-
   // Arama işlemi
   searchButton.addEventListener('click', async () => {
     try {
@@ -288,9 +283,4 @@ export async function movielist() {
       console.error('Film verilerini işlerken hata:', error);
     }
   });
-
-  /// SEARCH BAR JS END
-  await fetchMovies();
-
-  // İlk sayfayı yükle
 }

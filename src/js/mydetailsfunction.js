@@ -1,14 +1,7 @@
-import {
-  checkLibrary,
-  addToLibrary,
-  removeFromLibrary,
-  updateLibraryButton,
-} from './addRemoveCheck';
 export function myDetailsFunction(popupId) {
   console.log(popupId);
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
 
-  const popupContent = document.querySelector('.popup-content-container');
   const popupSectionContainer = document.querySelector(
     '.popup-section-container'
   );
@@ -17,7 +10,6 @@ export function myDetailsFunction(popupId) {
   const body = document.querySelector('body');
   const filmPoster = document.querySelector('.afis-img');
   const filmTitle = document.querySelector('.film-title');
-  const filmDetails = document.querySelector('.film-details');
   const averageRating = document.querySelector('.average-rating');
   const voteCount = document.querySelector('.vote-count');
   const genre = document.querySelector('.genre');
