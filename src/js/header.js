@@ -31,19 +31,25 @@ export function header() {
 
   window.addEventListener('resize', () => {
 
-    if (isMenuOpen) { // Menü açıksa kapat
+    if (isMenuOpen) {
     responsiveMenu.classList.remove('active-responsive-menu');
     overlay.classList.remove('active-overlay');
     body.style.overflow = 'auto';
-    isMenuOpen = false; // Menü kapatıldı
+    isMenuOpen = false; 
   }
   });
 
 
   links.forEach(link => {
-    const linkHref = new URL(link.getAttribute('href'), window.location.origin).pathname;
-    if ("/cinemania"+linkHref === currentPath) {
-      link.classList.add('active-link');
+    let linkHref = link.getAttribute('href');
+    if (linkHref.startsWith('/')) {
+        linkHref = `/cinemania${linkHref}`;
     }
-  });
+    const fullLink = new URL(linkHref, window.location.origin).pathname;
+    if (fullLink === currentPath) {
+        link.classList.add('active-link');
+    }
+});
+  
+  
 }
