@@ -13,7 +13,7 @@ export function removeFromLibrary(filmId) {
   localStorage.setItem('myLibrary', JSON.stringify(library));
   updateLibraryButton(false, filmId);
 
-  if (pathname === '/mylibrary.html') {
+  if (pathname.includes('mylibrary.html')) {
     removeMovieFromUI(filmId);
     closeModal();
   }

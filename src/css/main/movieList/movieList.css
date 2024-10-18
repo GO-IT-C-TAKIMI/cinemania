@@ -55,7 +55,9 @@
 .catalog-movie-rating {
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 5px;
+  flex: 1;
 }
 
 .catalog-movie-rating svg {
@@ -71,14 +73,14 @@
 }
 
 .catalog-movie-title {
-  font-size: 18px;
-  margin: 0;
-  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .catalog-movie-details {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #ccc;
+  display: flex;
+  flex: 1;
 }
 
 .pagination {

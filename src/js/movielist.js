@@ -13,6 +13,7 @@ export async function movielist() {
   const pathname = window.location.pathname;
   const isCatalogPage = pathname.includes('catalog');
   const movieGallery = document.getElementById('catalog-movie-gallery');
+  const catalogDescContainer = document.querySelector('.catalog-desc-container');
   const prevPageBtn = isCatalogPage
     ? document.getElementById('prevPageBtn')
     : null;
@@ -29,6 +30,12 @@ export async function movielist() {
   let currentPage = 1;
   let genreMap = {};
   let totalPages = 100;
+
+  if (isCatalogPage) {
+    catalogDescContainer.style.display = 'none';
+  }else{
+    catalogDescContainer.style.display = 'flex';
+  }
 
   async function fetchGenres() {
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;

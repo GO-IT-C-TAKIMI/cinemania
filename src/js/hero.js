@@ -13,7 +13,7 @@ export function hero() {
   const body = document.querySelector('body');
 
   const initialContent = () => {
-    if (pathname === '/' || pathname === '/catalog.html') {
+    if (pathname.includes('/') || pathname.includes('catalog.html')) {
       imageContainer.innerHTML =
         '<img class="image" src="./img/stranger_things.jpeg"/>';
       descriptionContainer.innerHTML = `
@@ -73,8 +73,8 @@ export function hero() {
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
 
-      imageContainer.innerHTML += `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" />`;
-      descriptionContainer.innerHTML += `
+      imageContainer.innerHTML = `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" /> <div class="gradient"></div>`;
+      descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">${movie.title}</h1>
         <div class="stars-container" id="starsContainer"></div>
         <div class="desc-button-container">

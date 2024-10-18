@@ -9,8 +9,14 @@
     padding: 20px;
     gap: 10px;
   }
+  .catalog-movie-details{
+    font-size: 1.4rem;
+  }
   .catalog-movie-rating svg {
     height: 18px;
     width: 18px;
+  }
+  .catalog-movie-title{
+    font-size: 1.6rem;
   }
 }

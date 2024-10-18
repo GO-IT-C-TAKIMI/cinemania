@@ -6,7 +6,6 @@ export function header() {
   const responsiveMenu = document.querySelector('.responsive-menu');
   const body = document.querySelector('body');
   
-
   let isMenuOpen = false;
 
   menuButton.addEventListener('click', () => {
@@ -43,8 +42,7 @@ export function header() {
 
   links.forEach(link => {
     const linkHref = new URL(link.getAttribute('href'), window.location.origin).pathname;
-
-    if (linkHref === currentPath) {
+    if ("/cinemania"+linkHref === currentPath) {
       link.classList.add('active-link');
     }
   });
