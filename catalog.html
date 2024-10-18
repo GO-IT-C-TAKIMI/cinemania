@@ -5,10 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/cinemania/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinemania</title>
-    <script type="module" crossorigin src="/cinemania/assets/main-BdvoCoAd.js"></script>
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-BKkrelKc.css">
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/catalog-B_SY1GJM.css">
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/movieList-desktop-BZBKBEnA.css">
+    <script type="module" crossorigin src="/cinemania/assets/main-BQ_IVjgP.js"></script>
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-o6uW54ce.css">
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/catalog-QxEyXpJX.css">
   </head>
   <body>
     <header>
@@ -58,7 +57,7 @@
     <ul id="header-links" class="header-link-container">
       <li><a href="/">HOME</a></li>
       <li><a class="catalog-button" href="../../catalog.html">CATALOG</a></li>
-      <li><a href="../../mylibrary.html">LIBRARI</a></li>
+      <li><a href="../../mylibrary.html">LIBRARY</a></li>
     </ul>
   </div>
   <div class="responsive-overlay"></div>
@@ -80,9 +79,27 @@
   
 </section>
 
-      <section class=""></section>
       <section class="container">
-    <div id="catalog-movie-gallery"><!-- catalog bölümüdeki filmlerin olduğu alan --></div>
+    <div class="search_conteiner">
+      <input type="search" placeholder="Search" id="movieName" />
+      <div>
+        <select placeholder="year" id="movieYear" hidden="none"></select>
+      </div>
+
+      <img id="searchButton" src="../../svg/searchdark.svg" alt="Icon" />
+    </div>
+
+    <div id="results">
+      <!-- catalog bölümüdeki filmlerin olduğu alan -->
+    </div>
+</section>
+
+      <section class="container">
+    <div class="catalog-desc-container">
+        <p class="catalog-title">WEEKLY MOVIES</p>
+        <a class="catalog-link" href="../../catalog.html">See All</a>
+    </div>
+    <div id="catalog-movie-gallery" class="catalog-library-css"><!-- catalog bölümüdeki filmlerin olduğu alan --></div>
 
     <!-- Sayfa numaraları, prev ve next butonlarını içeren div -->
     <div class="pagination">
@@ -105,57 +122,57 @@
 </section>
     </main>
     <footer>
-      <section><h1>FOOTER</h1></section>
+      <section class="footer-section">
+  <div class="footer-main-div">
+    <ul class="footer-ul">
+      <li class="footer-li">© 2023 | All Rights Reserved</li>
+      <li class="footer-li">
+        Developed with
+        <img src="heart-footer.svg" alt="Heart Icon" width="14" height="13" />
+        by <a href="/">GoIT Students</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
     </footer>
     <section class="popup-section-container hidden">
   <div class="popup-section">
     <button class="close-btn">
-      <svg class="close-svg" width="30" height="30">
+      <svg class="close-svg" width="24" height="24">
         <use href="../../svg/sprite.svg#icon-close"></use>
       </svg>
     </button>
-    <div class="popup-container">
-      <div class="popup-afis">
-        <img src="../../img/John Wick.png" class="afis-img" />
-      </div>
-
-      <div class="popup-content">
-        <h2 class="film-title">John Wick: Chapter 4</h2>
-
-        <div class="film-details">
-          <div class="film-stats">
-            <p>Vote / Votes</p>
-            <p>Popularity</p>
-            <p>Genre</p>
+    <div class="popup-content-container">
+        <div class="popup-img-container">
+            <img class="afis-img" src="" alt="Movie Poster">
+        </div>
+        <div class="popup-film-info">
+          <div class="popup-film-content">
+            <h2 class="film-title"></h2>
+            <ul class="film-details">
+              <li>
+                <p>Vote / Votes</p>
+                <p>Popularity</p>
+                <p>Genre</p>
+              </li>
+              <li>
+                <p><span class="vote-description average-rating"></span> /
+                  <span class="vote-description vote-count"></span></p>
+                <p class="description popularity"></p>  
+                <p class="description genre"></p>
+              </li>
+            </ul>
           </div>
-
-          <div class="film-rating">
-            <p class="vote-container">
-              <span class="vote">7.3</span> / <span class="vote">1260</span>
-            </p>
-            <p>100.2</p>
-            <p class="film-genre">Action Thriller Crime</p>
+          <div class="popup-film-about-title">
+            <h3 class="film-about">ABOUT</h3>
+            <p class="film-about-desc"></p>
+          </div>
+          <div class="popup-buttons">
+            <button type="button" class="film-btn orange-button add-btn" id="popup-add-btn">Add to my library</button>
+            <button type="button" class="film-remove-btn hidden white-button remove-btn" id="popup-remove-btn">Remove from my library</button>
           </div>
         </div>
-      </div>
-
-      <div class="film-about-container">
-        <div class="film-about-content">
-          <h3 class="film-about">ABOUT</h3>
-          <p class="film-about-title">
-            John Wick (Keanu Reeves) takes on his most lethal adversaries yet in
-            the upcoming fourth instalment of the series. With the price on his
-            head ever increasing, John Wick uncovers a path to defeating The
-            High Table. But before he can earn his freedom, Wick must face off
-            against a new enemy with powerful alliances across the globe and
-            forces that turn old friends into foes.
-          </p>
-        </div>
-
-        <button type="button" class="film-btn orange-button">
-          Add to my library
-        </button>
-      </div>
     </div>
   </div>
 </section>
