@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+  .catalog-library-css {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pagination {
+    max-height: fit-content;
+  }
+}
+

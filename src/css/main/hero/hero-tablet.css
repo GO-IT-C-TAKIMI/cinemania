@@ -4,8 +4,8 @@
     width: 20px;
   }
   .hero-movie-title {
-    font-size: 4.4rem;
-    min-width: 357px;
+    font-size: 3.7rem;
+    min-width: 457px;
   }
   .btn-hero {
     height: 40px;
@@ -15,7 +15,6 @@
     gap: 28px;
   }
   .hero-movie-desc{
-    min-width: 295px;
-    
+    min-width: 357px;
   }
 }

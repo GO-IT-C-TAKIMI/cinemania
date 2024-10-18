@@ -1,5 +1,6 @@
-import { myDetailsFunction } from './popup.js';
-import { stars } from './stars.js';
+import { myDetailsFunction } from './mydetailsfunction.js';
+import { displayMovieRating } from './displayMovieRating.js';
+import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 
 export function hero() {
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
@@ -8,10 +9,13 @@ export function hero() {
   const descriptionContainer = document.getElementById(
     'movies-description-container'
   );
+  const popupContainer = document.querySelector('.popup-section-container');
+  const body = document.querySelector('body');
 
   const initialContent = () => {
     if (pathname === '/' || pathname === '/catalog.html') {
-      imageContainer.innerHTML = '<img class="image" src="./img/stranger_things.jpeg"/>';
+      imageContainer.innerHTML =
+        '<img class="image" src="./img/stranger_things.jpeg"/>';
       descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">Let's Make Your Own Cinema</h1>
         <div class="desc-button-container">
@@ -35,7 +39,7 @@ export function hero() {
   const fetchTrendingByDay = async () => {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}&language=en-US`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}&language=en-US`
       );
 
       if (!res.ok) {
@@ -58,10 +62,6 @@ export function hero() {
   };
 
   const displayMovie = async movie => {
-    const rating = (movie.vote_average / 2).toFixed(1);
-    const fullStars = Math.floor(rating);
-    const halfStars = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
     try {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${movie.id}/images?&api_key=${api_key}&language=en&language=null`
@@ -72,7 +72,7 @@ export function hero() {
           Math.floor(Math.random() * imageData.backdrops.length)
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
-  
+
       imageContainer.innerHTML += `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" />`;
       descriptionContainer.innerHTML += `
         <h1 class="hero-movie-title">${movie.title}</h1>
@@ -85,33 +85,23 @@ export function hero() {
           </div>
         </div>
       `;
+
+      starsContainer.innerHTML = displayMovieRating(movie.vote_average);
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
-      const starsContainer = document.getElementById('starsContainer');
-  
-      // Yıldızları ekleme
-      if (movie.vote_average === 0) {
-        starsContainer.innerHTML += `<h1>NOT RELEASED YET</h1>`;
-        return;
-      } else {
-        stars.forEach((star) => {
-          if (star.name === 'fullStar') {
-            starsContainer.innerHTML += star.svg.repeat(fullStars);
-          }
-          if (star.name === 'halfStar') {
-            starsContainer.innerHTML += star.svg.repeat(halfStars);
-          }
-          if (star.name === 'emptyStar') {
-            starsContainer.innerHTML += star.svg.repeat(emptyStars);
-          }
-        });
-      }
-  
+      
+      displayMovieRating(movie.vote_average);
+
+
       detailsButton.addEventListener('click', () => {
+        popupContainer.classList.remove('hidden');
+        body.style.overflow = 'hidden';
         const movieID = movie.id;
         myDetailsFunction(movieID);
+        const isInLibrary = checkLibrary(movieID);
+        updateLibraryButton(isInLibrary, movieID);
       });
-  
+
       trailerButton.addEventListener('click', async () => {
         modal.innerHTML = '';
         try {
@@ -120,9 +110,9 @@ export function hero() {
           );
           const data = await res.json();
           const trailer = data.results.find(
-            (result) => result.type === 'Trailer' || result.type === 'Teaser'
+            result => result.type === 'Trailer' || result.type === 'Teaser'
           );
-  
+
           if (trailer) {
             modal.innerHTML += `<iframe src="https://www.youtube.com/embed/${trailer.key}" allowfullscreen></iframe>`;
           } else {
@@ -135,7 +125,6 @@ export function hero() {
       });
     } catch (error) {
       console.error('Error displaying movie:', error);
-      imageContainer.innerHTML = `<p>Failed to load movie data</p>`;
     }
   };
 

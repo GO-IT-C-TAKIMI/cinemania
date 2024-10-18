@@ -1,44 +1,73 @@
-#catalog-movie-gallery {
+.catalog-library-css {
   display: grid;
-  width: 90%;
+  place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
-  margin: 0 auto;
+  padding: 10px 20px;
 }
 
 .catalog-movie-card {
-  background-color: #333;
+
   border-radius: 10px;
   overflow: hidden;
   position: relative; /* Bu, kartın içindeki elemanları konumlandırmamıza izin veriryor */
-  transition: transform 0.3s;
-  transform: scale(0.99);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.catalog-movie-details-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.catalog-movie-card:hover .catalog-movie-poster {
+  transform: scale(1.1);
+}
 .catalog-movie-card:hover {
-  transform: scale(1.05);
+  box-shadow:var(--modal-box-shadow);
 }
 
 .catalog-movie-info {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 10px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-  color: white;
+  padding: 25px 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
   display: flex;
+  color: #fff;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  text-shadow: 0px 1px 5px #000, 0px 1px 10px #000, 0px 1px 15px #000;
+}
+.catalog-desc-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  padding: 40px 20px 14px 20px;
 }
 
 .catalog-movie-rating {
-  fill: #f89f19ad;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.catalog-movie-rating svg {
+  height: 14px;
+  width: 14px;
 }
 
 .catalog-movie-poster {
   width: 100%;
-  height: auto;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+  object-fit: cover;
 }
 
 .catalog-movie-title {
@@ -57,6 +86,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transition: 0.4s ease-in-out;
 }
 
 .pagination-btn {
@@ -85,7 +115,7 @@
   cursor: pointer;
 }
 
-.pagi-svg path{
+.pagi-svg path {
   stroke: var(--main-gray-color);
   fill: transparent;
 }
@@ -96,32 +126,19 @@
 }
 
 .page-number.active {
-  background-color: #222;
+  background-color: #f60;
 }
 
 .page-number:hover {
-  background-color: #f60;
+  background-color: #222;
   transition: background-color 0.3s ease;
 }
 
-@media only screen and (max-width: 1024px) {
-  #movie-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.catalog-title{
+  cursor: default;
+  font-weight: 600;
 }
 
-@media only screen and (max-width: 768px) {
-  #movie-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .pagination {
-    max-height: fit-content;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  #movie-gallery {
-    grid-template-columns: 1fr; /* Mobilde tek sütun */
-  }
+.catalog-link{
+  color: #f87716;
 }

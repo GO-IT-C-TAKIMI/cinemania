@@ -7,28 +7,37 @@ export function header() {
   const body = document.querySelector('body');
   
 
+  let isMenuOpen = false;
+
   menuButton.addEventListener('click', () => {
     responsiveMenu.classList.add('active-responsive-menu');
     overlay.classList.add('active-overlay');
     body.style.overflow = 'hidden';
+    isMenuOpen = true;
   });
 
   document.addEventListener('click', (event) => {
     if (
+      isMenuOpen &&
       !responsiveMenu.contains(event.target) &&
       !menuButton.contains(event.target)
     ) {
       responsiveMenu.classList.remove('active-responsive-menu');
       overlay.classList.remove('active-overlay');
       body.style.overflow = 'auto';
+      isMenuOpen = false;
     }
   });
 
 
   window.addEventListener('resize', () => {
-    document.querySelector('.responsive-menu').classList.remove('active-responsive-menu');
+
+    if (isMenuOpen) { // Menü açıksa kapat
+    responsiveMenu.classList.remove('active-responsive-menu');
     overlay.classList.remove('active-overlay');
     body.style.overflow = 'auto';
+    isMenuOpen = false; // Menü kapatıldı
+  }
   });
 
 
