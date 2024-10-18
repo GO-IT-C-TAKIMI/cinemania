@@ -1,7 +1,5 @@
 import { updateLibraryUpcomingButton } from './addRemoveCheck.js';
 export function upcoming() {
-  console.log('upcoming sayfasinin js i calisti');
-
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0'; // API anahtarı
   const upcomingURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`;
   const genreURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`; // Genre listesini almak için

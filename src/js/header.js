@@ -31,25 +31,19 @@ export function header() {
 
   window.addEventListener('resize', () => {
 
-    if (isMenuOpen) {
+    if (isMenuOpen) { 
     responsiveMenu.classList.remove('active-responsive-menu');
     overlay.classList.remove('active-overlay');
     body.style.overflow = 'auto';
-    isMenuOpen = false; 
+    isMenuOpen = false;
   }
   });
 
 
   links.forEach(link => {
-    let linkHref = link.getAttribute('href');
-    if (linkHref.startsWith('/')) {
-        linkHref = `/cinemania${linkHref}`;
+    const linkHref = new URL(link.getAttribute('href'), window.location.origin).pathname;
+    if ("/cinemania"+linkHref === currentPath) {
+      link.classList.add('active-link');
     }
-    const fullLink = new URL(linkHref, window.location.origin).pathname;
-    if (fullLink === currentPath) {
-        link.classList.add('active-link');
-    }
-});
-  
-  
+  });
 }
