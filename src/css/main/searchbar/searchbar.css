@@ -5,7 +5,7 @@
   height: 4rem;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--main-gray-color);
-  padding: 1rem 14.2rem 1rem 2rem; /* padding values corrected */
+  padding: 1rem 2rem;
 }
 
 #movieYear {
@@ -13,8 +13,7 @@
   width: 9.5rem;
   height: 4rem;
   border-radius: 0.8rem;
-
-  padding: 1.2rem 6rem 1.2rem 2rem;
+  padding: 1.2rem 2rem;
 }
 #searchButton {
   width: 4rem;
@@ -25,7 +24,8 @@
   display: flex;
   justify-content: center; /* Yatayda ortalama */
   align-items: center; /* Dikeyde ortalama */
-  height: 17.6rem;
+  gap: 12px;
+  margin-top: 80px;
   width: 100%;
   font-family: Roboto;
   color: var(--main-text-color);
@@ -40,38 +40,6 @@
 #searchButton {
   width: 4.8rem;
   height: 4.8rem;
-  margin-left: 2rem;
   cursor: pointer;
   fill: var(--main-background);
-}
-
-/*  - min-width: 768px */
-@media only screen and (min-width: 768px) {
-  .search_conteiner {
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.641rem;
-  }
-
-  #movieName {
-    width: 18.8rem;
-    height: 4.4rem;
-  }
-
-  #movieYear {
-    width: 9.5rem;
-    height: 4.4rem;
-    padding: 1.2rem 6rem 1.2rem 2rem;
-  }
-  #searchButton {
-    width: 4.4rem;
-    height: 4.4rem;
-  }
-}
-/* Tablet ve üstü - min-width: 1280px */
-@media only screen and (min-width: 1280px) {
-  #searchButton {
-    width: 4.8rem;
-    height: 4.8rem;
-  }
 }
