@@ -1,11 +1,31 @@
-/*  Mobil - min-width: 480px */
+.search_conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 80px;
+  width: 100%;
+}
 
 #movieName {
   width: 22.4rem;
   height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--main-gray-color);
+  border: 0.1rem solid var(--header-text-color);
   padding: 1rem 2rem;
+  font-size: 1.4rem;
+  outline: none;
+  background: transparent;
+  color: var(--main-text-color);
+}
+
+#movieName::placeholder {
+  color: var(--header-text-color);
+  font-size: 1.4rem;
+  line-height: 3rem;
 }
 
 #movieYear {
@@ -18,28 +38,5 @@
 #searchButton {
   width: 4rem;
   height: 4rem;
-}
-
-.search_conteiner {
-  display: flex;
-  justify-content: center; /* Yatayda ortalama */
-  align-items: center; /* Dikeyde ortalama */
-  gap: 12px;
-  margin-top: 80px;
-  width: 100%;
-  font-family: Roboto;
-  color: var(--main-text-color);
-}
-#movieName {
-  width: 31.5rem;
-  height: 4.8rem;
-  border-radius: 0.8rem;
-  border: 0.1rem solid var(--main-gray-color); /* border color included in border */
-}
-
-#searchButton {
-  width: 4.8rem;
-  height: 4.8rem;
   cursor: pointer;
-  fill: var(--main-background);
 }
