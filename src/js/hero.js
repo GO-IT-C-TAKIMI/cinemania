@@ -39,7 +39,7 @@ export function hero() {
   const fetchTrendingByDay = async () => {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}&language=en-US`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}&language=en-US`
       );
 
       if (!res.ok) {
