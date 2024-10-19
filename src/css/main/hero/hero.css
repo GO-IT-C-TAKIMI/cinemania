@@ -93,8 +93,6 @@
   fill: transparent;
   stroke:var(--brend-color) ;
 }
-
-.btn-hero{
-  height: 38px;
-  font-size: 1.2rem;
+.btn-hero.details{
+  color: #fff ;
 }

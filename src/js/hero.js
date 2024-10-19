@@ -1,10 +1,11 @@
-import { myDetailsFunction } from './mydetailsfunction.js';
+import { myDetailsFunction, myTrailerFunction } from './mydetailsfunction.js';
 import { displayMovieRating } from './displayMovieRating.js';
 import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 
 export function hero() {
   const api_key = '3e7bd78082a78694a13d5e52c5addee0';
   const pathname = window.location.pathname;
+  const popupTrailer = document.querySelector('.popup-trailer');
   const imageContainer = document.getElementById('movies-image-container');
   const descriptionContainer = document.getElementById(
     'movies-description-container'
@@ -103,26 +104,12 @@ export function hero() {
       });
 
       trailerButton.addEventListener('click', async () => {
-        modal.innerHTML = '';
-        try {
-          const res = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`
-          );
-          const data = await res.json();
-          const trailer = data.results.find(
-            result => result.type === 'Trailer' || result.type === 'Teaser'
-          );
-
-          if (trailer) {
-            modal.innerHTML += `<iframe src="https://www.youtube.com/embed/${trailer.key}" allowfullscreen></iframe>`;
-          } else {
-            modal.innerHTML += `<p>No trailer available</p>`; // Fragman yoksa
-          }
-        } catch (error) {
-          console.error('Error fetching trailer:', error);
-          modal.innerHTML += `<p>Error loading trailer</p>`;
-        }
+        popupContainer.classList.remove('hidden');
+        body.style.overflow = 'hidden';
+        popupTrailer.innerHTML = '';
+        myTrailerFunction(movie.id);
       });
+
     } catch (error) {
       console.error('Error displaying movie:', error);
     }

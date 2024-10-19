@@ -25,6 +25,11 @@
   overflow: auto;
   overflow-x: hidden;
   max-height: 90vh;
+  min-height: 45vh;
+}
+.popup-content-container{
+  display: flex;
+  flex-direction: column;
 }
 
 .close-btn {
@@ -134,21 +139,13 @@
   line-height: 20px;
   color: var(--second-text-color);
 }
-
-.film-btn {
-  width: 150px;
-  height: 40px;
-  padding: 12px 24px;
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 14.06px;
+.popup-trailer{
+  min-height: 100%;
+  width: 100%;
 }
 
-.film-remove-btn {
-  width: 178px;
-  height: 40px;
-  padding: 12px 24px;
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 14.06px;
+.popup-trailer iframe{
+  width: 100%;
+  height: 200px;
+  border: none;
 }

@@ -42,11 +42,11 @@ export function upcoming() {
   function displayFilm(film) {
     moviePoster.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
     moviePoster.alt = film.title;
-    movieTitle.textContent = film.title;
+    movieTitle.textContent = film.title.toUpperCase();
     releaseDate.textContent = film.release_date;
     movieVote.textContent = film.vote_average;
     voteCount.textContent = film.vote_count;
-    popularity.textContent = film.popularity;
+    popularity.textContent = film.popularity.toFixed(1);
     genres.textContent = film.genre_ids.map(id => genreMap[id]).join(', ');
 
     if (film.overview && film.overview.trim() !== '') {

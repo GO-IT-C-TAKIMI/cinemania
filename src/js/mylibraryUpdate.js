@@ -44,9 +44,9 @@ export function mylibraryUpdate() {
     currentIndex += moviesPerPage;
 
     if (currentIndex >= filteredMovies.length) {
-      loadMoreButton.classList.add('hidden');
+      loadMoreButton.style.display = 'none';
     } else {
-      loadMoreButton.classList.remove('hidden');
+      loadMoreButton.style.display = 'flex';
     }
   }
 
