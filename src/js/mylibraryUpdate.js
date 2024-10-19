@@ -2,7 +2,7 @@ import { myDetailsFunction } from './myDetailsfunction';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
-export function myLibraryUpdate() {
+export function mylibraryUpdate() {
   const mylibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
   let fetchedMovies = [];
   let filteredMovies = [];
