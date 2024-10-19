@@ -44,7 +44,7 @@ export function upcoming() {
   function displayFilm(film) {
     moviePoster.src = `https://image.tmdb.org/t/p/original/${film.backdrop_path}`;
     moviePoster.alt = film.title;
-    movieTitle.textContent = film.title;
+    movieTitle.textContent = film.title.toUpperCase();
     releaseDate.textContent = film.release_date;
     movieVote.textContent = film.vote_average;
     voteCount.textContent = film.vote_count;

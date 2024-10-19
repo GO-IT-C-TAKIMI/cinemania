@@ -19,5 +19,8 @@
   .pagination {
     max-height: fit-content;
   }
+  .catalog-desc-container {
+    font-size: 2.4rem;
+  }
 }
 

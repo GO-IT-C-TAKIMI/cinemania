@@ -134,21 +134,3 @@
   line-height: 20px;
   color: var(--second-text-color);
 }
-
-.film-btn {
-  width: 150px;
-  height: 40px;
-  padding: 12px 24px;
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 14.06px;
-}
-
-.film-remove-btn {
-  width: 178px;
-  height: 40px;
-  padding: 12px 24px;
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 14.06px;
-}

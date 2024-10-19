@@ -1,7 +1,7 @@
 .catalog-library-css {
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
   gap: 20px;
   padding: 10px 20px;
 }
@@ -24,7 +24,7 @@
   transform: scale(1.1);
 }
 .catalog-movie-card:hover {
-  box-shadow:var(--modal-box-shadow);
+  box-shadow: var(--cards-box-shadow);
 }
 
 .catalog-movie-info {
@@ -94,6 +94,7 @@
 .pagination-btn {
   background: none;
   border: none;
+  padding: unset;
   cursor: pointer;
 }
 
@@ -109,17 +110,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff9000;
+  background-color: #222;
   border-radius: 50%;
+  padding: unset;
   color: #fff;
-  font-family: 'Arial', sans-serif;
   font-size: 14px;
   cursor: pointer;
+}
+
+.pagi-svg path{
+  transition: 0.2s ease-in-out;
 }
 
 .pagi-svg path {
   stroke: var(--main-gray-color);
   fill: transparent;
+}
+.pagi-svg:hover path {
+  stroke: #ff9000;
 }
 
 .page-number svg text {
@@ -132,7 +140,7 @@
 }
 
 .page-number:hover {
-  background-color: #222;
+  background-color: #ff9000;
   transition: background-color 0.3s ease;
 }
 

@@ -125,6 +125,14 @@ input[type='checkbox'] + label .toggle-moon {
   font-weight: 500;
   color: var(--header-text-color);
 }
+
+.header-link-container li a {
+  transition: 0.2s ease-in-out;
+}
+
+.header-link-container li a:hover{
+  color: var(--brend-color);
+}
 .responsive-menu {
   height: 100dvh;
   position: fixed;
@@ -155,6 +163,8 @@ input[type='checkbox'] + label .toggle-moon {
 
 .menu-button {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   color: var(--header-text-color);
   padding: unset;

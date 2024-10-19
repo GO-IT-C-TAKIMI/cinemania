@@ -27,8 +27,4 @@
   .desc-button-container{
     gap: 36px;
   }
-  .btn-hero {
-    height: 48px;
-    font-size: 1.6rem;
-  }
 }
