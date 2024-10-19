@@ -1,4 +1,4 @@
-import { myDetailsFunction } from './myDetailsfunction';
+import { myDetailsFunction } from './mydetailsfunction';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
@@ -145,8 +145,6 @@ export function mylibraryUpdate() {
 
   if (mylibrary.length > 0) {
     getMovies();
-  } else {
-    console.log('Library is empty');
   }
 }
 
