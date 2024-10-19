@@ -5,9 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/cinemania/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinemania</title>
-    <script type="module" crossorigin src="/cinemania/assets/main-BpwSxHBN.js"></script>
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-D8lD5rMu.css">
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/home-DlZkla22.css">
+    <script type="module" crossorigin src="/cinemania/assets/main-FIAAexzY.js"></script>
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-Brr1w7do.css">
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/home-BJIXhJV-.css">
   </head>
   <body>
     <header>
@@ -108,7 +108,9 @@
       <section class="upcoming container">
   <h2 class="upcoming__title">UPCOMING THIS MONTH</h2>
   <div class="upcoming-content">
-    <img class="upcoming-content__img" id="movie-poster" alt="Movie Poster" />
+    <div class="upcoming-content__img-container">
+      <img class="upcoming-content__img" id="movie-poster" alt="Movie Poster" />
+    </div>
     <div class="upcoming-content__desktop">
       <h3 class="upcoming-content__name" id="movie-title">Movie Title</h3>
 
@@ -177,6 +179,7 @@
     </footer>
     <section class="popup-section-container hidden">
   <div class="popup-section">
+    <div class="popup-trailer"></div>
     <button class="close-btn">
       <svg class="close-svg" width="24" height="24">
         <use href="/cinemania/assets/sprite-Cs5pSZ4c.svg#icon-close"></use>
@@ -209,7 +212,7 @@
           </div>
           <div class="popup-buttons">
             <button type="button" class="film-btn orange-button add-btn" id="popup-add-btn">Add to my library</button>
-            <button type="button" class="film-remove-btn hidden white-button remove-btn" id="popup-remove-btn">Remove from my library</button>
+            <button type="button" class="film-btn hidden white-button remove-btn" id="popup-remove-btn">Remove from my library</button>
           </div>
         </div>
     </div>
