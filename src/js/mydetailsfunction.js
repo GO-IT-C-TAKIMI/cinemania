@@ -7,7 +7,6 @@ const popupContentContainer = document.querySelector(
   '.popup-content-container'
 );
 const popupTrailer = document.querySelector('.popup-trailer');
-
 import { closeModal } from './modal';
 import { openModal } from './modal';
 export function myDetailsFunction(popupId) {
