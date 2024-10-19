@@ -74,15 +74,21 @@ export function hero() {
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
 
-      window.addEventListener('resize', () => {
-        const screenWidth = window.innerWidth;
-        let imageUrl =
-          screenWidth > 700
-            ? `https://image.tmdb.org/t/p/original${movieImage.file_path}`
-            : `https://image.tmdb.org/t/p/w500${movieImage.file_path}`;
+      const screenWidth = window.innerWidth;
 
-        imageContainer.innerHTML = `<img class="image" src="${imageUrl}" alt="${movie.title}" /> <div class="gradient"></div>`;
-      });
+      // Görüntü URL'sini belirle
+      const imagePath = movieImage.file_path;
+      let imageUrl = '';
+
+      // 700 pikselden büyükse orijinal boyut, küçükse w500 boyutu
+      if (screenWidth > 700) {
+        imageUrl = `https://image.tmdb.org/t/p/original${imagePath}`;
+      } else {
+        imageUrl = `https://image.tmdb.org/t/p/w500${imagePath}`;
+      }
+
+      // HTML içeriğini güncelle
+      imageContainer.innerHTML = `<img class="image" src="${imageUrl}" alt="${movie.title}" /> <div class="gradient"></div>`;
 
       descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">${movie.title}</h1>
