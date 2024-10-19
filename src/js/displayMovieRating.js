@@ -2,21 +2,21 @@ export function displayMovieRating(vote_average) {
   const stars = [
     {
       name: 'fullStar',
-      img: `
-      <img star-icon-full src="./public/fullstar.svg" alt="star"/>
-     `,
+      svg: `<svg width="24" height="24" class="star-icon-full">
+                  <use class="full-star" href="./svg/symbol-defs.svg#icon-star-outline"></use>
+                </svg>`,
     },
     {
       name: 'halfStar',
-      img: `
-        <img class="star-icon-half" src="./public/starhalf.svg" alt="star" />
-      `
+      svg: `<svg width="24" height="24" class="star-icon-half">
+                  <use href="./svg/symbol-defs.svg#icon-star-half"></use>
+                </svg>`,
     },
     {
       name: 'emptyStar',
-      img: `
-        <img class="star-icon-empty" src="./public/starempty.svg" alt="star" />
-      `,
+      svg: `<svg width="24" height="24" class="star-icon-empty">
+                  <use href="./svg/symbol-defs.svg#icon-star-outline"></use>
+                </svg>`,
     },
   ];
 
@@ -29,9 +29,9 @@ export function displayMovieRating(vote_average) {
     return 'NOT RELEASED YET';
   }
 
-  const fullStarSvg = stars.find(star => star.name === 'fullStar').img;
-  const halfStarSvg = stars.find(star => star.name === 'halfStar').img;
-  const emptyStarSvg = stars.find(star => star.name === 'emptyStar').img;
+  const fullStarSvg = stars.find(star => star.name === 'fullStar').svg;
+  const halfStarSvg = stars.find(star => star.name === 'halfStar').svg;
+  const emptyStarSvg = stars.find(star => star.name === 'emptyStar').svg;
 
   let starHTML = fullStarSvg.repeat(fullStars); //tam
   if (hasHalfStar) starHTML += halfStarSvg; //yari
