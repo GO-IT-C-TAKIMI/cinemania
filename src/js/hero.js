@@ -1,4 +1,4 @@
-import { myDetailsFunction, myTrailerFunction } from './mydetailsfunction.js';
+import { myDetailsFunction, myTrailerFunction } from './myDetailsfunction.js';
 import { displayMovieRating } from './displayMovieRating.js';
 import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 
@@ -73,7 +73,6 @@ export function hero() {
           Math.floor(Math.random() * imageData.backdrops.length)
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
-
       imageContainer.innerHTML = `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" /> <div class="gradient"></div>`;
       descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">${movie.title}</h1>
