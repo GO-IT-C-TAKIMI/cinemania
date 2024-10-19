@@ -74,7 +74,16 @@ export function hero() {
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
 
-      imageContainer.innerHTML = `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" alt="${movie.title}"/> <div class="gradient"></div>`;
+      window.addEventListener('resize', () => {
+        const screenWidth = window.innerWidth;
+        let imageUrl =
+          screenWidth > 700
+            ? `https://image.tmdb.org/t/p/original${movieImage.file_path}`
+            : `https://image.tmdb.org/t/p/w500${movieImage.file_path}`;
+
+        imageContainer.innerHTML = `<img class="image" src="${imageUrl}" alt="${movie.title}" /> <div class="gradient"></div>`;
+      });
+
       descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">${movie.title}</h1>
         <div class="stars-container" id="starsContainer"></div>
