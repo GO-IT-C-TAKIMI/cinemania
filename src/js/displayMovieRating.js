@@ -3,19 +3,19 @@ export function displayMovieRating(vote_average) {
     {
       name: 'fullStar',
       svg: `<svg width="24" height="24" class="star-icon-full">
-                  <use class="full-star" xlink:href="./svg/symbol-defs.svg#icon-star-outline"></use>
+                  <use class="full-star" xlink:href="./public/symbol-defs.svg#icon-star-outline"></use>
                 </svg>`,
     },
     {
       name: 'halfStar',
       svg: `<svg width="24" height="24" class="star-icon-half">
-                  <use xlink:href="./svg/symbol-defs.svg#icon-star-half"></use>
+                  <use xlink:href="./public/symbol-defs.svg#icon-star-half"></use>
                 </svg>`,
     },
     {
       name: 'emptyStar',
       svg: `<svg width="24" height="24" class="star-icon-empty">
-                  <use xlink:href="./svg/symbol-defs.svg#icon-star-outline"></use>
+                  <use xlink:href="./public/symbol-defs.svg#icon-star-outline"></use>
                 </svg>`,
     },
   ];
