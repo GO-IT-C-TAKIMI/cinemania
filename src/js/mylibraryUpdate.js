@@ -1,4 +1,4 @@
-import { myDetailsFunction } from './myDetailsfunction';
+import { myDetailsFunction } from './mydetailsfunction';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
@@ -11,7 +11,6 @@ export function mylibraryUpdate() {
   const emptyLibraryContainer = document.querySelector('.empty-library-container');
   const searchMovieButton = document.querySelector('.search-movie-button');
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-
   let currentIndex = 0;
   const moviesPerPage = 9;
 

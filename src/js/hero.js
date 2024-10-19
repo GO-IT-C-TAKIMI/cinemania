@@ -1,4 +1,4 @@
-import { myDetailsFunction, myTrailerFunction } from './myDetailsfunction.js';
+import { myDetailsFunction, myTrailerFunction } from './mydetailsfunction.js';
 import { displayMovieRating } from './displayMovieRating.js';
 import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 
@@ -85,12 +85,13 @@ export function hero() {
           </div>
         </div>
       `;
+      displayMovieRating(movie.vote_average);
 
       starsContainer.innerHTML = displayMovieRating(movie.vote_average);
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
       
-      displayMovieRating(movie.vote_average);
+      
 
 
       detailsButton.addEventListener('click', () => {
