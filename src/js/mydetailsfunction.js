@@ -35,6 +35,7 @@ export function myDetailsFunction(popupId) {
   function displayDetails(data) {
     displayLoadingState();
     filmPoster.src = `https://image.tmdb.org/t/p/original/${data.poster_path}`;
+    filmPoster.alt = data.title
     filmTitle.textContent = data.title;
     averageRating.textContent = data.vote_average.toFixed(1);
     voteCount.textContent = data.vote_count;
