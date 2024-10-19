@@ -198,7 +198,7 @@ export async function movielist() {
 
     pageButton.addEventListener('click', async () => {
       currentPage = pageNum;
-      await fetchMovies(currentPage, query, year);
+      await fetchMovies(currentPage);
       updatePagination();
     });
 
@@ -242,7 +242,7 @@ export async function movielist() {
         }
 
         const movies = await searchvideos(query, year);
-        if (movies.results.length === 0) {
+        if (movies.results.length === 0 || query === '') {
           mySelect.style.display = 'none';
         } else {
           mySelect.style.display = 'block';

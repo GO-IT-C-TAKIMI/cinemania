@@ -29,6 +29,7 @@
 }
 
 #movieYear {
+  display: none;
   color: var(--main-gray-color);
   width: 9.5rem;
   height: 4rem;
