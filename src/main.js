@@ -1,15 +1,15 @@
 import { header } from './js/header';
 import { hero } from './js/hero';
-import { movielist } from './js/movielist';
+import { movieList } from './js/movieList';
 import { upcoming } from './js/upcoming';
 import { footer } from './js/footer';
 import theme from './js/theme';
-import { mylibraryUpdate } from './js/mylibraryUpdate';
+import { myLibraryUpdate } from './js/myLibraryUpdate';
 
 if (window.location.pathname.includes('catalog.html')) {
   header();
   hero();
-  movielist();
+  movieList();
   footer();
   theme();
 }
@@ -18,13 +18,13 @@ if (window.location.pathname.includes('mylibrary.html')) {
   hero();
   footer();
   theme();
-  mylibraryUpdate();
+  myLibraryUpdate();
 }
 if (!window.location.pathname.includes('catalog.html') && !window.location.pathname.includes('library.html')) {                           
   header();
   hero();
   upcoming();
-  movielist();
+  movieList();
   footer();
   theme();
 }

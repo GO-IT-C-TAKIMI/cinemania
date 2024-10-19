@@ -1,8 +1,8 @@
-import { myDetailsFunction } from './mydetailsfunction';
+import { myDetailsFunction } from './myDetailsfunction';
 import { displayMovieRating } from './displayMovieRating';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 
-export async function movielist() {
+export async function movieList() {
   const apiKey = '3e7bd78082a78694a13d5e52c5addee0';
   const apiUrl =
     'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' +

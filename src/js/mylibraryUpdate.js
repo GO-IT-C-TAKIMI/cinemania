@@ -1,13 +1,15 @@
-import { myDetailsFunction } from './mydetailsfunction';
+import { myDetailsFunction } from './myDetailsfunction';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
-export function mylibraryUpdate() {
+export function myLibraryUpdate() {
   const mylibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
   let fetchedMovies = [];
   let filteredMovies = [];
   const mylibraryContainer = document.querySelector('#catalog-movie-gallery');
   const loadMoreButton = document.querySelector('.load-more-button');
+  const emptyLibraryContainer = document.querySelector('.empty-library-container');
+  const searchMovieButton = document.querySelector('.search-movie-button');
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
   let currentIndex = 0;
@@ -45,8 +47,13 @@ export function mylibraryUpdate() {
 
     if (currentIndex >= filteredMovies.length) {
       loadMoreButton.style.display = 'none';
+      searchMovieButton.style.display = 'none';
+      emptyLibraryContainer.style.display = 'none';
+
     } else {
+      emptyLibraryContainer.style.display = 'none';
       loadMoreButton.style.display = 'flex';
+      searchMovieButton.style.display = 'none';
     }
   }
 

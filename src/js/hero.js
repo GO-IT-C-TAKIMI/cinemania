@@ -1,4 +1,4 @@
-import { myDetailsFunction, myTrailerFunction } from './mydetailsfunction.js';
+import { myDetailsFunction, myTrailerFunction } from './myDetailsfunction.js';
 import { displayMovieRating } from './displayMovieRating.js';
 import { checkLibrary, updateLibraryButton } from './addRemoveCheck.js';
 

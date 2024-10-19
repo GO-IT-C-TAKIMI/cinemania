@@ -12,8 +12,26 @@
 }
 
 .load-more-button{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     margin:24px auto 0px auto;
+}
+.search-movie-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px auto 0px auto;
+}
+
+.empty-library-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.empty-library-title{
+    font-size: 2rem;
 }
