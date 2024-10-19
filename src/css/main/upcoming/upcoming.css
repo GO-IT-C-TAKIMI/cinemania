@@ -97,8 +97,8 @@
 /* Vote için arka plan rengi */
 .upcoming-list__vote span {
   padding: 2px 6px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--second-text-color);
+  color: var(--main-background);
   border-radius: 4px;
   font-weight: bold;
 }

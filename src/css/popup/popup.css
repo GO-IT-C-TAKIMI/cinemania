@@ -25,6 +25,11 @@
   overflow: auto;
   overflow-x: hidden;
   max-height: 90vh;
+  min-height: 45vh;
+}
+.popup-content-container{
+  display: flex;
+  flex-direction: column;
 }
 
 .close-btn {
@@ -133,4 +138,14 @@
   font-size: 1.4rem; /* 1.2rem */
   line-height: 20px;
   color: var(--second-text-color);
+}
+.popup-trailer{
+  min-height: 100%;
+  width: 100%;
+}
+
+.popup-trailer iframe{
+  width: 100%;
+  height: 200px;
+  border: none;
 }

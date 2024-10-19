@@ -1,2 +1,10 @@
 @import url('libraryList.css');
 @import url('libraryList-tablet.css');
+
+@media (min-width: 1280px) {
+    #film-category{
+        width: 26rem;
+        height: 4.8rem;
+        font-size: 1.6rem;
+    }
+}

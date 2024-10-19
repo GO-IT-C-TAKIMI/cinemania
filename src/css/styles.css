@@ -125,7 +125,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: var(--btn-border-radius);
-  padding: 1.2rem 2.4rem;
+  padding: 0 2.4rem;
   height: 38px;
   font-size: 1.2rem;
   transition: 0.3s ease;
@@ -133,14 +133,14 @@ button {
 
 button.orange-button {
   background: var(--btn-background);
-  font-weight: 600;
+  font-weight: 500;
   color: #000;
   background-size: 400%;
 }
 button.white-button {
   font-weight: 500;
-  color: #fff;
-  border: 1px solid white;
+  color: var(--main-text-color);
+  border: 3px solid var(--brend-color-rgba);
   background: transparent;
 }
 button.orange-button:hover {

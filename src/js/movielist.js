@@ -11,6 +11,7 @@ export async function movielist() {
   let query = '';
   let year = '';
   const pathname = window.location.pathname;
+  const paginationDiv = document.querySelector('.pagination')
   const isCatalogPage = pathname.includes('catalog');
   const movieGallery = document.getElementById('catalog-movie-gallery');
   const catalogDescContainer = document.querySelector('.catalog-desc-container');
@@ -33,8 +34,10 @@ export async function movielist() {
 
   if (isCatalogPage) {
     catalogDescContainer.style.display = 'none';
+    
   }else{
     catalogDescContainer.style.display = 'flex';
+    paginationDiv.style.display = 'none';
   }
 
   async function fetchGenres() {

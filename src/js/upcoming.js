@@ -48,7 +48,7 @@ export function upcoming() {
     releaseDate.textContent = film.release_date;
     movieVote.textContent = film.vote_average;
     voteCount.textContent = film.vote_count;
-    popularity.textContent = film.popularity;
+    popularity.textContent = film.popularity.toFixed(1);
     genres.textContent = film.genre_ids.map(id => genreMap[id]).join(', ');
 
     if (film.overview && film.overview.trim() !== '') {

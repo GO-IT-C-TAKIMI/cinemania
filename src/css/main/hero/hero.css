@@ -93,3 +93,6 @@
   fill: transparent;
   stroke:var(--brend-color) ;
 }
+.btn-hero.details{
+  color: #fff ;
+}
