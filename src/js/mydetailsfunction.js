@@ -30,7 +30,6 @@ export function myDetailsFunction(popupId) {
       console.error('Error fetching details:', error);
     }
   };
-
   fetchDetails();
 
   function displayDetails(data) {
