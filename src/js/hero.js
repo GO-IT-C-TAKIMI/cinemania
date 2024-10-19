@@ -73,7 +73,8 @@ export function hero() {
           Math.floor(Math.random() * imageData.backdrops.length)
         ];
       const movieOverview = movie.overview.split(' ').slice(0, 40).join(' ');
-      imageContainer.innerHTML = `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" /> <div class="gradient"></div>`;
+
+      imageContainer.innerHTML = `<img class="image" src="https://image.tmdb.org/t/p/original${movieImage.file_path}" alt="${movie.title}"/> <div class="gradient"></div>`;
       descriptionContainer.innerHTML = `
         <h1 class="hero-movie-title">${movie.title}</h1>
         <div class="stars-container" id="starsContainer"></div>
@@ -90,9 +91,8 @@ export function hero() {
       starsContainer.innerHTML = displayMovieRating(movie.vote_average);
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
-      
-      
 
+      displayMovieRating(movie.vote_average);
 
       detailsButton.addEventListener('click', () => {
         popupContainer.classList.remove('hidden');
@@ -109,7 +109,6 @@ export function hero() {
         popupTrailer.innerHTML = '';
         myTrailerFunction(movie.id);
       });
-
     } catch (error) {
       console.error('Error displaying movie:', error);
     }
