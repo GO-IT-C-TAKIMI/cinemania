@@ -1,4 +1,4 @@
-import { myDetailsFunction } from './myDetailsfunction';
+import { myDetailsFunction } from './mydetailsfunction';
 import { updateLibraryButton, checkLibrary } from './addRemoveCheck';
 import { displayMovieRating } from './displayMovieRating';
 
