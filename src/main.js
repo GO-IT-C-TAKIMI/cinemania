@@ -20,7 +20,7 @@ if (window.location.pathname.includes('mylibrary.html')) {
   theme();
   mylibraryUpdate();
 }
-if (window.location.pathname.includes('home.html')) {
+if (!window.location.pathname.includes('catalog.html') && !window.location.pathname.includes('library.html')) {                           
   header();
   hero();
   upcoming();
