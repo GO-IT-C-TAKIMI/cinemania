@@ -101,13 +101,12 @@ export function hero() {
           </div>
         </div>
       `;
-      displayMovieRating(movie.vote_average);
+     
 
       starsContainer.innerHTML = displayMovieRating(movie.vote_average);
       const trailerButton = document.getElementById('trailer');
       const detailsButton = document.getElementById('details');
 
-      displayMovieRating(movie.vote_average);
 
       detailsButton.addEventListener('click', () => {
         popupContainer.classList.remove('hidden');
