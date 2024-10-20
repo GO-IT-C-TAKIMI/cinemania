@@ -23,4 +23,10 @@
   .film-about-title {
     font-size: 1.6rem;
   }
+  .no-trailer-desc{
+    gap: 20px;
+    font-size: 2rem;
+    height: 100%;
+  }
+  
 }

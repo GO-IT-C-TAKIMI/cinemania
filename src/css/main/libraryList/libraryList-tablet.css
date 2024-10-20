@@ -5,4 +5,8 @@
     .empty-library-title{
         font-size: 2.4rem;
     }
+    
+    .removed-message-container{
+        position: absolute;
+    }
 }

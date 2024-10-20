@@ -28,7 +28,7 @@ function removeMovieFromUI(filmId) {
   const mylibraryContainer = document.querySelector('#catalog-movie-gallery');
 
   if (library.length === 0) {
-    mylibraryContainer.innerHTML = '<p>Your library is empty.</p>';
+    mylibraryContainer.innerHTML = '<div class="removed-message-container"><h1 class="removed-message">You Successfully Removed All Movies From Your Library</h1></div>';
   }
 }
 
